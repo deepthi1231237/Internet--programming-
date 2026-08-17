@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BloodCare - Blood Management Information System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #b91c1c, #ef4444);
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #fecaca;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fee2e2;
+}
+
+/* HERO */
+.hero {
+    min-height: 430px;
+    padding: 70px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #fff1f2, #fee2e2);
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #991b1b;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.primary {
+    background: #dc2626;
+    color: white;
+}
+
+.primary:hover {
+    background: #991b1b;
+}
+
+.secondary {
+    background: white;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    margin-left: 8px;
+}
+
+.hero-card {
+    width: 360px;
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px #0002;
+}
+
+.hero-card h2 {
+    color: #991b1b;
+    margin-bottom: 18px;
+}
+
+.blood-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px;
+    margin-bottom: 10px;
+    border-radius: 9px;
+    background: #fff1f2;
+}
+
+.blood-type {
+    font-size: 20px;
+    font-weight: bold;
+    color: #dc2626;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    color: #991b1b;
+    font-size: 32px;
+}
+
+.section-title p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* BLOOD BANK */
+.blood-banks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.bank-card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    border-left: 5px solid #dc2626;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.bank-card h3 {
+    color: #991b1b;
+    margin-bottom: 10px;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* SEARCH */
+.search-box {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #dc2626;
+}
+
+/* DASHBOARD */
+.dashboard {
+    background: #fef2f2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.stat small {
+    color: #6b7280;
+}
+
+.stat h2 {
+    color: #dc2626;
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+/* FORM */
+.form-container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* TABLE */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    overflow-x: auto;
+    box-shadow: 0 8px 25px #0001;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.available {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.low {
+    color: #ca8a04;
+    font-weight: bold;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 450px;
+    max-width: 90%;
+    border-radius: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .features,
+    .blood-banks,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .features,
+    .blood-banks,
+    .stats,
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Blood<span>Care</span>
+    </div>
+
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('donors')">Donors</a>
+        <a onclick="showSection('bloodbanks')">Blood Banks</a>
+        <a onclick="showSection('dashboard')">Dashboard</a>
+        <a onclick="showSection('register')">Register</a>
+        <a onclick="openLogin()">Login</a>
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Save Lives Through Blood Donation
+        </h1>
+
+        <p>
+            BloodCare is a smart Blood Management Information System
+            that helps donors, hospitals and blood banks manage blood
+            donation information efficiently and securely.
+        </p>
+
+        <button class="btn primary"
+                onclick="showSection('donors')">
+            Find Donors
+        </button>
+
+        <button class="btn secondary"
+                onclick="showSection('register')">
+            Become a Donor
+        </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h2>Current Blood Stock</h2>
+
+        <div class="blood-box">
+            <span class="blood-type">A+</span>
+            <b>Available</b>
+        </div>
+
+        <div class="blood-box">
+            <span class="blood-type">B+</span>
+            <b>Available</b>
+        </div>
+
+        <div class="blood-box">
+            <span class="blood-type">O+</span>
+            <b>Available</b>
+        </div>
+
+        <div class="blood-box">
+            <span class="blood-type">AB+</span>
+            <b>Low Stock</b>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>Blood Management Services</h2>
+
+        <p>
+            Quick and secure access to blood donation information
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">🩸</div>
+
+            <h3>Donor Management</h3>
+
+            <p>
+                Register donors and maintain donor information.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🏥</div>
+
+            <h3>Hospital Management</h3>
+
+            <p>
+                Hospitals can post and update blood bank information.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🔍</div>
+
+            <h3>Search Blood</h3>
+
+            <p>
+                Search donors and blood banks according to blood group.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📊</div>
+
+            <h3>Reports</h3>
+
+            <p>
+                Monitor blood donation activities and generate reports.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- DONORS -->
+
+<section id="donors" class="hidden">
+
+    <div class="section-title">
+
+        <h2>Search Donor Details</h2>
+
+        <p>
+            Find suitable blood donors quickly
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="donorSearch"
+            placeholder="Search donor name"
+            onkeyup="searchDonors()"
+        >
+
+
+        <select id="bloodFilter"
+                onchange="searchDonors()">
+
+            <option value="">
+                All Blood Groups
+            </option>
+
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+
+        </select>
+
+
+        <select>
+
+            <option>
+                All Locations
+            </option>
+
+            <option>Chennai</option>
+            <option>Bangalore</option>
+            <option>Hyderabad</option>
+            <option>Mumbai</option>
+
+        </select>
+
+
+        <button class="btn primary"
+                onclick="searchDonors()">
+
+            Search
+
+        </button>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Donor Name</th>
+                    <th>Blood Group</th>
+                    <th>Location</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="donorTable">
+
+                <tr data-blood="O+">
+
+                    <td>
+                        Arun Kumar
+                    </td>
+
+                    <td>
+                        <b>O+</b>
+                    </td>
+
+                    <td>
+                        Chennai
+                    </td>
+
+                    <td>
+                        +91 9876543210
+                    </td>
+
+                    <td class="available">
+                        Available
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn primary"
+                            onclick="contactDonor('Arun Kumar')">
+
+                            Contact
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr data-blood="A+">
+
+                    <td>
+                        Priya Sharma
+                    </td>
+
+                    <td>
+                        <b>A+</b>
+                    </td>
+
+                    <td>
+                        Bangalore
+                    </td>
+
+                    <td>
+                        +91 9876543211
+                    </td>
+
+                    <td class="available">
+                        Available
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn primary"
+                            onclick="contactDonor('Priya Sharma')">
+
+                            Contact
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr data-blood="B+">
+
+                    <td>
+                        Rahul Singh
+                    </td>
+
+                    <td>
+                        <b>B+</b>
+                    </td>
+
+                    <td>
+                        Hyderabad
+                    </td>
+
+                    <td>
+                        +91 9876543212
+                    </td>
+
+                    <td class="available">
+                        Available
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn primary"
+                            onclick="contactDonor('Rahul Singh')">
+
+                            Contact
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr data-blood="AB+">
+
+                    <td>
+                        Sneha Reddy
+                    </td>
+
+                    <td>
+                        <b>AB+</b>
+                    </td>
+
+                    <td>
+                        Chennai
+                    </td>
+
+                    <td>
+                        +91 9876543213
+                    </td>
+
+                    <td class="low">
+                        Low Availability
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn primary"
+                            onclick="contactDonor('Sneha Reddy')">
+
+                            Contact
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- BLOOD BANKS -->
+
+<section id="bloodbanks" class="hidden">
+
+    <div class="section-title">
+
+        <h2>Blood Bank Details</h2>
+
+        <p>
+            Search nearby blood banks and available blood groups
+        </p>
+
+    </div>
+
+
+    <div class="blood-banks">
+
+        <div class="bank-card">
+
+            <h3>Government Blood Bank</h3>
+
+            <p>📍 Chennai</p>
+
+            <p>📞 044-12345678</p>
+
+            <p>
+                Blood Groups: A+, B+, O+, O-
+            </p>
+
+            <span class="status">
+                Open & Available
+            </span>
+
+        </div>
+
+
+        <div class="bank-card">
+
+            <h3>City Care Blood Bank</h3>
+
+            <p>📍 Bangalore</p>
+
+            <p>📞 080-98765432</p>
+
+            <p>
+                Blood Groups: A+, AB+, B+, O+
+            </p>
+
+            <span class="status">
+                Open & Available
+            </span>
+
+        </div>
+
+
+        <div class="bank-card">
+
+            <h3>LifeLine Blood Centre</h3>
+
+            <p>📍 Hyderabad</p>
+
+            <p>📞 040-45678912</p>
+
+            <p>
+                Blood Groups: A-, B-, O-, AB+
+            </p>
+
+            <span class="status">
+                Open & Available
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <br><br>
+
+
+    <div class="table-container">
+
+        <h3 style="margin-bottom:20px;color:#991b1b;">
+            Blood Stock Availability
+        </h3>
+
+        <table>
+
+            <tr>
+                <th>Blood Group</th>
+                <th>Available Units</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>A+</td>
+                <td>45 Units</td>
+                <td class="available">Available</td>
+            </tr>
+
+            <tr>
+                <td>A-</td>
+                <td>12 Units</td>
+                <td class="low">Low</td>
+            </tr>
+
+            <tr>
+                <td>B+</td>
+                <td>38 Units</td>
+                <td class="available">Available</td>
+            </tr>
+
+            <tr>
+                <td>B-</td>
+                <td>9 Units</td>
+                <td class="low">Low</td>
+            </tr>
+
+            <tr>
+                <td>O+</td>
+                <td>60 Units</td>
+                <td class="available">Available</td>
+            </tr>
+
+            <tr>
+                <td>O-</td>
+                <td>7 Units</td>
+                <td class="low">Critical</td>
+            </tr>
+
+            <tr>
+                <td>AB+</td>
+                <td>14 Units</td>
+                <td class="available">Available</td>
+            </tr>
+
+            <tr>
+                <td>AB-</td>
+                <td>5 Units</td>
+                <td class="low">Critical</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="dashboard hidden">
+
+    <div class="section-title">
+
+        <h2>Management Dashboard</h2>
+
+        <p>
+            Monitor blood donation activities and performance
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <small>
+                Registered Donors
+            </small>
+
+            <h2>
+                2,846
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Blood Banks
+            </small>
+
+            <h2>
+                126
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Donations This Month
+            </small>
+
+            <h2>
+                684
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Emergency Requests
+            </small>
+
+            <h2>
+                28
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DONOR REGISTRATION -->
+
+<section id="register" class="hidden">
+
+    <div class="section-title">
+
+        <h2>Donor Registration</h2>
+
+        <p>
+            Register as a blood donor
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="donorName"
+                type="text"
+                placeholder="Enter full name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="+91"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Blood Group
+            </label>
+
+            <select>
+
+                <option>
+                    Select Blood Group
+                </option>
+
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Location
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter city"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Last Donation Date
+            </label>
+
+            <input type="date">
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="registerDonor()">
+
+            Register as Donor
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- HOSPITAL -->
+
+<section id="hospital" class="hidden">
+
+    <div class="section-title">
+
+        <h2>Hospital Blood Bank Management</h2>
+
+        <p>
+            Post and update blood bank information
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Hospital Name
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter hospital name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Blood Group
+            </label>
+
+            <select>
+
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Available Units
+            </label>
+
+            <input
+                type="number"
+                placeholder="Enter units"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Contact Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="Hospital contact number"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="updateBlood()">
+
+            Update Blood Bank Information
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeLogin()">
+            ×
+        </span>
+
+        <h2 style="color:#991b1b;">
+            Login
+        </h2>
+
+        <br>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Enter password"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Login As
+            </label>
+
+            <select>
+
+                <option>
+                    Donor / User
+                </option>
+
+                <option>
+                    Hospital
+                </option>
+
+                <option>
+                    Administrator
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="loginUser()">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>
+        🩸 BloodCare
+    </h2>
+
+    <p>
+        Blood Management Information System
+    </p>
+
+    <p>
+        Quick, secure and reliable blood management.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("donors").classList.add("hidden");
+    document.getElementById("bloodbanks").classList.add("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("register").classList.add("hidden");
+    document.getElementById("hospital").classList.add("hidden");
+
+    document.getElementById(section).classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* LOGIN */
+
+function openLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function loginUser() {
+
+    let email =
+        document.getElementById("loginEmail").value;
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+    closeLogin();
+
+    alert(
+        "Login successful! Welcome to BloodCare."
+    );
+
+    showSection("dashboard");
+
+}
+
+
+/* DONOR REGISTRATION */
+
+function registerDonor() {
+
+    let name =
+        document.getElementById("donorName").value;
+
+    if (name === "") {
+
+        alert(
+            "Please enter your name."
+        );
+
+        return;
+
+    }
+
+    alert(
+        "Donor registration successful! Thank you " +
+        name +
+        " for registering as a blood donor."
+    );
+
+    showSection("dashboard");
+
+}
+
+
+/* SEARCH DONORS */
+
+function searchDonors() {
+
+    let search =
+        document
+        .getElementById("donorSearch")
+        .value
+        .toLowerCase();
+
+    let blood =
+        document
+        .getElementById("bloodFilter")
+        .value;
+
+    let rows =
+        document.querySelectorAll(
+            "#donorTable tr"
+        );
+
+    rows.forEach(function(row) {
+
+        let text =
+            row.innerText.toLowerCase();
+
+        let rowBlood =
+            row.dataset.blood;
+
+        let searchMatch =
+            text.includes(search);
+
+        let bloodMatch =
+            blood === "" ||
+            rowBlood === blood;
+
+        if (
+            searchMatch &&
+            bloodMatch
+        ) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* CONTACT DONOR */
+
+function contactDonor(name) {
+
+    alert(
+        "Contact request sent to " +
+        name
+    );
+
+}
+
+
+/* UPDATE BLOOD */
+
+function updateBlood() {
+
+    alert(
+        "Blood bank information updated successfully!"
+    );
+
+}
+
+
+/* CLOSE MODAL */
+
+window.onclick = function(event) {
+
+    let modal =
+        document.getElementById(
+            "loginModal"
+        );
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
