@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Traffic Squad - Penalty Management System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #222;
+}
+
+/* HEADER */
+header {
+    background: #172554;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #facc15;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #facc15;
+}
+
+/* HERO */
+.hero {
+    padding: 70px 8%;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    color: #172554;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 25px;
+}
+
+.hero-card {
+    background: white;
+    padding: 30px;
+    width: 340px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px #0002;
+}
+
+.hero-card h2 {
+    color: #172554;
+    margin-bottom: 15px;
+}
+
+.info {
+    padding: 12px;
+    background: #eff6ff;
+    margin: 8px 0;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.primary {
+    background: #1d4ed8;
+    color: white;
+}
+
+.primary:hover {
+    background: #1e40af;
+}
+
+.secondary {
+    background: white;
+    border: 2px solid #1d4ed8;
+    color: #1d4ed8;
+    margin-left: 8px;
+}
+
+.danger {
+    background: #dc2626;
+    color: white;
+}
+
+/* SECTION */
+section {
+    padding: 55px 8%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h2 {
+    font-size: 32px;
+    color: #172554;
+}
+
+.title p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #0001;
+}
+
+.feature .icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    color: #172554;
+    margin-bottom: 10px;
+}
+
+/* FORM */
+.form-box {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px #0001;
+}
+
+.group {
+    margin-bottom: 18px;
+}
+
+.group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #2563eb;
+}
+
+/* CHALLAN */
+.challan {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px #0001;
+}
+
+.challan-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.challan h2 {
+    color: #172554;
+}
+
+.challan-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.amount {
+    color: #dc2626;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* CASE CARDS */
+.cases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.case-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #0001;
+    border-left: 5px solid #dc2626;
+}
+
+.case-card h3 {
+    color: #172554;
+    margin-bottom: 10px;
+}
+
+.case-card p {
+    margin: 7px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* DASHBOARD */
+.dashboard {
+    background: #eff6ff;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #0001;
+}
+
+.stat small {
+    color: #6b7280;
+}
+
+.stat h2 {
+    font-size: 30px;
+    color: #1d4ed8;
+    margin-top: 8px;
+}
+
+/* TABLE */
+.table-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 13px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #dbeafe;
+    color: #172554;
+}
+
+/* TRAFFIC */
+.traffic-map {
+    height: 300px;
+    background:
+        linear-gradient(90deg, transparent 48%, #ffffff 48%, #ffffff 52%, transparent 52%),
+        #6b7280;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    margin-top: 8px;
+    color: #9ca3af;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-box {
+    background: white;
+    width: 420px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .features,
+    .cases,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .features,
+    .cases,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+    🚦 Traffic<span>Squad</span>
+</div>
+
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('challan')">My Challan</a>
+    <a onclick="showSection('cases')">Cases</a>
+    <a onclick="showSection('traffic')">Traffic</a>
+    <a onclick="openLogin()">Login</a>
+</nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>
+Traffic Penalty Management System
+</h1>
+
+<p>
+TrafficSquad provides an online platform for traffic police
+to create FIR and traffic violation cases. Vehicle owners can
+view their challans, case details and penalty information online.
+</p>
+
+<button
+class="btn primary"
+onclick="showSection('challan')">
+
+View My Challan
+
+</button>
+
+<button
+class="btn secondary"
+onclick="showSection('register')">
+
+Register
+
+</button>
+
+</div>
+
+
+<div class="hero-card">
+
+<h2>
+🚔 Traffic Services
+</h2>
+
+<div class="info">
+📄 Online FIR Creation
+</div>
+
+<div class="info">
+📸 Proof Photo Upload
+</div>
+
+<div class="info">
+💰 Penalty Management
+</div>
+
+<div class="info">
+🗺️ Traffic Information
+</div>
+
+<div class="info">
+📊 Daily Reports
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="title">
+
+<h2>
+System Features
+</h2>
+
+<p>
+Digital traffic violation management
+</p>
+
+</div>
+
+
+<div class="features">
+
+<div class="feature">
+
+<div class="icon">
+👤
+</div>
+
+<h3>
+User Registration
+</h3>
+
+<p>
+Create an account and manage your traffic information.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+📋
+</div>
+
+<h3>
+Online Challan
+</h3>
+
+<p>
+View traffic penalties and challan information online.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+👮
+</div>
+
+<h3>
+Police Management
+</h3>
+
+<p>
+Police can create and manage traffic violation cases.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">
+📊
+</div>
+
+<h3>
+Daily Reports
+</h3>
+
+<p>
+Administrators can monitor daily traffic reports.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- USER REGISTER -->
+
+<section id="register" class="hidden">
+
+<div class="title">
+
+<h2>
+User Registration
+</h2>
+
+<p>
+Create your TrafficSquad account
+</p>
+
+</div>
+
+
+<div class="form-box">
+
+<div class="group">
+
+<label>
+Full Name
+</label>
+
+<input
+id="userName"
+type="text"
+placeholder="Enter your full name">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+placeholder="Enter email">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Phone Number
+</label>
+
+<input
+type="text"
+placeholder="+91 XXXXX XXXXX">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Vehicle Number
+</label>
+
+<input
+type="text"
+placeholder="TN 00 AB 0000">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Driving License Number
+</label>
+
+<input
+type="text"
+placeholder="Enter license number">
+
+</div>
+
+
+<button
+class="btn primary"
+onclick="registerUser()">
+
+Register
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CHALLAN -->
+
+<section id="challan" class="hidden">
+
+<div class="title">
+
+<h2>
+My Challan
+</h2>
+
+<p>
+View your traffic penalty details
+</p>
+
+</div>
+
+
+<div class="challan">
+
+<div class="challan-header">
+
+<div>
+
+<h2>
+Traffic Challan
+</h2>
+
+<p>
+Challan No: TS202600145
+</p>
+
+</div>
+
+<div>
+<span class="status">
+UNPAID
+</span>
+</div>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Vehicle Owner
+</strong>
+
+<span>
+Rahul Kumar
+</span>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Vehicle Number
+</strong>
+
+<span>
+TN 01 AB 1234
+</span>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Violation
+</strong>
+
+<span>
+Overspeeding
+</span>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Date
+</strong>
+
+<span>
+17-08-2026
+</span>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Location
+</strong>
+
+<span>
+Chennai
+</span>
+
+</div>
+
+
+<div class="challan-row">
+
+<strong>
+Penalty
+</strong>
+
+<span class="amount">
+₹1,000
+</span>
+
+</div>
+
+
+<br>
+
+<button
+class="btn primary"
+onclick="payChallan()">
+
+Pay Penalty
+
+</button>
+
+<button
+class="btn secondary"
+onclick="printChallan()">
+
+Print Challan
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- USER CASES -->
+
+<section id="cases" class="hidden">
+
+<div class="title">
+
+<h2>
+My Cases
+</h2>
+
+<p>
+View traffic cases filed against your vehicle
+</p>
+
+</div>
+
+
+<div class="cases">
+
+<div class="case-card">
+
+<h3>
+Case #TS1024
+</h3>
+
+<span class="status">
+Pending
+</span>
+
+<p>
+<strong>Vehicle:</strong>
+TN 01 AB 1234
+</p>
+
+<p>
+<strong>Violation:</strong>
+Signal Jump
+</p>
+
+<p>
+<strong>Location:</strong>
+Anna Nagar
+</p>
+
+<p>
+<strong>Fine:</strong>
+₹500
+</p>
+
+<button
+class="btn primary"
+onclick="viewCase()">
+
+View Case
+
+</button>
+
+</div>
+
+
+<div class="case-card">
+
+<h3>
+Case #TS1087
+</h3>
+
+<span class="status">
+Pending
+</span>
+
+<p>
+<strong>Vehicle:</strong>
+TN 01 AB 1234
+</p>
+
+<p>
+<strong>Violation:</strong>
+No Helmet
+</p>
+
+<p>
+<strong>Location:</strong>
+T Nagar
+</p>
+
+<p>
+<strong>Fine:</strong>
+₹1,000
+</p>
+
+<button
+class="btn primary"
+onclick="viewCase()">
+
+View Case
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- POLICE -->
+
+<section id="police" class="hidden dashboard">
+
+<div class="title">
+
+<h2>
+Police Dashboard
+</h2>
+
+<p>
+Create and manage traffic violation cases
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<small>
+Cases Today
+</small>
+
+<h2>
+124
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+Pending Cases
+</small>
+
+<h2>
+48
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+FIR Created
+</small>
+
+<h2>
+76
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+Penalty Collected
+</small>
+
+<h2>
+₹84K
+</h2>
+
+</div>
+
+</div>
+
+<br><br>
+
+
+<div class="form-box">
+
+<h2 style="color:#172554;margin-bottom:20px;">
+Create Traffic Case
+</h2>
+
+<div class="group">
+
+<label>
+Vehicle Owner Name
+</label>
+
+<input
+type="text"
+placeholder="Enter vehicle owner">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Vehicle Number
+</label>
+
+<input
+type="text"
+placeholder="TN 00 AB 0000">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Violation Type
+</label>
+
+<select>
+
+<option>
+Select violation
+</option>
+
+<option>
+Overspeeding
+</option>
+
+<option>
+Signal Jump
+</option>
+
+<option>
+No Helmet
+</option>
+
+<option>
+Drunk Driving
+</option>
+
+<option>
+Wrong Parking
+</option>
+
+<option>
+Driving Without License
+</option>
+
+</select>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Penalty Amount
+</label>
+
+<input
+type="number"
+placeholder="Enter fine amount">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Upload Proof Photo
+</label>
+
+<input
+type="file"
+accept="image/*">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Case Description
+</label>
+
+<textarea
+rows="4"
+placeholder="Enter violation details">
+</textarea>
+
+</div>
+
+
+<button
+class="btn primary"
+onclick="createCase()">
+
+Create Case
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- TRAFFIC MAP -->
+
+<section id="traffic" class="hidden">
+
+<div class="title">
+
+<h2>
+Live Traffic Information
+</h2>
+
+<p>
+View traffic information and road conditions
+</p>
+
+</div>
+
+
+<div class="traffic-map">
+
+🗺️ LIVE TRAFFIC MAP
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<button
+class="btn primary"
+onclick="openMap()">
+
+Open Google Maps
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="hidden dashboard">
+
+<div class="title">
+
+<h2>
+Admin Dashboard
+</h2>
+
+<p>
+TrafficSquad system administration
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<small>
+Registered Police
+</small>
+
+<h2>
+85
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+Cases Today
+</small>
+
+<h2>
+124
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+Pending Cases
+</small>
+
+<h2>
+48
+</h2>
+
+</div>
+
+<div class="stat">
+
+<small>
+Total Collection
+</small>
+
+<h2>
+₹2.8L
+</h2>
+
+</div>
+
+</div>
+
+<br><br>
+
+
+<div class="table-box">
+
+<h2 style="color:#172554;margin-bottom:20px;">
+Daily Traffic Report
+</h2>
+
+<table>
+
+<tr>
+
+<th>
+Police Officer
+</th>
+
+<th>
+Cases
+</th>
+
+<th>
+FIR
+</th>
+
+<th>
+Penalty
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+Officer Kumar
+</td>
+
+<td>
+24
+</td>
+
+<td>
+12
+</td>
+
+<td>
+₹18,000
+</td>
+
+<td>
+Active
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Officer Raj
+</td>
+
+<td>
+31
+</td>
+
+<td>
+15
+</td>
+
+<td>
+₹24,500
+</td>
+
+<td>
+Active
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Officer Arun
+</td>
+
+<td>
+18
+</td>
+
+<td>
+9
+</td>
+
+<td>
+₹12,000
+</td>
+
+<td>
+Active
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+<div class="modal-box">
+
+<span
+class="close"
+onclick="closeLogin()">
+
+×
+</span>
+
+<h2 style="color:#172554;">
+TrafficSquad Login
+</h2>
+
+<br>
+
+<div class="group">
+
+<label>
+Email
+</label>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Enter email">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Password
+</label>
+
+<input
+type="password"
+placeholder="Enter password">
+
+</div>
+
+
+<div class="group">
+
+<label>
+Login As
+</label>
+
+<select id="loginRole">
+
+<option value="user">
+User
+</option>
+
+<option value="police">
+Police
+</option>
+
+<option value="admin">
+Admin
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="btn primary"
+onclick="login()">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+🚦 TrafficSquad
+</h2>
+
+<p>
+Traffic Squad: Penalty Collection & Management Web Application
+</p>
+
+<p>
+Online FIR • Challan • Traffic Cases • Reports
+</p>
+
+</footer>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+let sections = [
+"home",
+"register",
+"challan",
+"cases",
+"police",
+"admin",
+"traffic"
+];
+
+sections.forEach(function(id) {
+
+let element = document.getElementById(id);
+
+if (element) {
+element.classList.add("hidden");
+}
+
+});
+
+document.getElementById(section).classList.remove("hidden");
+
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+
+}
+
+
+/* LOGIN */
+
+function openLogin() {
+
+document.getElementById("loginModal").style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function login() {
+
+let email =
+document.getElementById("loginEmail").value;
+
+let role =
+document.getElementById("loginRole").value;
+
+if (email === "") {
+
+alert("Please enter your email.");
+
+return;
+
+}
+
+closeLogin();
+
+if (role === "police") {
+
+alert("Police login successful!");
+
+showSection("police");
+
+}
+
+else if (role === "admin") {
+
+alert("Admin login successful!");
+
+showSection("admin");
+
+}
+
+else {
+
+alert("User login successful!");
+
+showSection("challan");
+
+}
+
+}
+
+
+/* REGISTER */
+
+function registerUser() {
+
+let name =
+document.getElementById("userName").value;
+
+if (name === "") {
+
+alert("Please enter your name.");
+
+return;
+
+}
+
+alert(
+"Registration successful! Welcome " + name
+);
+
+showSection("challan");
+
+}
+
+
+/* PAY CHALLAN */
+
+function payChallan() {
+
+alert(
+"Payment gateway opened.\n\nAmount: ₹1,000"
+);
+
+}
+
+
+/* PRINT */
+
+function printChallan() {
+
+window.print();
+
+}
+
+
+/* CASE */
+
+function viewCase() {
+
+alert(
+"Case details:\n\n" +
+"Traffic violation case is under review."
+);
+
+}
+
+
+/* CREATE CASE */
+
+function createCase() {
+
+alert(
+"Traffic case created successfully.\n" +
+"FIR and challan details have been generated."
+);
+
+}
+
+
+/* GOOGLE MAP */
+
+function openMap() {
+
+window.open(
+"https://www.google.com/maps",
+"_blank"
+);
+
+}
+
+
+/* CLOSE MODAL */
+
+window.onclick = function(event) {
+
+let modal =
+document.getElementById("loginModal");
+
+if (event.target === modal) {
+
+modal.style.display = "none";
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
