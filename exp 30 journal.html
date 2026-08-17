@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Journal Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background-color: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            background-color: #14283d;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #7dd3fc;
+        }
+
+        section {
+            width: 85%;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #0002;
+        }
+
+        h2 {
+            color: #1e3a5f;
+            text-align: center;
+        }
+
+        .journal-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .journal {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .journal h3 {
+            color: #2563eb;
+        }
+
+        .journal p {
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .form-box {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        footer {
+            background-color: #14283d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 800px) {
+            .journal-list {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JournalHub</h1>
+    <p>Online Journal and Research Publication Portal</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#journals">Journals</a>
+    <a href="#submit">Submit Article</a>
+    <a href="#about">About</a>
+</nav>
+
+<section id="home">
+
+    <h2>Welcome to JournalHub</h2>
+
+    <p>
+        JournalHub is an online platform for researchers, students,
+        professors and authors to discover and publish research articles.
+        Users can browse journals, read research papers and submit their
+        own articles for publication.
+    </p>
+
+    <p>
+        The platform provides an easy way to manage research publications,
+        article submissions and academic information.
+    </p>
+
+</section>
+
+<section id="journals">
+
+    <h2>Latest Journals</h2>
+
+    <div class="journal-list">
+
+        <div class="journal">
+            <h3>Artificial Intelligence</h3>
+
+            <p>
+                Research articles related to Artificial Intelligence,
+                Machine Learning and Deep Learning.
+            </p>
+
+            <p><b>Volume:</b> 12</p>
+            <p><b>Issue:</b> 4</p>
+
+            <button class="btn"
+                onclick="readJournal('Artificial Intelligence')">
+                Read Journal
+            </button>
+        </div>
+
+        <div class="journal">
+            <h3>Computer Science</h3>
+
+            <p>
+                Latest research and developments in computer science,
+                software engineering and computing technologies.
+            </p>
+
+            <p><b>Volume:</b> 8</p>
+            <p><b>Issue:</b> 2</p>
+
+            <button class="btn"
+                onclick="readJournal('Computer Science')">
+                Read Journal
+            </button>
+        </div>
+
+        <div class="journal">
+            <h3>Data Science</h3>
+
+            <p>
+                Research papers covering data analytics,
+                big data, visualization and predictive modelling.
+            </p>
+
+            <p><b>Volume:</b> 10</p>
+            <p><b>Issue:</b> 5</p>
+
+            <button class="btn"
+                onclick="readJournal('Data Science')">
+                Read Journal
+            </button>
+        </div>
+
+        <div class="journal">
+            <h3>Cyber Security</h3>
+
+            <p>
+                Articles related to network security, cryptography,
+                cyber attacks and information security.
+            </p>
+
+            <p><b>Volume:</b> 7</p>
+            <p><b>Issue:</b> 3</p>
+
+            <button class="btn"
+                onclick="readJournal('Cyber Security')">
+                Read Journal
+            </button>
+        </div>
+
+        <div class="journal">
+            <h3>Web Technology</h3>
+
+            <p>
+                Research related to web development, Internet programming,
+                cloud applications and modern web technologies.
+            </p>
+
+            <p><b>Volume:</b> 6</p>
+            <p><b>Issue:</b> 1</p>
+
+            <button class="btn"
+                onclick="readJournal('Web Technology')">
+                Read Journal
+            </button>
+        </div>
+
+        <div class="journal">
+            <h3>Emerging Technologies</h3>
+
+            <p>
+                Research covering IoT, blockchain, quantum computing,
+                robotics and other emerging technologies.
+            </p>
+
+            <p><b>Volume:</b> 5</p>
+            <p><b>Issue:</b> 6</p>
+
+            <button class="btn"
+                onclick="readJournal('Emerging Technologies')">
+                Read Journal
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="submit">
+
+    <h2>Submit Your Research Article</h2>
+
+    <div class="form-box">
+
+        <form onsubmit="submitArticle(event)">
+
+            <label>Author Name</label>
+
+            <input
+                type="text"
+                id="author"
+                placeholder="Enter author name"
+                required>
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email"
+                required>
+
+            <label>Article Title</label>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Enter article title"
+                required>
+
+            <label>Journal Category</label>
+
+            <select id="category">
+
+                <option>Artificial Intelligence</option>
+                <option>Computer Science</option>
+                <option>Data Science</option>
+                <option>Cyber Security</option>
+                <option>Web Technology</option>
+                <option>Emerging Technologies</option>
+
+            </select>
+
+            <label>Abstract</label>
+
+            <textarea
+                id="abstract"
+                placeholder="Enter article abstract"
+                required></textarea>
+
+            <label>Upload Research Paper</label>
+
+            <input
+                type="file"
+                accept=".pdf,.doc,.docx">
+
+            <button class="btn" type="submit">
+                Submit Article
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section id="about">
+
+    <h2>About JournalHub</h2>
+
+    <p>
+        JournalHub provides a digital platform for managing academic
+        journals and research publications.
+    </p>
+
+    <p>
+        Researchers can submit articles, explore published papers
+        and stay updated with the latest research in different fields.
+    </p>
+
+</section>
+
+<footer>
+
+    <h3>JournalHub</h3>
+
+    <p>
+        Online Research Journal Management System
+    </p>
+
+    <p>
+        © 2026 JournalHub. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+
+function readJournal(name) {
+
+    alert(
+        "Opening " + name +
+        " journal..."
+    );
+
+}
+
+function submitArticle(event) {
+
+    event.preventDefault();
+
+    let author =
+        document.getElementById("author").value;
+
+    let title =
+        document.getElementById("title").value;
+
+    alert(
+        "Article submitted successfully!\n\n" +
+        "Author: " + author +
+        "\nArticle: " + title
+    );
+
+    event.target.reset();
+}
+
+</script>
+
+</body>
+</html>
