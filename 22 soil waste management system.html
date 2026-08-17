@@ -1,0 +1,762 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Solid Waste Management System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f2f7f3;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #167a45;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #0d542f;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #b9ffd5;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .welcome {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px gray;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            color: #167a45;
+            margin-bottom: 15px;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            width: 220px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        .card h3 {
+            color: #167a45;
+            margin-bottom: 10px;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #0d542f;
+        }
+
+        /* Sections */
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        .section h2 {
+            color: #167a45;
+            margin-bottom: 20px;
+        }
+
+        /* Forms */
+        form {
+            display: grid;
+            gap: 12px;
+            max-width: 600px;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            background-color: #167a45;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #0d542f;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #167a45;
+            color: white;
+        }
+
+        /* Route Box */
+        .route {
+            background-color: #e7f7ed;
+            padding: 20px;
+            border-left: 5px solid #167a45;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0d542f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>♻ Smart Solid Waste Management System</h1>
+    <p>Efficient Segregation, Collection, Transportation and Disposal</p>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#admin">Administrator</a>
+    <a href="#public">General Public</a>
+    <a href="#driver">Driver</a>
+    <a href="#reports">Reports</a>
+</nav>
+
+<!-- HOME -->
+<div class="container">
+
+    <div class="welcome" id="home">
+        <h2>Welcome to Smart Waste Management</h2>
+
+        <p>
+            This system helps administrators, drivers and the general public
+            manage solid waste efficiently. Garbage bin information,
+            complaints, collection data and routes can be monitored through
+            the system.
+        </p>
+    </div>
+
+    <!-- DASHBOARD STATISTICS -->
+    <div class="cards">
+
+        <div class="card">
+            <h3>Garbage Bins</h3>
+            <div class="number">120</div>
+            <p>Total Bins</p>
+        </div>
+
+        <div class="card">
+            <h3>Drivers</h3>
+            <div class="number">25</div>
+            <p>Active Drivers</p>
+        </div>
+
+        <div class="card">
+            <h3>Complaints</h3>
+            <div class="number">18</div>
+            <p>Pending Complaints</p>
+        </div>
+
+        <div class="card">
+            <h3>Waste Collected</h3>
+            <div class="number">850</div>
+            <p>Kg Today</p>
+        </div>
+
+    </div>
+
+
+    <!-- ADMINISTRATOR -->
+    <div class="section" id="admin">
+
+        <h2>👨‍💼 Administrator Dashboard</h2>
+
+        <h3>Administrator Login</h3>
+
+        <form onsubmit="adminLogin(event)">
+            <input type="text" id="adminUser"
+                   placeholder="Enter Username" required>
+
+            <input type="password" id="adminPassword"
+                   placeholder="Enter Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <br>
+
+        <h3>Administrator Functions</h3>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🗑 Garbage Bin</h3>
+                <p>Create, update and delete garbage bins.</p>
+                <br>
+                <button onclick="showMessage('Garbage Bin Management')">
+                    Manage Bins
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>🚛 Routes</h3>
+                <p>Assign the best route for drivers.</p>
+                <br>
+                <button onclick="showMessage('Best route assigned successfully')">
+                    Assign Route
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>👨‍✈️ Drivers</h3>
+                <p>Manage garbage collection drivers.</p>
+                <br>
+                <button onclick="showMessage('Driver Management')">
+                    Manage Drivers
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>📊 Reports</h3>
+                <p>View garbage collection reports.</p>
+                <br>
+                <button onclick="location.href='#reports'">
+                    View Reports
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GARBAGE BIN MANAGEMENT -->
+    <div class="section">
+
+        <h2>🗑 Garbage Bin Management</h2>
+
+        <form onsubmit="addBin(event)">
+
+            <input type="text"
+                   id="binLocation"
+                   placeholder="Enter Garbage Bin Location"
+                   required>
+
+            <select id="binType">
+                <option>Dry Waste</option>
+                <option>Wet Waste</option>
+                <option>Plastic Waste</option>
+                <option>Mixed Waste</option>
+            </select>
+
+            <select id="binStatus">
+                <option>Available</option>
+                <option>Full</option>
+                <option>Damaged</option>
+            </select>
+
+            <button type="submit">Create Garbage Bin</button>
+
+        </form>
+
+        <table id="binTable">
+
+            <tr>
+                <th>Bin ID</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>BIN001</td>
+                <td>Chennai Main Road</td>
+                <td>Wet Waste</td>
+                <td>Available</td>
+            </tr>
+
+            <tr>
+                <td>BIN002</td>
+                <td>College Road</td>
+                <td>Dry Waste</td>
+                <td>Full</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- GENERAL PUBLIC -->
+    <div class="section" id="public">
+
+        <h2>👥 General Public</h2>
+
+        <h3>Public Registration</h3>
+
+        <form onsubmit="registerUser(event)">
+
+            <input type="text"
+                   placeholder="Full Name"
+                   required>
+
+            <input type="email"
+                   placeholder="Email"
+                   required>
+
+            <input type="password"
+                   placeholder="Password"
+                   required>
+
+            <input type="text"
+                   placeholder="Mobile Number"
+                   required>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <br><br>
+
+        <h3>Register Complaint</h3>
+
+        <form onsubmit="submitComplaint(event)">
+
+            <input type="text"
+                   id="complaintLocation"
+                   placeholder="Complaint Location"
+                   required>
+
+            <select id="complaintType">
+
+                <option>Garbage Not Collected</option>
+                <option>Dustbin Overflow</option>
+                <option>Damaged Dustbin</option>
+                <option>Illegal Dumping</option>
+                <option>Other</option>
+
+            </select>
+
+            <textarea id="complaintDescription"
+                      placeholder="Describe your complaint"
+                      required></textarea>
+
+            <button type="submit">
+                Submit Complaint
+            </button>
+
+        </form>
+
+        <br><br>
+
+        <h3>My Complaints</h3>
+
+        <table>
+
+            <tr>
+                <th>Complaint ID</th>
+                <th>Location</th>
+                <th>Complaint</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>C001</td>
+                <td>Chennai</td>
+                <td>Garbage Not Collected</td>
+                <td>Pending</td>
+            </tr>
+
+            <tr>
+                <td>C002</td>
+                <td>Anna Nagar</td>
+                <td>Dustbin Overflow</td>
+                <td>Resolved</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- DRIVER -->
+    <div class="section" id="driver">
+
+        <h2>🚛 Driver Dashboard</h2>
+
+        <h3>Driver Login</h3>
+
+        <form onsubmit="driverLogin(event)">
+
+            <input type="text"
+                   placeholder="Driver Username"
+                   required>
+
+            <input type="password"
+                   placeholder="Password"
+                   required>
+
+            <button type="submit">
+                Driver Login
+            </button>
+
+        </form>
+
+        <br><br>
+
+        <h3>Daily Work Updates</h3>
+
+        <table>
+
+            <tr>
+                <th>Date</th>
+                <th>Route</th>
+                <th>Bins</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>13-08-2026</td>
+                <td>Route A</td>
+                <td>15</td>
+                <td>Assigned</td>
+            </tr>
+
+            <tr>
+                <td>13-08-2026</td>
+                <td>Route B</td>
+                <td>20</td>
+                <td>Completed</td>
+            </tr>
+
+        </table>
+
+        <br>
+
+        <h3>Choose Best Route</h3>
+
+        <div class="route">
+
+            <p><b>Recommended Route:</b></p>
+
+            <p>
+                Starting Point → Bin 1 → Bin 2 → Bin 3 →
+                Bin 4 → Bin 5 → Dumping Site
+            </p>
+
+            <br>
+
+            <button onclick="chooseRoute()">
+                Choose This Route
+            </button>
+
+        </div>
+
+        <br>
+
+        <h3>Update Garbage Load</h3>
+
+        <form onsubmit="updateLoad(event)">
+
+            <input type="number"
+                   id="garbageLoad"
+                   placeholder="Garbage Load in Kg"
+                   required>
+
+            <button type="submit">
+                Update Load
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- REPORTS -->
+    <div class="section" id="reports">
+
+        <h2>📊 Garbage Reports</h2>
+
+        <table>
+
+            <tr>
+                <th>Report</th>
+                <th>Value</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>Total Garbage Collected</td>
+                <td>850 Kg</td>
+                <td>Completed</td>
+            </tr>
+
+            <tr>
+                <td>Garbage Bins</td>
+                <td>120</td>
+                <td>Active</td>
+            </tr>
+
+            <tr>
+                <td>Public Complaints</td>
+                <td>18</td>
+                <td>Pending</td>
+            </tr>
+
+            <tr>
+                <td>Active Drivers</td>
+                <td>25</td>
+                <td>Available</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <!-- GOOGLE MAPS SECTION -->
+    <div class="section">
+
+        <h2>📍 Garbage Collection Route</h2>
+
+        <div class="route">
+
+            <h3>Smart Route Planning</h3>
+
+            <p>
+                The system can generate an optimized route from the
+                garbage collection bins to the final dumping site.
+            </p>
+
+            <br>
+
+            <p>
+                <b>Example:</b>
+            </p>
+
+            <p>
+                Driver Starting Point → Bin 001 → Bin 002 →
+                Bin 003 → Bin 004 → Dumping Site
+            </p>
+
+            <br>
+
+            <button onclick="openMap()">
+                Open Google Maps
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Smart Solid Waste Management System
+    </p>
+
+    <p>
+        Efficient Waste Collection | Smart Routing | Clean Environment
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    function adminLogin(event) {
+
+        event.preventDefault();
+
+        alert("Administrator Login Successful!");
+    }
+
+
+    function driverLogin(event) {
+
+        event.preventDefault();
+
+        alert("Driver Login Successful!");
+    }
+
+
+    function registerUser(event) {
+
+        event.preventDefault();
+
+        alert("Registration Successful!");
+    }
+
+
+    function submitComplaint(event) {
+
+        event.preventDefault();
+
+        alert("Complaint Registered Successfully!");
+    }
+
+
+    function addBin(event) {
+
+        event.preventDefault();
+
+        var location =
+            document.getElementById("binLocation").value;
+
+        var type =
+            document.getElementById("binType").value;
+
+        var status =
+            document.getElementById("binStatus").value;
+
+        var table =
+            document.getElementById("binTable");
+
+        var row = table.insertRow();
+
+        row.insertCell(0).innerHTML =
+            "BIN" + (table.rows.length - 1);
+
+        row.insertCell(1).innerHTML = location;
+
+        row.insertCell(2).innerHTML = type;
+
+        row.insertCell(3).innerHTML = status;
+
+        alert("Garbage Bin Created Successfully!");
+
+        document.getElementById("binLocation").value = "";
+    }
+
+
+    function chooseRoute() {
+
+        alert("Best Route Selected Successfully!");
+    }
+
+
+    function updateLoad(event) {
+
+        event.preventDefault();
+
+        var load =
+            document.getElementById("garbageLoad").value;
+
+        alert(
+            "Garbage Load of " +
+            load +
+            " Kg Updated Successfully!"
+        );
+    }
+
+
+    function openMap() {
+
+        window.open(
+            "https://www.google.com/maps",
+            "_blank"
+        );
+    }
+
+
+    function showMessage(message) {
+
+        alert(message);
+    }
+
+</script>
+
+</body>
+</html>
+```
