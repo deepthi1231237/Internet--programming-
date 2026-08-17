@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartHire - Job Recruitment System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #4338ca, #0891b2);
+    color: white;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #a5f3fc;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #a5f3fc;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #eef2ff, #ecfeff);
+    padding: 70px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 450px;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #312e81;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.primary {
+    background: #4f46e5;
+    color: white;
+}
+
+.primary:hover {
+    background: #3730a3;
+}
+
+.secondary {
+    background: white;
+    color: #4f46e5;
+    border: 2px solid #4f46e5;
+    margin-left: 10px;
+}
+
+.hero-card {
+    width: 350px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px #0002;
+}
+
+.hero-card h3 {
+    margin-bottom: 20px;
+    color: #312e81;
+}
+
+.hero-item {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+/* SECTION */
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #312e81;
+}
+
+.section-title p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* SEARCH */
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #4f46e5;
+}
+
+/* JOB CARDS */
+.jobs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.job-card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px #0002;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4338ca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.job-card h3 {
+    margin-bottom: 6px;
+}
+
+.company {
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 15px 0;
+}
+
+.tag {
+    padding: 5px 9px;
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.green {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.orange {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+/* DASHBOARD */
+.dashboard {
+    background: #f8fafc;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.stat small {
+    color: #6b7280;
+}
+
+.stat h2 {
+    margin-top: 8px;
+    font-size: 30px;
+    color: #4338ca;
+}
+
+/* FORMS */
+.form-section {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+footer p {
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    max-width: 90%;
+}
+
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .jobs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .jobs,
+    .features,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Smart<span>Hire</span>
+    </div>
+
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('jobs')">Vacancies</a>
+        <a onclick="showSection('dashboard')">Dashboard</a>
+        <a onclick="showSection('register')">Register</a>
+        <a onclick="openLogin()">Login</a>
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Find Your Dream Job
+        </h1>
+
+        <p>
+            SmartHire is an advanced online recruitment platform where
+            applicants can search and apply for vacancies while directors
+            can post vacancies, view resumes and select suitable candidates.
+        </p>
+
+        <button class="btn primary" onclick="showSection('jobs')">
+            Browse Vacancies
+        </button>
+
+        <button class="btn secondary" onclick="showSection('register')">
+            Register Now
+        </button>
+
+    </div>
+
+    <div class="hero-card">
+
+        <h3>Latest Vacancy</h3>
+
+        <div class="hero-item">
+            <b>Software Developer</b>
+            <br>
+            TechNova Technologies
+            <br>
+            📍 Chennai
+        </div>
+
+        <div class="hero-item">
+            <b>Data Analyst</b>
+            <br>
+            DataWorks Solutions
+            <br>
+            📍 Bangalore
+        </div>
+
+        <div class="hero-item">
+            <b>Cloud Engineer</b>
+            <br>
+            CloudSphere
+            <br>
+            📍 Mumbai
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>Platform Features</h2>
+
+        <p>
+            Everything needed for a modern recruitment system
+        </p>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🔍</div>
+            <h3>Smart Search</h3>
+            <p>
+                Search vacancies by job, company, location and category.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📄</div>
+            <h3>Online Application</h3>
+            <p>
+                Apply for vacancies online without sending resumes repeatedly.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">👥</div>
+            <h3>Candidate Management</h3>
+            <p>
+                Directors can view applicants and select suitable candidates.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔔</div>
+            <h3>Notifications</h3>
+            <p>
+                Receive daily updates about new vacancies and applications.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- JOBS -->
+
+<section id="jobs" class="hidden">
+
+    <div class="section-title">
+
+        <h2>Available Vacancies</h2>
+
+        <p>
+            Search and filter jobs according to your requirements.
+        </p>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search job or company"
+            onkeyup="searchJobs()"
+        >
+
+        <select id="locationFilter" onchange="searchJobs()">
+
+            <option value="">All Locations</option>
+
+            <option value="Chennai">
+                Chennai
+            </option>
+
+            <option value="Bangalore">
+                Bangalore
+            </option>
+
+            <option value="Hyderabad">
+                Hyderabad
+            </option>
+
+            <option value="Mumbai">
+                Mumbai
+            </option>
+
+        </select>
+
+        <select id="categoryFilter" onchange="searchJobs()">
+
+            <option value="">All Categories</option>
+
+            <option value="Software">
+                Software
+            </option>
+
+            <option value="Data">
+                Data Science
+            </option>
+
+            <option value="Cloud">
+                Cloud
+            </option>
+
+        </select>
+
+        <button class="btn primary" onclick="searchJobs()">
+            Search
+        </button>
+
+    </div>
+
+
+    <div class="jobs" id="jobContainer">
+
+        <!-- JOB 1 -->
+
+        <div class="job-card"
+             data-location="Chennai"
+             data-category="Software">
+
+            <div class="company-logo">
+                TN
+            </div>
+
+            <h3>
+                Software Developer
+            </h3>
+
+            <div class="company">
+                TechNova Technologies
+            </div>
+
+            <p>
+                Develop modern web and enterprise applications.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">
+                    📍 Chennai
+                </span>
+
+                <span class="tag green">
+                    Full Time
+                </span>
+
+                <span class="tag orange">
+                    ₹6-10 LPA
+                </span>
+
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="viewJob('Software Developer','TechNova Technologies','Chennai','₹6-10 LPA')">
+
+                View Details
+
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="saveJob('Software Developer')">
+
+                ♡ Save
+
+            </button>
+
+        </div>
+
+
+        <!-- JOB 2 -->
+
+        <div class="job-card"
+             data-location="Bangalore"
+             data-category="Data">
+
+            <div class="company-logo">
+                DW
+            </div>
+
+            <h3>
+                Data Analyst
+            </h3>
+
+            <div class="company">
+                DataWorks Solutions
+            </div>
+
+            <p>
+                Analyze business data and prepare analytical reports.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">
+                    📍 Bangalore
+                </span>
+
+                <span class="tag green">
+                    Full Time
+                </span>
+
+                <span class="tag orange">
+                    ₹5-8 LPA
+                </span>
+
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="viewJob('Data Analyst','DataWorks Solutions','Bangalore','₹5-8 LPA')">
+
+                View Details
+
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="saveJob('Data Analyst')">
+
+                ♡ Save
+
+            </button>
+
+        </div>
+
+
+        <!-- JOB 3 -->
+
+        <div class="job-card"
+             data-location="Hyderabad"
+             data-category="Software">
+
+            <div class="company-logo">
+                CT
+            </div>
+
+            <h3>
+                Java Developer
+            </h3>
+
+            <div class="company">
+                CodeTech Systems
+            </div>
+
+            <p>
+                Build scalable Java applications and backend services.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">
+                    📍 Hyderabad
+                </span>
+
+                <span class="tag green">
+                    Full Time
+                </span>
+
+                <span class="tag orange">
+                    ₹7-11 LPA
+                </span>
+
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="viewJob('Java Developer','CodeTech Systems','Hyderabad','₹7-11 LPA')">
+
+                View Details
+
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="saveJob('Java Developer')">
+
+                ♡ Save
+
+            </button>
+
+        </div>
+
+
+        <!-- JOB 4 -->
+
+        <div class="job-card"
+             data-location="Mumbai"
+             data-category="Cloud">
+
+            <div class="company-logo">
+                CS
+            </div>
+
+            <h3>
+                Cloud Engineer
+            </h3>
+
+            <div class="company">
+                CloudSphere
+            </div>
+
+            <p>
+                Manage cloud infrastructure and deployment systems.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">
+                    📍 Mumbai
+                </span>
+
+                <span class="tag green">
+                    Full Time
+                </span>
+
+                <span class="tag orange">
+                    ₹8-12 LPA
+                </span>
+
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="viewJob('Cloud Engineer','CloudSphere','Mumbai','₹8-12 LPA')">
+
+                View Details
+
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="saveJob('Cloud Engineer')">
+
+                ♡ Save
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="dashboard hidden">
+
+    <div class="section-title">
+
+        <h2>User Dashboard</h2>
+
+        <p>
+            Track your recruitment activities
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <small>
+                Available Vacancies
+            </small>
+
+            <h2>
+                126
+            </h2>
+
+        </div>
+
+        <div class="stat">
+
+            <small>
+                Applications
+            </small>
+
+            <h2>
+                8
+            </h2>
+
+        </div>
+
+        <div class="stat">
+
+            <small>
+                Shortlisted
+            </small>
+
+            <h2>
+                3
+            </h2>
+
+        </div>
+
+        <div class="stat">
+
+            <small>
+                Saved Jobs
+            </small>
+
+            <h2>
+                12
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section id="register" class="hidden">
+
+    <div class="section-title">
+
+        <h2>User Registration</h2>
+
+        <p>
+            Create your SmartHire account
+        </p>
+
+    </div>
+
+    <div class="form-section">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="regEmail"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone
+            </label>
+
+            <input
+                type="text"
+                placeholder="+91"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Register As
+            </label>
+
+            <select>
+
+                <option>
+                    User / Applicant
+                </option>
+
+                <option>
+                    Director
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Create password"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="registerUser()">
+
+            Create Account
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>
+        SmartHire
+    </h2>
+
+    <p>
+        Smart Digital Recruitment and Vacancy Management System
+    </p>
+
+    <p>
+        © 2026 SmartHire. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeLogin()">
+            ×
+        </span>
+
+        <h2>
+            Login
+        </h2>
+
+        <br>
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Enter password"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Login As
+            </label>
+
+            <select>
+
+                <option>
+                    User
+                </option>
+
+                <option>
+                    Director
+                </option>
+
+                <option>
+                    Admin
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="loginUser()">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- JOB DETAILS MODAL -->
+
+<div id="jobModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeJob()">
+            ×
+        </span>
+
+        <h2 id="jobTitle">
+            Job
+        </h2>
+
+        <br>
+
+        <p id="jobDetails"></p>
+
+        <br>
+
+        <button
+            class="btn primary"
+            onclick="applyJob()">
+
+            Apply for Vacancy
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* SHOW SECTIONS */
+
+function showSection(section) {
+
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("jobs").classList.add("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("register").classList.add("hidden");
+
+    document.getElementById(section).classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* LOGIN */
+
+function openLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function loginUser() {
+
+    let email =
+        document.getElementById("loginEmail").value;
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+    closeLogin();
+
+    alert(
+        "Login successful! Welcome to SmartHire."
+    );
+
+    showSection("dashboard");
+
+}
+
+
+/* REGISTER */
+
+function registerUser() {
+
+    let name =
+        document.getElementById("name").value;
+
+    let email =
+        document.getElementById("regEmail").value;
+
+    if (name === "" || email === "") {
+
+        alert(
+            "Please fill all required fields."
+        );
+
+        return;
+
+    }
+
+    alert(
+        "Registration successful! Welcome " +
+        name
+    );
+
+    showSection("dashboard");
+
+}
+
+
+/* SEARCH JOBS */
+
+function searchJobs() {
+
+    let search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let location =
+        document
+        .getElementById("locationFilter")
+        .value;
+
+    let category =
+        document
+        .getElementById("categoryFilter")
+        .value;
+
+    let cards =
+        document.querySelectorAll(".job-card");
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+        let cardLocation =
+            card.dataset.location;
+
+        let cardCategory =
+            card.dataset.category;
+
+        let matchSearch =
+            text.includes(search);
+
+        let matchLocation =
+            location === "" ||
+            cardLocation === location;
+
+        let matchCategory =
+            category === "" ||
+            cardCategory === category;
+
+        if (
+            matchSearch &&
+            matchLocation &&
+            matchCategory
+        ) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* VIEW JOB */
+
+function viewJob(
+    title,
+    company,
+    location,
+    salary
+) {
+
+    document.getElementById(
+        "jobTitle"
+    ).innerText = title;
+
+    document.getElementById(
+        "jobDetails"
+    ).innerHTML =
+
+        "<b>Company:</b> " +
+        company +
+        "<br><br>" +
+
+        "<b>Location:</b> " +
+        location +
+        "<br><br>" +
+
+        "<b>Salary:</b> " +
+        salary +
+        "<br><br>" +
+
+        "<b>Description:</b><br>" +
+
+        "This vacancy is available for qualified candidates. " +
+        "Applicants can submit their resume and apply online.";
+
+    document.getElementById(
+        "jobModal"
+    ).style.display = "flex";
+
+}
+
+
+function closeJob() {
+
+    document.getElementById(
+        "jobModal"
+    ).style.display = "none";
+
+}
+
+
+/* APPLY */
+
+function applyJob() {
+
+    alert(
+        "Application submitted successfully!"
+    );
+
+    closeJob();
+
+}
+
+
+/* SAVE JOB */
+
+function saveJob(job) {
+
+    alert(
+        job +
+        " has been saved to your jobs."
+    );
+
+}
+
+
+/* CLOSE MODALS */
+
+window.onclick = function(event) {
+
+    let login =
+        document.getElementById(
+            "loginModal"
+        );
+
+    let job =
+        document.getElementById(
+            "jobModal"
+        );
+
+    if (event.target === login) {
+
+        login.style.display = "none";
+
+    }
+
+    if (event.target === job) {
+
+        job.style.display = "none";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
