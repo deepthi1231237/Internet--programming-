@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ko-Matha Dairy Farm</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f9f2;
+            color: #333;
+        }
+
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            background-color: #1b5e20;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #0002;
+        }
+
+        .hero {
+            background-color: #e8f5e9;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: #2e7d32;
+            font-size: 32px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background-color: #f1f8e9;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .product .icon {
+            font-size: 60px;
+        }
+
+        .product h3 {
+            color: #388e3c;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d84315;
+            margin: 12px;
+        }
+
+        button {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        .farm-info {
+            line-height: 1.8;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-box {
+            background-color: #f9fbe7;
+            padding: 20px;
+            border-left: 5px solid #66bb6a;
+            border-radius: 8px;
+        }
+
+        .form-box {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            margin-bottom: 18px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .report-table th {
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px;
+        }
+
+        .report-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .report-table tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 800px) {
+            .products,
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐄 Ko-Matha Dairy Farm</h1>
+    <p>Pure • Fresh • Healthy Dairy Products</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#farm">Farm</a>
+    <a href="#about">About Us</a>
+    <a href="#order">Order Online</a>
+    <a href="#admin">Admin</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <h2>Welcome to Ko-Matha Dairy Farm</h2>
+
+    <p>
+        Ko-Matha Dairy Farm provides high-quality dairy products
+        sourced from Indian A1 cow holders. Our mission is to deliver
+        fresh, nutritious and wholesome dairy products directly to
+        customers.
+    </p>
+
+    <p>
+        Enjoy fresh milk, curd, khoa-sweet, butter and ghee
+        delivered conveniently to your doorstep.
+    </p>
+
+    <button onclick="orderNow()">
+        Order Online
+    </button>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section id="products">
+
+    <h2>Our Dairy Products</h2>
+
+    <div class="products">
+
+        <div class="product">
+
+            <div class="icon">🥛</div>
+
+            <h3>Fresh Milk</h3>
+
+            <p>
+                Fresh and nutritious A1 cow milk collected
+                from trusted dairy farms.
+            </p>
+
+            <div class="price">₹60 / Litre</div>
+
+            <button onclick="buyProduct('Fresh Milk')">
+                Buy Now
+            </button>
+
+        </div>
+
+        <div class="product">
+
+            <div class="icon">🍶</div>
+
+            <h3>Fresh Curd</h3>
+
+            <p>
+                Naturally prepared fresh curd with
+                a rich and creamy texture.
+            </p>
+
+            <div class="price">₹50 / 500g</div>
+
+            <button onclick="buyProduct('Fresh Curd')">
+                Buy Now
+            </button>
+
+        </div>
+
+        <div class="product">
+
+            <div class="icon">🍬</div>
+
+            <h3>Khoa Sweet</h3>
+
+            <p>
+                Delicious traditional sweet prepared
+                using quality milk.
+            </p>
+
+            <div class="price">₹250 / 500g</div>
+
+            <button onclick="buyProduct('Khoa Sweet')">
+                Buy Now
+            </button>
+
+        </div>
+
+        <div class="product">
+
+            <div class="icon">🧈</div>
+
+            <h3>Fresh Butter</h3>
+
+            <p>
+                Fresh homemade-style butter prepared
+                from pure dairy cream.
+            </p>
+
+            <div class="price">₹180 / 250g</div>
+
+            <button onclick="buyProduct('Fresh Butter')">
+                Buy Now
+            </button>
+
+        </div>
+
+        <div class="product">
+
+            <div class="icon">🫙</div>
+
+            <h3>Pure Ghee</h3>
+
+            <p>
+                Traditional pure ghee made from
+                high-quality cow milk.
+            </p>
+
+            <div class="price">₹650 / Litre</div>
+
+            <button onclick="buyProduct('Pure Ghee')">
+                Buy Now
+            </button>
+
+        </div>
+
+        <div class="product">
+
+            <div class="icon">🥛</div>
+
+            <h3>Milk Pack</h3>
+
+            <p>
+                Daily fresh milk package suitable
+                for regular household requirements.
+            </p>
+
+            <div class="price">₹300 / Week</div>
+
+            <button onclick="buyProduct('Milk Pack')">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FARM -->
+
+<section id="farm">
+
+    <h2>Our Farm</h2>
+
+    <div class="farm-info">
+
+        <p>
+            Ko-Matha Dairy Farm follows hygienic and sustainable
+            dairy farming practices. The farm works with Indian
+            A1 cow holders to ensure quality milk production.
+        </p>
+
+        <p>
+            Modern technology is used to monitor animal health,
+            milk quality, storage conditions and distribution.
+        </p>
+
+        <p>
+            Our goal is to provide customers with transparent,
+            fresh and nutritious dairy products.
+        </p>
+
+    </div>
+
+    <div class="details">
+
+        <div class="detail-box">
+            <h3>🐄 Healthy Cows</h3>
+            <p>
+                Cows are regularly monitored and provided
+                with proper nutrition and care.
+            </p>
+        </div>
+
+        <div class="detail-box">
+            <h3>🥛 Quality Milk</h3>
+            <p>
+                Milk quality is checked before processing
+                and distribution.
+            </p>
+        </div>
+
+        <div class="detail-box">
+            <h3>🌱 Sustainable Farming</h3>
+            <p>
+                Environment-friendly practices are followed
+                throughout the farming process.
+            </p>
+        </div>
+
+        <div class="detail-box">
+            <h3>🚚 Home Delivery</h3>
+            <p>
+                Fresh dairy products can be delivered
+                directly to customers.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2>About Us</h2>
+
+    <p>
+        Ko-Matha Dairy Farm is a smart dairy operation focused
+        on providing high-quality dairy products to customers.
+    </p>
+
+    <p>
+        Our farm combines traditional dairy practices with
+        modern technology to maintain quality, hygiene and
+        transparency.
+    </p>
+
+    <p>
+        We believe in connecting customers directly with
+        wholesome dairy products while supporting Indian
+        cow holders and local dairy communities.
+    </p>
+
+</section>
+
+<!-- ORDER -->
+
+<section id="order">
+
+    <h2>Customer Online Purchase Order</h2>
+
+    <div class="form-box">
+
+        <form onsubmit="placeOrder(event)">
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name"
+                required>
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter phone number"
+                required>
+
+            <label>Product</label>
+
+            <select id="product">
+
+                <option>Fresh Milk</option>
+                <option>Fresh Curd</option>
+                <option>Khoa Sweet</option>
+                <option>Fresh Butter</option>
+                <option>Pure Ghee</option>
+                <option>Milk Pack</option>
+
+            </select>
+
+            <label>Quantity</label>
+
+            <input
+                type="number"
+                id="quantity"
+                min="1"
+                value="1"
+                required>
+
+            <label>Delivery Address</label>
+
+            <textarea
+                id="address"
+                placeholder="Enter delivery address"
+                required></textarea>
+
+            <button type="submit">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- STOCK DETAILS -->
+
+<section id="stock">
+
+    <h2>Stock Details</h2>
+
+    <table class="report-table">
+
+        <tr>
+            <th>Product</th>
+            <th>Available Stock</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>Fresh Milk</td>
+            <td>250 Litres</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>Fresh Curd</td>
+            <td>120 Kg</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>Butter</td>
+            <td>80 Kg</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>Ghee</td>
+            <td>65 Litres</td>
+            <td>Available</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- ADMIN -->
+
+<section id="admin">
+
+    <h2>Administrator Login</h2>
+
+    <div class="form-box">
+
+        <form onsubmit="adminLogin(event)">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- REPORT -->
+
+<section>
+
+    <h2>Daily / Monthly / Yearly Report</h2>
+
+    <table class="report-table">
+
+        <tr>
+            <th>Report</th>
+            <th>Total Orders</th>
+            <th>Milk Sold</th>
+            <th>Total Revenue</th>
+        </tr>
+
+        <tr>
+            <td>Daily</td>
+            <td>45</td>
+            <td>180 Litres</td>
+            <td>₹15,500</td>
+        </tr>
+
+        <tr>
+            <td>Monthly</td>
+            <td>1,250</td>
+            <td>5,200 Litres</td>
+            <td>₹4,25,000</td>
+        </tr>
+
+        <tr>
+            <td>Yearly</td>
+            <td>14,800</td>
+            <td>62,000 Litres</td>
+            <td>₹51,00,000</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- VENDOR -->
+
+<section>
+
+    <h2>Milk Vendor Details</h2>
+
+    <div class="details">
+
+        <div class="detail-box">
+            <h3>Vendor 1</h3>
+            <p><b>Name:</b> Ramesh Dairy Farm</p>
+            <p><b>Location:</b> Chennai</p>
+            <p><b>Milk Supply:</b> 150 Litres/Day</p>
+        </div>
+
+        <div class="detail-box">
+            <h3>Vendor 2</h3>
+            <p><b>Name:</b> Kumar Cow Farm</p>
+            <p><b>Location:</b> Kanchipuram</p>
+            <p><b>Milk Supply:</b> 120 Litres/Day</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2>Contact Us</h2>
+
+    <div class="form-box">
+
+        <form onsubmit="sendMessage(event)">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Enter your name"
+                required>
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
+
+            <label>Message</label>
+
+            <textarea
+                id="message"
+                placeholder="Enter your message"
+                required></textarea>
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <h3>🐄 Ko-Matha Dairy Farm</h3>
+
+    <p>
+        Pure Milk • Healthy Life • Happy Families
+    </p>
+
+    <p>
+        © 2026 Ko-Matha Dairy Farm. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script>
+
+function orderNow() {
+
+    document.getElementById("order").scrollIntoView();
+
+}
+
+function buyProduct(productName) {
+
+    document.getElementById("product").value = productName;
+
+    document.getElementById("order").scrollIntoView();
+
+}
+
+function placeOrder(event) {
+
+    event.preventDefault();
+
+    let name =
+        document.getElementById("customerName").value;
+
+    let product =
+        document.getElementById("product").value;
+
+    let quantity =
+        document.getElementById("quantity").value;
+
+    alert(
+        "Order placed successfully!\n\n" +
+        "Customer: " + name +
+        "\nProduct: " + product +
+        "\nQuantity: " + quantity
+    );
+
+    event.target.reset();
+
+}
+
+function adminLogin(event) {
+
+    event.preventDefault();
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    if (username === "admin" && password === "1234") {
+
+        alert("Admin Login Successful!");
+
+    } else {
+
+        alert("Invalid username or password!");
+
+    }
+
+}
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    let name =
+        document.getElementById("contactName").value;
+
+    alert(
+        "Thank you " + name +
+        "! Your message has been submitted successfully."
+    );
+
+    event.target.reset();
+
+}
+
+</script>
+
+</body>
+</html>
