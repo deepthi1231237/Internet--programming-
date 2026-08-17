@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RoadAssist - Vehicle Breakdown Assistance</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #fbbf24;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #fbbf24;
+}
+
+/* HERO */
+.hero {
+    min-height: 480px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
+.hero-text {
+    max-width: 620px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 25px;
+}
+
+.hero-card {
+    width: 350px;
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px #0002;
+}
+
+.hero-card h2 {
+    color: #1e3a8a;
+    margin-bottom: 18px;
+}
+
+.service-item {
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #eff6ff;
+    border-radius: 9px;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.primary {
+    background: #2563eb;
+    color: white;
+}
+
+.primary:hover {
+    background: #1d4ed8;
+}
+
+.secondary {
+    background: white;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    margin-left: 8px;
+}
+
+.danger {
+    background: #dc2626;
+    color: white;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #1e3a8a;
+}
+
+.section-title p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.feature-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+    color: #1e3a8a;
+}
+
+/* SEARCH */
+.search-box {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #2563eb;
+}
+
+/* MECHANICS */
+.mechanics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.mechanic-card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    border-top: 5px solid #2563eb;
+}
+
+.mechanic-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.mechanic-card p {
+    margin: 7px 0;
+    color: #4b5563;
+}
+
+.verified {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.available {
+    color: #15803d;
+    font-weight: bold;
+}
+
+/* LOCATION */
+.location-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    text-align: center;
+}
+
+.map {
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 12px;
+    background:
+        linear-gradient(45deg, #dbeafe 25%, transparent 25%),
+        linear-gradient(-45deg, #dbeafe 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #dbeafe 75%),
+        linear-gradient(-45deg, transparent 75%, #dbeafe 75%);
+    background-size: 50px 50px;
+    background-position: 0 0, 0 25px, 25px -25px, -25px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1e3a8a;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* FORM */
+.form-container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* TABLE */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    overflow-x: auto;
+    box-shadow: 0 8px 25px #0001;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #dbeafe;
+    color: #1e3a8a;
+}
+
+.pending {
+    color: #ca8a04;
+    font-weight: bold;
+}
+
+.approved {
+    color: #15803d;
+    font-weight: bold;
+}
+
+/* DASHBOARD */
+.dashboard {
+    background: #eff6ff;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.stat small {
+    color: #6b7280;
+}
+
+.stat h2 {
+    color: #2563eb;
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+/* PROFILE */
+.profile {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 50%;
+    background: #dbeafe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 450px;
+    max-width: 90%;
+    border-radius: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .features,
+    .mechanics,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .features,
+    .mechanics,
+    .stats,
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Road<span>Assist</span>
+    </div>
+
+    <nav>
+
+        <a onclick="showSection('home')">
+            Home
+        </a>
+
+        <a onclick="showSection('mechanics')">
+            Find Mechanic
+        </a>
+
+        <a onclick="showSection('location')">
+            Location
+        </a>
+
+        <a onclick="showSection('profile')">
+            My Profile
+        </a>
+
+        <a onclick="openLogin()">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Roadside Help When You Need It
+        </h1>
+
+        <p>
+            RoadAssist helps vehicle owners quickly find
+            licensed and verified mechanics nearby during
+            unexpected vehicle breakdowns.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="showSection('mechanics')">
+
+            Find Nearby Mechanic
+
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="showSection('register')">
+
+            Register
+
+        </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h2>
+            Emergency Services
+        </h2>
+
+        <div class="service-item">
+            🚗 Car Breakdown Assistance
+        </div>
+
+        <div class="service-item">
+            🔧 Engine Repair
+        </div>
+
+        <div class="service-item">
+            🛞 Tyre Replacement
+        </div>
+
+        <div class="service-item">
+            🔋 Battery Assistance
+        </div>
+
+        <div class="service-item">
+            ⛽ Fuel Delivery
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>
+            RoadAssist Services
+        </h2>
+
+        <p>
+            Fast and reliable roadside assistance
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔍
+            </div>
+
+            <h3>
+                Find Mechanics
+            </h3>
+
+            <p>
+                Search verified mechanics based on location.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📍
+            </div>
+
+            <h3>
+                Location Services
+            </h3>
+
+            <p>
+                Find mechanics near your current location.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🛠️
+            </div>
+
+            <h3>
+                Vehicle Assistance
+            </h3>
+
+            <p>
+                Get quick help for unexpected vehicle problems.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Feedback
+            </h3>
+
+            <p>
+                Rate mechanics and share your service experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- MECHANIC SEARCH -->
+
+<section id="mechanics" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Search Licensed Mechanics
+        </h2>
+
+        <p>
+            Find verified mechanics available near you
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            id="mechanicSearch"
+            type="text"
+            placeholder="Search mechanic or business..."
+            onkeyup="searchMechanics()"
+        >
+
+
+        <select
+            id="locationFilter"
+            onchange="searchMechanics()">
+
+            <option value="">
+                All Locations
+            </option>
+
+            <option value="Chennai">
+                Chennai
+            </option>
+
+            <option value="Bangalore">
+                Bangalore
+            </option>
+
+            <option value="Hyderabad">
+                Hyderabad
+            </option>
+
+            <option value="Mumbai">
+                Mumbai
+            </option>
+
+        </select>
+
+
+        <select
+            id="serviceFilter"
+            onchange="searchMechanics()">
+
+            <option value="">
+                All Services
+            </option>
+
+            <option value="Car">
+                Car Repair
+            </option>
+
+            <option value="Bike">
+                Bike Repair
+            </option>
+
+            <option value="Battery">
+                Battery
+            </option>
+
+            <option value="Tyre">
+                Tyre Service
+            </option>
+
+        </select>
+
+
+        <button
+            class="btn primary"
+            onclick="searchMechanics()">
+
+            Search
+
+        </button>
+
+    </div>
+
+
+    <div class="mechanics" id="mechanicContainer">
+
+
+        <!-- MECHANIC 1 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Chennai"
+            data-service="Car">
+
+            <h3>
+                Kumar Auto Care
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Chennai
+            </p>
+
+            <p>
+                🔧 Car Repair & Engine Service
+            </p>
+
+            <p>
+                📞 +91 98765 43210
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('Kumar Auto Care')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MECHANIC 2 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Bangalore"
+            data-service="Battery">
+
+            <h3>
+                Speed Motors
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Bangalore
+            </p>
+
+            <p>
+                🔧 Battery & Electrical Service
+            </p>
+
+            <p>
+                📞 +91 98765 43211
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('Speed Motors')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MECHANIC 3 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Hyderabad"
+            data-service="Tyre">
+
+            <h3>
+                City Tyre Works
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Hyderabad
+            </p>
+
+            <p>
+                🔧 Tyre Replacement & Repair
+            </p>
+
+            <p>
+                📞 +91 98765 43212
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('City Tyre Works')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MECHANIC 4 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Mumbai"
+            data-service="Bike">
+
+            <h3>
+                Mumbai Bike Care
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Mumbai
+            </p>
+
+            <p>
+                🔧 Bike Repair & Service
+            </p>
+
+            <p>
+                📞 +91 98765 43213
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('Mumbai Bike Care')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MECHANIC 5 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Chennai"
+            data-service="Tyre">
+
+            <h3>
+                Chennai Road Service
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Chennai
+            </p>
+
+            <p>
+                🔧 Tyre & Roadside Assistance
+            </p>
+
+            <p>
+                📞 +91 98765 43214
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('Chennai Road Service')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MECHANIC 6 -->
+
+        <div
+            class="mechanic-card"
+            data-location="Bangalore"
+            data-service="Car">
+
+            <h3>
+                Bangalore Auto Experts
+            </h3>
+
+            <span class="verified">
+                ✔ Licensed Mechanic
+            </span>
+
+            <p>
+                📍 Bangalore
+            </p>
+
+            <p>
+                🔧 Car Repair & Road Assistance
+            </p>
+
+            <p>
+                📞 +91 98765 43215
+            </p>
+
+            <p class="available">
+                ● Available Now
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="requestMechanic('Bangalore Auto Experts')">
+
+                Request Assistance
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LOCATION -->
+
+<section id="location" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            View Location
+        </h2>
+
+        <p>
+            Find your location and nearby mechanics
+        </p>
+
+    </div>
+
+
+    <div class="location-box">
+
+        <h3>
+            📍 Your Current Location
+        </h3>
+
+        <p id="locationText">
+            Click the button below to detect your location.
+        </p>
+
+        <br>
+
+        <button
+            class="btn primary"
+            onclick="getLocation()">
+
+            Detect My Location
+
+        </button>
+
+
+        <div class="map">
+
+            🗺️ Nearby Mechanics Map
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section id="register" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            User Registration
+        </h2>
+
+        <p>
+            Create your RoadAssist account
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="userName"
+                type="text"
+                placeholder="Enter your name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="+91"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Vehicle Type
+            </label>
+
+            <select>
+
+                <option>
+                    Select Vehicle
+                </option>
+
+                <option>
+                    Car
+                </option>
+
+                <option>
+                    Bike
+                </option>
+
+                <option>
+                    Van
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Vehicle Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="TN 00 AB 0000"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="registerUser()">
+
+            Create Account
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            My Profile
+        </h2>
+
+        <p>
+            View and manage your account information
+        </p>
+
+    </div>
+
+
+    <div class="profile">
+
+        <div class="profile-header">
+
+            <div class="avatar">
+                👤
+            </div>
+
+            <br>
+
+            <h2>
+                Rahul Kumar
+            </h2>
+
+            <p>
+                RoadAssist User
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                value="rahul@example.com"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone
+            </label>
+
+            <input
+                type="text"
+                value="+91 98765 43210"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Vehicle
+            </label>
+
+            <input
+                type="text"
+                value="Car - TN 01 AB 1234"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="updateProfile()">
+
+            Update Profile
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FEEDBACK -->
+
+<section id="feedback" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Post Feedback
+        </h2>
+
+        <p>
+            Share your experience with the mechanic
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Mechanic / Business
+            </label>
+
+            <select>
+
+                <option>
+                    Kumar Auto Care
+                </option>
+
+                <option>
+                    Speed Motors
+                </option>
+
+                <option>
+                    City Tyre Works
+                </option>
+
+                <option>
+                    Mumbai Bike Care
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Rating
+            </label>
+
+            <select>
+
+                <option>
+                    ⭐⭐⭐⭐⭐ - Excellent
+                </option>
+
+                <option>
+                    ⭐⭐⭐⭐ - Very Good
+                </option>
+
+                <option>
+                    ⭐⭐⭐ - Good
+                </option>
+
+                <option>
+                    ⭐⭐ - Average
+                </option>
+
+                <option>
+                    ⭐ - Poor
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Your Feedback
+            </label>
+
+            <textarea
+                rows="5"
+                placeholder="Write your feedback...">
+            </textarea>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="submitFeedback()">
+
+            Submit Feedback
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="dashboard hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Admin Dashboard
+        </h2>
+
+        <p>
+            Approve and manage mechanic registrations
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <small>
+                Registered Users
+            </small>
+
+            <h2>
+                2,485
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Licensed Mechanics
+            </small>
+
+            <h2>
+                348
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Pending Approvals
+            </small>
+
+            <h2>
+                12
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Service Requests
+            </small>
+
+            <h2>
+                856
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <br><br>
+
+
+    <div class="table-container">
+
+        <h3 style="color:#1e3a8a; margin-bottom:20px;">
+            Mechanic Approval Requests
+        </h3>
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Mechanic
+                </th>
+
+                <th>
+                    Business
+                </th>
+
+                <th>
+                    Location
+                </th>
+
+                <th>
+                    License
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Suresh Kumar
+                </td>
+
+                <td>
+                    Suresh Auto Works
+                </td>
+
+                <td>
+                    Chennai
+                </td>
+
+                <td>
+                    LIC-45872
+                </td>
+
+                <td
+                    id="approval1"
+                    class="pending">
+
+                    Pending
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn primary"
+                        onclick="approveMechanic('approval1')">
+
+                        Approve
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Arjun Motors
+                </td>
+
+                <td>
+                    Arjun Vehicle Care
+                </td>
+
+                <td>
+                    Bangalore
+                </td>
+
+                <td>
+                    LIC-78452
+                </td>
+
+                <td
+                    id="approval2"
+                    class="pending">
+
+                    Pending
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="btn primary"
+                        onclick="approveMechanic('approval2')">
+
+                        Approve
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- MECHANIC REGISTER -->
+
+<section id="mechanicRegister" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Mechanic Registration
+        </h2>
+
+        <p>
+            Register your licensed roadside assistance business
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Mechanic Name
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter mechanic name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Business Name
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter business name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                License Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter license number"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Location
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter business location"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Services Offered
+            </label>
+
+            <select>
+
+                <option>
+                    Car Repair
+                </option>
+
+                <option>
+                    Bike Repair
+                </option>
+
+                <option>
+                    Battery Service
+                </option>
+
+                <option>
+                    Tyre Service
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="registerMechanic()">
+
+            Submit for Approval
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MECHANIC BUSINESS -->
+
+<section id="business" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Manage Business
+        </h2>
+
+        <p>
+            Post and manage your roadside assistance business
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Business Name
+            </label>
+
+            <input
+                type="text"
+                value="Kumar Auto Care"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Business Location
+            </label>
+
+            <input
+                type="text"
+                value="Chennai"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Services
+            </label>
+
+            <textarea rows="4">
+Car repair, engine repair, battery assistance, tyre replacement
+            </textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Contact Number
+            </label>
+
+            <input
+                type="text"
+                value="+91 98765 43210"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="saveBusiness()">
+
+            Save Business Details
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeLogin()">
+
+            ×
+
+        </span>
+
+        <h2 style="color:#1e3a8a;">
+            RoadAssist Login
+        </h2>
+
+        <br>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Enter password"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Login As
+            </label>
+
+            <select id="loginRole">
+
+                <option value="user">
+                    User
+                </option>
+
+                <option value="mechanic">
+                    Mechanic
+                </option>
+
+                <option value="admin">
+                    Admin
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="loginUser()">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>
+        🚗 RoadAssist
+    </h2>
+
+    <p>
+        On Road Vehicle Breakdown Assistance System
+    </p>
+
+    <p>
+        Find licensed mechanics quickly and safely.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+    let sections = [
+        "home",
+        "mechanics",
+        "location",
+        "register",
+        "profile",
+        "feedback",
+        "admin",
+        "mechanicRegister",
+        "business"
+    ];
+
+    sections.forEach(function(id) {
+
+        let element = document.getElementById(id);
+
+        if (element) {
+            element.classList.add("hidden");
+        }
+
+    });
+
+    document
+        .getElementById(section)
+        .classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* LOGIN */
+
+function openLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function loginUser() {
+
+    let email =
+        document.getElementById("loginEmail").value;
+
+    let role =
+        document.getElementById("loginRole").value;
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+    }
+
+    closeLogin();
+
+    if (role === "admin") {
+
+        alert("Admin login successful!");
+
+        showSection("admin");
+
+    }
+
+    else if (role === "mechanic") {
+
+        alert("Mechanic login successful!");
+
+        showSection("business");
+
+    }
+
+    else {
+
+        alert("User login successful!");
+
+        showSection("mechanics");
+
+    }
+
+}
+
+
+/* SEARCH MECHANICS */
+
+function searchMechanics() {
+
+    let search =
+        document
+        .getElementById("mechanicSearch")
+        .value
+        .toLowerCase();
+
+    let location =
+        document
+        .getElementById("locationFilter")
+        .value;
+
+    let service =
+        document
+        .getElementById("serviceFilter")
+        .value;
+
+    let cards =
+        document.querySelectorAll(
+            ".mechanic-card"
+        );
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+        let cardLocation =
+            card.dataset.location;
+
+        let cardService =
+            card.dataset.service;
+
+        let searchMatch =
+            text.includes(search);
+
+        let locationMatch =
+            location === "" ||
+            cardLocation === location;
+
+        let serviceMatch =
+            service === "" ||
+            cardService === service;
+
+        if (
+            searchMatch &&
+            locationMatch &&
+            serviceMatch
+        ) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* REQUEST MECHANIC */
+
+function requestMechanic(name) {
+
+    alert(
+        "Assistance request sent to " +
+        name +
+        ". The mechanic will contact you shortly."
+    );
+
+}
+
+
+/* REGISTER USER */
+
+function registerUser() {
+
+    let name =
+        document.getElementById("userName").value;
+
+    if (name === "") {
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    alert(
+        "Registration successful! Welcome " +
+        name +
+        "!"
+    );
+
+    showSection("profile");
+
+}
+
+
+/* LOCATION */
+
+function getLocation() {
+
+    let locationText =
+        document.getElementById("locationText");
+
+    if (navigator.geolocation) {
+
+        locationText.innerHTML =
+            "📍 Detecting your current location...";
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                let latitude =
+                    position.coords.latitude;
+
+                let longitude =
+                    position.coords.longitude;
+
+                locationText.innerHTML =
+                    "📍 Location detected successfully.<br>" +
+                    "Latitude: " + latitude +
+                    "<br>Longitude: " + longitude;
+
+            },
+
+            function() {
+
+                locationText.innerHTML =
+                    "Unable to detect location. Please allow location access.";
+
+            }
+
+        );
+
+    } else {
+
+        locationText.innerHTML =
+            "Geolocation is not supported by this browser.";
+
+    }
+
+}
+
+
+/* PROFILE */
+
+function updateProfile() {
+
+    alert(
+        "Profile updated successfully!"
+    );
+
+}
+
+
+/* FEEDBACK */
+
+function submitFeedback() {
+
+    alert(
+        "Thank you! Your feedback has been submitted successfully."
+    );
+
+}
+
+
+/* ADMIN APPROVAL */
+
+function approveMechanic(id) {
+
+    let element =
+        document.getElementById(id);
+
+    element.innerHTML =
+        "Approved";
+
+    element.className =
+        "approved";
+
+    alert(
+        "Mechanic has been approved successfully."
+    );
+
+}
+
+
+/* MECHANIC REGISTRATION */
+
+function registerMechanic() {
+
+    alert(
+        "Mechanic registration submitted. Waiting for admin approval."
+    );
+
+}
+
+
+/* BUSINESS */
+
+function saveBusiness() {
+
+    alert(
+        "Business details saved successfully!"
+    );
+
+}
+
+
+/* CLOSE LOGIN MODAL */
+
+window.onclick = function(event) {
+
+    let modal =
+        document.getElementById(
+            "loginModal"
+        );
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
