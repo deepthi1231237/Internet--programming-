@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wanderlust Travels - Online Travel Agency</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fb;
+    color: #1f2937;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #0f766e, #06b6d4);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #fef08a;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #fef08a;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        linear-gradient(#0005, #0005),
+        linear-gradient(135deg, #0f766e, #0891b2);
+    color: white;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.primary {
+    background: #f59e0b;
+    color: white;
+}
+
+.primary:hover {
+    background: #d97706;
+}
+
+.secondary {
+    background: white;
+    color: #0f766e;
+    margin-left: 10px;
+}
+
+/* HERO CARD */
+
+.hero-card {
+    width: 350px;
+    background: white;
+    color: #1f2937;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px #0004;
+}
+
+.hero-card h2 {
+    color: #0f766e;
+    margin-bottom: 20px;
+}
+
+.travel-item {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #ecfeff;
+    border-radius: 10px;
+}
+
+.travel-item b {
+    color: #0f766e;
+}
+
+/* SECTION */
+
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: #0f766e;
+}
+
+.section-title p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0f766e;
+}
+
+/* DESTINATIONS */
+
+.destinations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.destination {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px #0001;
+    transition: 0.3s;
+}
+
+.destination:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px #0002;
+}
+
+.destination-img {
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    background: linear-gradient(135deg, #ccfbf1, #cffafe);
+}
+
+.destination-content {
+    padding: 20px;
+}
+
+.destination-content h3 {
+    color: #0f766e;
+    margin-bottom: 8px;
+}
+
+.destination-content p {
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.price {
+    color: #ea580c;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+/* FEATURES */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* HOTELS */
+
+.hotels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.hotel-card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+    border-top: 4px solid #0f766e;
+}
+
+.hotel-card h3 {
+    color: #0f766e;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #f59e0b;
+    margin: 10px 0;
+}
+
+/* ROUTES */
+
+.routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.route-card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.route-card h3 {
+    color: #0f766e;
+    margin-bottom: 12px;
+}
+
+.route {
+    padding: 10px;
+    background: #f0fdfa;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    background: #ecfeff;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.stat small {
+    color: #6b7280;
+}
+
+.stat h2 {
+    color: #0f766e;
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+/* FORM */
+
+.form-container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #0001;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* BOOKINGS TABLE */
+
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    overflow-x: auto;
+    box-shadow: 0 8px 25px #0001;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.confirmed {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.pending {
+    color: #ca8a04;
+    font-weight: bold;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 470px;
+    max-width: 90%;
+    border-radius: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    color: #9ca3af;
+    margin-top: 8px;
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .destinations,
+    .hotels,
+    .routes,
+    .features,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .destinations,
+    .hotels,
+    .routes,
+    .features,
+    .stats,
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Wander<span>lust</span>
+    </div>
+
+    <nav>
+
+        <a onclick="showSection('home')">
+            Home
+        </a>
+
+        <a onclick="showSection('destinations')">
+            Destinations
+        </a>
+
+        <a onclick="showSection('hotels')">
+            Hotels
+        </a>
+
+        <a onclick="showSection('routes')">
+            Routes
+        </a>
+
+        <a onclick="showSection('bookings')">
+            My Bookings
+        </a>
+
+        <a onclick="openLogin()">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Explore The World With Wanderlust
+        </h1>
+
+        <p>
+            Plan your perfect journey with flights, hotels,
+            food, routes and vacation packages all in one place.
+            Discover amazing destinations and book your next
+            adventure easily and securely.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="showSection('destinations')">
+
+            Explore Destinations
+
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="showSection('register')">
+
+            Register Now
+
+        </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h2>
+            Popular Trips
+        </h2>
+
+        <div class="travel-item">
+
+            <b>🏝️ Goa</b>
+
+            <br>
+
+            Beach Vacation
+
+        </div>
+
+        <div class="travel-item">
+
+            <b>🏔️ Manali</b>
+
+            <br>
+
+            Mountain Adventure
+
+        </div>
+
+        <div class="travel-item">
+
+            <b>🏛️ Jaipur</b>
+
+            <br>
+
+            Heritage Tour
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>
+            Everything You Need For Your Trip
+        </h2>
+
+        <p>
+            Complete travel planning and booking services
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✈️
+            </div>
+
+            <h3>
+                Flight Booking
+            </h3>
+
+            <p>
+                Search and book flights for your destination.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🏨
+            </div>
+
+            <h3>
+                Hotel Booking
+            </h3>
+
+            <p>
+                Find comfortable hotels at the best prices.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🍴
+            </div>
+
+            <h3>
+                Food & Restaurants
+            </h3>
+
+            <p>
+                Discover popular restaurants and local food.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🗺️
+            </div>
+
+            <h3>
+                Travel Routes
+            </h3>
+
+            <p>
+                Plan routes and create personalized itineraries.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- DESTINATIONS -->
+
+<section id="destinations" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Explore Destinations
+        </h2>
+
+        <p>
+            Find your perfect vacation destination
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            id="destinationSearch"
+            type="text"
+            placeholder="Search destination..."
+            onkeyup="searchDestinations()"
+        >
+
+
+        <select
+            id="destinationType"
+            onchange="searchDestinations()">
+
+            <option value="">
+                All Types
+            </option>
+
+            <option value="Beach">
+                Beach
+            </option>
+
+            <option value="Mountain">
+                Mountain
+            </option>
+
+            <option value="Heritage">
+                Heritage
+            </option>
+
+        </select>
+
+
+        <select>
+
+            <option>
+                Any Budget
+            </option>
+
+            <option>
+                Under ₹10,000
+            </option>
+
+            <option>
+                ₹10,000 - ₹25,000
+            </option>
+
+            <option>
+                Above ₹25,000
+            </option>
+
+        </select>
+
+
+        <button
+            class="btn primary"
+            onclick="searchDestinations()">
+
+            Search
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="destinations"
+        id="destinationContainer">
+
+
+        <!-- DESTINATION 1 -->
+
+        <div
+            class="destination"
+            data-type="Beach">
+
+            <div class="destination-img">
+                🏝️
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Goa
+                </h3>
+
+                <p>
+                    Beautiful beaches, nightlife,
+                    adventure activities and delicious food.
+                </p>
+
+                <div class="price">
+                    From ₹8,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Goa')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION 2 -->
+
+        <div
+            class="destination"
+            data-type="Mountain">
+
+            <div class="destination-img">
+                🏔️
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Manali
+                </h3>
+
+                <p>
+                    Snow-covered mountains,
+                    trekking and beautiful valleys.
+                </p>
+
+                <div class="price">
+                    From ₹12,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Manali')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION 3 -->
+
+        <div
+            class="destination"
+            data-type="Heritage">
+
+            <div class="destination-img">
+                🏛️
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Jaipur
+                </h3>
+
+                <p>
+                    Explore royal palaces,
+                    forts and rich Indian culture.
+                </p>
+
+                <div class="price">
+                    From ₹9,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Jaipur')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION 4 -->
+
+        <div
+            class="destination"
+            data-type="Beach">
+
+            <div class="destination-img">
+                🌊
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Kerala
+                </h3>
+
+                <p>
+                    Enjoy backwaters, beaches,
+                    hill stations and traditional cuisine.
+                </p>
+
+                <div class="price">
+                    From ₹10,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Kerala')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION 5 -->
+
+        <div
+            class="destination"
+            data-type="Mountain">
+
+            <div class="destination-img">
+                🏞️
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Ooty
+                </h3>
+
+                <p>
+                    Peaceful hills, tea gardens,
+                    lakes and pleasant weather.
+                </p>
+
+                <div class="price">
+                    From ₹7,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Ooty')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION 6 -->
+
+        <div
+            class="destination"
+            data-type="Heritage">
+
+            <div class="destination-img">
+                🕌
+            </div>
+
+            <div class="destination-content">
+
+                <h3>
+                    Agra
+                </h3>
+
+                <p>
+                    Visit the iconic Taj Mahal
+                    and experience India's heritage.
+                </p>
+
+                <div class="price">
+                    From ₹6,999
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="bookDestination('Agra')">
+
+                    Book Trip
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOTELS -->
+
+<section id="hotels" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Hotel Details
+        </h2>
+
+        <p>
+            Find comfortable accommodation for your trip
+        </p>
+
+    </div>
+
+
+    <div class="hotels">
+
+        <div class="hotel-card">
+
+            <h3>
+                Sea View Resort
+            </h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                📍 Goa
+            </p>
+
+            <p>
+                Swimming pool, Wi-Fi, restaurant and beach access.
+            </p>
+
+            <div class="price">
+                ₹3,499 / night
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="bookHotel('Sea View Resort')">
+
+                Book Hotel
+
+            </button>
+
+        </div>
+
+
+        <div class="hotel-card">
+
+            <h3>
+                Mountain Palace
+            </h3>
+
+            <div class="stars">
+                ★★★★☆
+            </div>
+
+            <p>
+                📍 Manali
+            </p>
+
+            <p>
+                Mountain view rooms, restaurant and travel desk.
+            </p>
+
+            <div class="price">
+                ₹2,999 / night
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="bookHotel('Mountain Palace')">
+
+                Book Hotel
+
+            </button>
+
+        </div>
+
+
+        <div class="hotel-card">
+
+            <h3>
+                Royal Heritage Hotel
+            </h3>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                📍 Jaipur
+            </p>
+
+            <p>
+                Luxury rooms, traditional food and city tours.
+            </p>
+
+            <div class="price">
+                ₹4,299 / night
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="bookHotel('Royal Heritage Hotel')">
+
+                Book Hotel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ROUTES -->
+
+<section id="routes" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Travel Routes & Itineraries
+        </h2>
+
+        <p>
+            Plan your journey with ready-made travel routes
+        </p>
+
+    </div>
+
+
+    <div class="routes">
+
+        <div class="route-card">
+
+            <h3>
+                Goa 3-Day Trip
+            </h3>
+
+            <div class="route">
+                Day 1 → Baga Beach
+            </div>
+
+            <div class="route">
+                Day 2 → Fort Aguada
+            </div>
+
+            <div class="route">
+                Day 3 → Old Goa
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="selectRoute('Goa 3-Day Trip')">
+
+                Select Route
+
+            </button>
+
+        </div>
+
+
+        <div class="route-card">
+
+            <h3>
+                Manali 4-Day Trip
+            </h3>
+
+            <div class="route">
+                Day 1 → Mall Road
+            </div>
+
+            <div class="route">
+                Day 2 → Solang Valley
+            </div>
+
+            <div class="route">
+                Day 3 → Rohtang Pass
+            </div>
+
+            <div class="route">
+                Day 4 → Local Sightseeing
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="selectRoute('Manali 4-Day Trip')">
+
+                Select Route
+
+            </button>
+
+        </div>
+
+
+        <div class="route-card">
+
+            <h3>
+                Jaipur 3-Day Trip
+            </h3>
+
+            <div class="route">
+                Day 1 → Amber Fort
+            </div>
+
+            <div class="route">
+                Day 2 → City Palace
+            </div>
+
+            <div class="route">
+                Day 3 → Hawa Mahal
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="selectRoute('Jaipur 3-Day Trip')">
+
+                Select Route
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOKINGS -->
+
+<section id="bookings" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            My Bookings
+        </h2>
+
+        <p>
+            Manage your travel arrangements
+        </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Booking ID
+                </th>
+
+                <th>
+                    Destination
+                </th>
+
+                <th>
+                    Type
+                </th>
+
+                <th>
+                    Date
+                </th>
+
+                <th>
+                    Amount
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    WL1001
+                </td>
+
+                <td>
+                    Goa
+                </td>
+
+                <td>
+                    Vacation Package
+                </td>
+
+                <td>
+                    15 Sep 2026
+                </td>
+
+                <td>
+                    ₹8,999
+                </td>
+
+                <td class="confirmed">
+                    Confirmed
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    WL1002
+                </td>
+
+                <td>
+                    Manali
+                </td>
+
+                <td>
+                    Hotel
+                </td>
+
+                <td>
+                    22 Sep 2026
+                </td>
+
+                <td>
+                    ₹5,998
+                </td>
+
+                <td class="pending">
+                    Pending
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section id="register" class="hidden">
+
+    <div class="section-title">
+
+        <h2>
+            User Registration
+        </h2>
+
+        <p>
+            Create your Wanderlust Travels account
+        </p>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="regName"
+                type="text"
+                placeholder="Enter your name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="regEmail"
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="text"
+                placeholder="+91"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Create password"
+            >
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="registerUser()">
+
+            Create Account
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="dashboard hidden">
+
+    <div class="section-title">
+
+        <h2>
+            Admin Dashboard
+        </h2>
+
+        <p>
+            Manage tourism, hotels, food, routes and bookings
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <small>
+                Total Users
+            </small>
+
+            <h2>
+                4,286
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Destinations
+            </small>
+
+            <h2>
+                86
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Hotels
+            </small>
+
+            <h2>
+                342
+            </h2>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Bookings
+            </small>
+
+            <h2>
+                1,248
+            </h2>
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🏝️
+            </div>
+
+            <h3>
+                Post Tourism Details
+            </h3>
+
+            <button
+                class="btn primary"
+                onclick="adminAction('Tourism details')">
+
+                Manage
+
+            </button>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🍴
+            </div>
+
+            <h3>
+                Manage Food Details
+            </h3>
+
+            <button
+                class="btn primary"
+                onclick="adminAction('Food details')">
+
+                Manage
+
+            </button>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🏨
+            </div>
+
+            <h3>
+                Manage Hotel Details
+            </h3>
+
+            <button
+                class="btn primary"
+                onclick="adminAction('Hotel details')">
+
+                Manage
+
+            </button>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🗺️
+            </div>
+
+            <h3>
+                Manage Route Details
+            </h3>
+
+            <button
+                class="btn primary"
+                onclick="adminAction('Route details')">
+
+                Manage
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>
+        ✈️ Wanderlust Travels
+    </h2>
+
+    <p>
+        Your one-stop online travel planning and booking platform.
+    </p>
+
+    <p>
+        © 2026 Wanderlust Travels. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeLogin()">
+
+            ×
+
+        </span>
+
+        <h2 style="color:#0f766e;">
+            Login
+        </h2>
+
+        <br>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                placeholder="Enter password"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Login As
+            </label>
+
+            <select id="loginRole">
+
+                <option value="user">
+                    User
+                </option>
+
+                <option value="admin">
+                    Admin
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="loginUser()">
+
+            Login
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("destinations").classList.add("hidden");
+    document.getElementById("hotels").classList.add("hidden");
+    document.getElementById("routes").classList.add("hidden");
+    document.getElementById("bookings").classList.add("hidden");
+    document.getElementById("register").classList.add("hidden");
+    document.getElementById("admin").classList.add("hidden");
+
+    document.getElementById(section).classList.remove("hidden");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* LOGIN */
+
+function openLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function loginUser() {
+
+    let email =
+        document.getElementById("loginEmail").value;
+
+    let role =
+        document.getElementById("loginRole").value;
+
+    if (email === "") {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+    closeLogin();
+
+    if (role === "admin") {
+
+        alert(
+            "Admin login successful!"
+        );
+
+        showSection("admin");
+
+    } else {
+
+        alert(
+            "User login successful! Welcome to Wanderlust Travels."
+        );
+
+        showSection("bookings");
+
+    }
+
+}
+
+
+/* REGISTER */
+
+function registerUser() {
+
+    let name =
+        document.getElementById("regName").value;
+
+    let email =
+        document.getElementById("regEmail").value;
+
+    if (name === "" || email === "") {
+
+        alert(
+            "Please fill in your name and email."
+        );
+
+        return;
+
+    }
+
+    alert(
+        "Registration successful! Welcome " +
+        name +
+        "!"
+    );
+
+    showSection("bookings");
+
+}
+
+
+/* DESTINATION SEARCH */
+
+function searchDestinations() {
+
+    let search =
+        document
+        .getElementById("destinationSearch")
+        .value
+        .toLowerCase();
+
+    let type =
+        document
+        .getElementById("destinationType")
+        .value;
+
+    let cards =
+        document.querySelectorAll(
+            ".destination"
+        );
+
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+        let cardType =
+            card.dataset.type;
+
+        let searchMatch =
+            text.includes(search);
+
+        let typeMatch =
+            type === "" ||
+            cardType === type;
+
+        if (
+            searchMatch &&
+            typeMatch
+        ) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* BOOK DESTINATION */
+
+function bookDestination(destination) {
+
+    alert(
+        "Your trip to " +
+        destination +
+        " has been selected for booking!"
+    );
+
+    showSection("bookings");
+
+}
+
+
+/* BOOK HOTEL */
+
+function bookHotel(hotel) {
+
+    alert(
+        hotel +
+        " has been selected for booking."
+    );
+
+    showSection("bookings");
+
+}
+
+
+/* SELECT ROUTE */
+
+function selectRoute(route) {
+
+    alert(
+        route +
+        " has been added to your itinerary."
+    );
+
+}
+
+
+/* ADMIN ACTION */
+
+function adminAction(item) {
+
+    alert(
+        item +
+        " management page opened."
+    );
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+window.onclick = function(event) {
+
+    let modal =
+        document.getElementById(
+            "loginModal"
+        );
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
