@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gourmet Haven Restaurant</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #fff8f0;
+    color: #333;
+}
+
+/* HEADER */
+
+header {
+    background: #3b1f1f;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 40px;
+}
+
+header p {
+    margin-bottom: 0;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #5c2e2e;
+    text-align: center;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav button {
+    background: #d4a017;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    margin: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #b8860b;
+}
+
+/* MAIN */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+h2 {
+    color: #5c2e2e;
+    font-family: Georgia, serif;
+}
+
+/* HERO */
+
+.hero {
+    height: 450px;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    border-radius: 12px;
+}
+
+.hero-content {
+    background: rgba(0,0,0,0.65);
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.hero-content h2 {
+    color: white;
+    font-size: 40px;
+}
+
+.hero-content p {
+    font-size: 18px;
+}
+
+.hero-content button {
+    background: #d4a017;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CAROUSEL */
+
+.carousel {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slide {
+    display: none;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+
+/* MENU */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.menu-item {
+    background: #fffaf3;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-content {
+    padding: 18px;
+}
+
+.menu-content h3 {
+    color: #5c2e2e;
+}
+
+.price {
+    color: #b8860b;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* CATEGORY BUTTONS */
+
+.category-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-buttons button {
+    background: #5c2e2e;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category-buttons button:hover {
+    background: #d4a017;
+}
+
+/* RESERVATION */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 120px;
+}
+
+.form-button {
+    background: #5c2e2e;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background: #d4a017;
+}
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ABOUT */
+
+.about {
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.contact-info {
+    background: #fff5e6;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #3b1f1f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+/* GENERAL BUTTON */
+
+button {
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:550px) {
+
+    .menu-grid,
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🍷 Gourmet Haven</h1>
+
+<p>Where Every Dish Tells a Story</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showSection('home')">
+Home
+</button>
+
+<button onclick="showSection('menu')">
+Menu
+</button>
+
+<button onclick="showSection('reservation')">
+Reservation
+</button>
+
+<button onclick="showSection('about')">
+About Us
+</button>
+
+<button onclick="showSection('gallery')">
+Gallery
+</button>
+
+<button onclick="showSection('contact')">
+Contact
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h2>Welcome to Gourmet Haven</h2>
+
+<p>
+Fine Dining • Exceptional Taste • Memorable Experiences
+</p>
+
+<button onclick="showSection('reservation')">
+Reserve a Table
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>✨ Signature Dining Experience</h2>
+
+<p>
+Welcome to Gourmet Haven, a sophisticated fine dining
+restaurant where traditional flavors meet modern culinary
+creativity. Enjoy carefully prepared dishes, elegant
+ambience and exceptional hospitality.
+</p>
+
+</div>
+
+
+<!-- CAROUSEL -->
+
+<div class="card">
+
+<h2>🍽️ Restaurant Highlights</h2>
+
+<div class="carousel">
+
+<div class="slide">
+
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f">
+
+<div class="slide-text">
+Elegant Restaurant Ambience
+</div>
+
+</div>
+
+
+<div class="slide">
+
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554">
+
+<div class="slide-text">
+Our Signature Dishes
+</div>
+
+</div>
+
+
+<div class="slide">
+
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de">
+
+<div class="slide-text">
+A Memorable Dining Experience
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu" class="hidden">
+
+<div class="card">
+
+<h2>🍴 Our Menu</h2>
+
+<div class="category-buttons">
+
+<button onclick="filterMenu('all')">
+All
+</button>
+
+<button onclick="filterMenu('starter')">
+Starters
+</button>
+
+<button onclick="filterMenu('main')">
+Main Course
+</button>
+
+<button onclick="filterMenu('dessert')">
+Desserts
+</button>
+
+</div>
+
+
+<div class="menu-grid">
+
+
+<!-- STARTER 1 -->
+
+<div class="menu-item"
+data-category="starter">
+
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554">
+
+<div class="menu-content">
+
+<h3>Truffle Mushroom Soup</h3>
+
+<p>
+Creamy mushroom soup infused with
+fresh herbs and truffle oil.
+</p>
+
+<p class="price">
+₹450
+</p>
+
+</div>
+
+</div>
+
+
+<!-- STARTER 2 -->
+
+<div class="menu-item"
+data-category="starter">
+
+<img src="https://images.unsplash.com/photo-1559847844-5315695dadae">
+
+<div class="menu-content">
+
+<h3>Bruschetta</h3>
+
+<p>
+Toasted bread topped with tomatoes,
+basil and olive oil.
+</p>
+
+<p class="price">
+₹350
+</p>
+
+</div>
+
+</div>
+
+
+<!-- MAIN 1 -->
+
+<div class="menu-item"
+data-category="main">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+
+<div class="menu-content">
+
+<h3>Grilled Steak</h3>
+
+<p>
+Premium grilled steak served with
+seasonal vegetables and sauce.
+</p>
+
+<p class="price">
+₹1,850
+</p>
+
+</div>
+
+</div>
+
+
+<!-- MAIN 2 -->
+
+<div class="menu-item"
+data-category="main">
+
+<img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435">
+
+<div class="menu-content">
+
+<h3>Herb Chicken</h3>
+
+<p>
+Juicy roasted chicken with herbs,
+vegetables and creamy sauce.
+</p>
+
+<p class="price">
+₹1,250
+</p>
+
+</div>
+
+</div>
+
+
+<!-- DESSERT 1 -->
+
+<div class="menu-item"
+data-category="dessert">
+
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307">
+
+<div class="menu-content">
+
+<h3>Chocolate Lava Cake</h3>
+
+<p>
+Warm chocolate cake with a rich
+molten chocolate centre.
+</p>
+
+<p class="price">
+₹550
+</p>
+
+</div>
+
+</div>
+
+
+<!-- DESSERT 2 -->
+
+<div class="menu-item"
+data-category="dessert">
+
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187">
+
+<div class="menu-content">
+
+<h3>Berry Cheesecake</h3>
+
+<p>
+Creamy cheesecake topped with
+fresh seasonal berries.
+</p>
+
+<p class="price">
+₹500
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESERVATION -->
+
+<section id="reservation" class="hidden">
+
+<div class="card">
+
+<h2>📅 Reserve Your Table</h2>
+
+<p>
+Book your table at Gourmet Haven and enjoy
+an unforgettable dining experience.
+</p>
+
+
+<div class="form-group">
+
+<label>Full Name</label>
+
+<input type="text"
+id="guestName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input type="email"
+id="guestEmail"
+placeholder="Enter your email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone Number</label>
+
+<input type="tel"
+id="guestPhone"
+placeholder="Enter phone number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Date</label>
+
+<input type="date"
+id="reservationDate">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Time</label>
+
+<select id="reservationTime">
+
+<option>12:00 PM</option>
+<option>1:00 PM</option>
+<option>2:00 PM</option>
+<option>7:00 PM</option>
+<option>8:00 PM</option>
+<option>9:00 PM</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Number of Guests</label>
+
+<select id="guests">
+
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7+</option>
+
+</select>
+
+</div>
+
+
+<button class="form-button"
+onclick="makeReservation()">
+
+Confirm Reservation
+
+</button>
+
+
+<div id="reservationMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="hidden">
+
+<div class="card about">
+
+<h2>🏛️ About Gourmet Haven</h2>
+
+<p>
+Gourmet Haven was created with a passion for
+exceptional food, elegant surroundings and
+memorable dining experiences.
+</p>
+
+<p>
+Our culinary team combines traditional techniques
+with modern creativity to create dishes that are
+beautiful, flavorful and unforgettable.
+</p>
+
+<h3>👨‍🍳 Our Culinary Team</h3>
+
+<p>
+Our experienced chefs carefully select fresh
+ingredients and create every dish with attention
+to detail.
+</p>
+
+<h3>❤️ Our Philosophy</h3>
+
+<p>
+Great food brings people together. At Gourmet Haven,
+we believe every meal should be an experience.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery" class="hidden">
+
+<div class="card">
+
+<h2>📸 Restaurant Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f">
+
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+
+<img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435">
+
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307">
+
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="hidden">
+
+<div class="card">
+
+<h2>📞 Contact Gourmet Haven</h2>
+
+<div class="contact-grid">
+
+
+<div class="contact-info">
+
+<h3>📍 Restaurant Address</h3>
+
+<p>
+12 Luxury Avenue,<br>
+Chennai, Tamil Nadu,<br>
+India - 600001
+</p>
+
+
+<h3>☎️ Phone</h3>
+
+<p>
++91 98765 43210
+</p>
+
+
+<h3>📧 Email</h3>
+
+<p>
+info@gourmethaven.com
+</p>
+
+
+<h3>🕐 Opening Hours</h3>
+
+<p>
+Monday - Friday: 12 PM - 11 PM
+</p>
+
+<p>
+Saturday - Sunday: 11 AM - 11 PM
+</p>
+
+</div>
+
+
+<div>
+
+<h3>🗺️ Our Location</h3>
+
+<iframe
+class="map"
+src="https://www.google.com/maps?q=Chennai%20Tamil%20Nadu&output=embed">
+</iframe>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- CONTACT FORM -->
+
+<div class="card">
+
+<h2>✉️ Send Us a Message</h2>
+
+
+<div class="form-group">
+
+<label>Your Name</label>
+
+<input type="text"
+id="contactName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email Address</label>
+
+<input type="email"
+id="contactEmail"
+placeholder="Enter your email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Message</label>
+
+<textarea
+id="contactMessage"
+placeholder="Write your message..."></textarea>
+
+</div>
+
+
+<button class="form-button"
+onclick="sendMessage()">
+
+Send Message
+
+</button>
+
+
+<div id="messageStatus"></div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>🍷 Gourmet Haven</h2>
+
+<p>
+Fine Dining • Great Food • Wonderful Memories
+</p>
+
+<p>
+📍 Chennai | ☎️ +91 98765 43210
+</p>
+
+<p>
+© 2026 Gourmet Haven Restaurant
+</p>
+
+</footer>
+
+
+<script>
+
+/* NAVIGATION */
+
+function showSection(section) {
+
+    let sections = [
+        "home",
+        "menu",
+        "reservation",
+        "about",
+        "gallery",
+        "contact"
+    ];
+
+    sections.forEach(function(id) {
+
+        document.getElementById(id)
+        .classList.add("hidden");
+
+    });
+
+
+    document.getElementById(section)
+    .classList.remove("hidden");
+
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* MENU FILTER */
+
+function filterMenu(category) {
+
+    let items =
+    document.querySelectorAll(".menu-item");
+
+
+    items.forEach(function(item) {
+
+        if(
+            category === "all" ||
+            item.dataset.category === category
+        ) {
+
+            item.style.display = "block";
+
+        }
+
+        else {
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* RESERVATION */
+
+function makeReservation() {
+
+    let name =
+    document.getElementById("guestName").value;
+
+    let email =
+    document.getElementById("guestEmail").value;
+
+    let phone =
+    document.getElementById("guestPhone").value;
+
+    let date =
+    document.getElementById("reservationDate").value;
+
+    let time =
+    document.getElementById("reservationTime").value;
+
+    let guests =
+    document.getElementById("guests").value;
+
+
+    if(
+        name === "" ||
+        email === "" ||
+        phone === "" ||
+        date === ""
+    ) {
+
+        alert(
+        "Please fill in all reservation details."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "reservationMessage"
+    ).innerHTML =
+
+    "<div style='margin-top:15px;padding:15px;background:#e8f5e9;color:green;border-radius:5px'>" +
+
+    "<b>Reservation Confirmed! ✅</b><br><br>" +
+
+    "Name: " + name + "<br>" +
+
+    "Date: " + date + "<br>" +
+
+    "Time: " + time + "<br>" +
+
+    "Guests: " + guests +
+
+    "</div>";
+
+}
+
+
+/* CONTACT FORM */
+
+function sendMessage() {
+
+    let name =
+    document.getElementById("contactName").value;
+
+    let email =
+    document.getElementById("contactEmail").value;
+
+    let message =
+    document.getElementById("contactMessage").value;
+
+
+    if(
+        name === "" ||
+        email === "" ||
+        message === ""
+    ) {
+
+        alert(
+        "Please fill in all fields."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "messageStatus"
+    ).innerHTML =
+
+    "<p style='color:green;font-weight:bold'>" +
+
+    "Your message has been sent successfully! ✅" +
+
+    "</p>";
+
+
+    document.getElementById(
+        "contactName"
+    ).value = "";
+
+    document.getElementById(
+        "contactEmail"
+    ).value = "";
+
+    document.getElementById(
+        "contactMessage"
+    ).value = "";
+
+}
+
+
+/* IMAGE CAROUSEL */
+
+let slideIndex = 0;
+
+showSlides();
+
+
+function showSlides() {
+
+    let slides =
+    document.getElementsByClassName("slide");
+
+
+    for(let i = 0; i < slides.length; i++) {
+
+        slides[i].style.display = "none";
+
+    }
+
+
+    slideIndex++;
+
+
+    if(slideIndex > slides.length) {
+
+        slideIndex = 1;
+
+    }
+
+
+    slides[slideIndex - 1]
+    .style.display = "block";
+
+
+    setTimeout(showSlides, 3000);
+
+}
+
+</script>
+
+</body>
+</html>
