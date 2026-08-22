@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KodaikanalEats - Restaurant Booking</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f8f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #276749;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        nav {
+            background-color: #174c35;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        section {
+            padding: 35px;
+        }
+
+        .home {
+            background-color: #dff0e5;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .home h2 {
+            color: #276749;
+            font-size: 35px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #aaa;
+        }
+
+        h2 {
+            color: #276749;
+            text-align: center;
+        }
+
+        h3 {
+            color: #2f855a;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 240px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #aaa;
+        }
+
+        .card h3 {
+            color: #276749;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #276749;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #174c35;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #aaa;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #276749;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f7f2;
+        }
+
+        .offer {
+            background-color: #fff3cd;
+            border-left: 5px solid #f0ad4e;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .notavailable {
+            color: red;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #174c35;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+
+    <script>
+
+        function registerUser() {
+            alert("Registration Successful!");
+        }
+
+        function loginAdmin() {
+            alert("Admin Login Successful!");
+        }
+
+        function bookRestaurant() {
+            alert("Restaurant Booking Confirmed Successfully!");
+        }
+
+        function bookRoom() {
+            alert("Room Booking Request Submitted Successfully!");
+        }
+
+        function searchRestaurant() {
+            alert("Searching restaurants based on your selection...");
+        }
+
+        function contactSubmit() {
+            alert("Your message has been sent successfully!");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🍴 KodaikanalEats</h1>
+
+        <p>
+            Explore • Discover • Book
+            the Best Restaurants in Kodaikanal
+        </p>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#home">Home</a>
+        <a href="#search">Search</a>
+        <a href="#restaurants">Restaurants</a>
+        <a href="#booking">Booking</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#offers">Special Offers</a>
+        <a href="#customer">Customer</a>
+        <a href="#admin">Admin</a>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section id="home" class="home">
+
+        <h2>Welcome to KodaikanalEats</h2>
+
+        <p>
+            Discover the finest restaurants, cafes and
+            dining experiences in beautiful Kodaikanal.
+        </p>
+
+        <button onclick="location.href='#booking'">
+            Book a Table
+        </button>
+
+    </section>
+
+
+    <!-- SEARCH AND FILTER -->
+
+    <section id="search">
+
+        <div class="container">
+
+            <h2>🔍 Search & Filter Restaurants</h2>
+
+            <label>Restaurant Name</label>
+
+            <input type="text"
+                   placeholder="Enter restaurant name">
+
+
+            <label>Cuisine</label>
+
+            <select>
+
+                <option>All Cuisines</option>
+                <option>South Indian</option>
+                <option>North Indian</option>
+                <option>Chinese</option>
+                <option>Italian</option>
+                <option>Continental</option>
+
+            </select>
+
+
+            <label>Location</label>
+
+            <select>
+
+                <option>All Locations</option>
+                <option>Kodaikanal Town</option>
+                <option>Lake Area</option>
+                <option>Observatory Road</option>
+                <option>Coakers Walk</option>
+
+            </select>
+
+
+            <label>Rating</label>
+
+            <select>
+
+                <option>All Ratings</option>
+                <option>5 Stars</option>
+                <option>4 Stars & Above</option>
+                <option>3 Stars & Above</option>
+
+            </select>
+
+
+            <button onclick="searchRestaurant()">
+                Search Restaurant
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANTS -->
+
+    <section id="restaurants">
+
+        <div class="container">
+
+            <h2>🍽️ Popular Restaurants</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Hill View Restaurant</h3>
+
+                    <p>🍛 South Indian</p>
+
+                    <p>📍 Kodaikanal Town</p>
+
+                    <p>⭐ 4.5 / 5</p>
+
+                    <p>💰 ₹300 - ₹700</p>
+
+                    <button onclick="location.href='#booking'">
+                        Book Now
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Lake Side Cafe</h3>
+
+                    <p>🍕 Continental</p>
+
+                    <p>📍 Lake Area</p>
+
+                    <p>⭐ 4.7 / 5</p>
+
+                    <p>💰 ₹400 - ₹900</p>
+
+                    <button onclick="location.href='#booking'">
+                        Book Now
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Kodaikanal Spice</h3>
+
+                    <p>🍜 Chinese</p>
+
+                    <p>📍 Observatory Road</p>
+
+                    <p>⭐ 4.3 / 5</p>
+
+                    <p>💰 ₹350 - ₹800</p>
+
+                    <button onclick="location.href='#booking'">
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT DETAILS -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>📋 Restaurant Details</h2>
+
+            <table>
+
+                <tr>
+                    <th>Restaurant</th>
+                    <th>Cuisine</th>
+                    <th>Rating</th>
+                    <th>Cost for Two</th>
+                    <th>Availability</th>
+                </tr>
+
+                <tr>
+                    <td>Hill View Restaurant</td>
+                    <td>South Indian</td>
+                    <td>4.5 ⭐</td>
+                    <td>₹700</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Lake Side Cafe</td>
+                    <td>Continental</td>
+                    <td>4.7 ⭐</td>
+                    <td>₹900</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Kodaikanal Spice</td>
+                    <td>Chinese</td>
+                    <td>4.3 ⭐</td>
+                    <td>₹800</td>
+                    <td class="notavailable">Limited</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOOKING -->
+
+    <section id="booking">
+
+        <div class="container">
+
+            <h2>📅 Online Table Booking</h2>
+
+            <form onsubmit="bookRestaurant(); return false;">
+
+                <label>Customer Name</label>
+
+                <input type="text"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter email"
+                       required>
+
+
+                <label>Phone Number</label>
+
+                <input type="tel"
+                       placeholder="Enter phone number"
+                       required>
+
+
+                <label>Select Restaurant</label>
+
+                <select required>
+
+                    <option>Hill View Restaurant</option>
+                    <option>Lake Side Cafe</option>
+                    <option>Kodaikanal Spice</option>
+
+                </select>
+
+
+                <label>Booking Date</label>
+
+                <input type="date"
+                       required>
+
+
+                <label>Booking Time</label>
+
+                <input type="time"
+                       required>
+
+
+                <label>Number of Guests</label>
+
+                <input type="number"
+                       min="1"
+                       max="20"
+                       required>
+
+
+                <label>Booking Type</label>
+
+                <select>
+
+                    <option>Seasonal</option>
+                    <option>Non-Seasonal</option>
+
+                </select>
+
+
+                <button type="submit">
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROOM DETAILS -->
+
+    <section id="rooms">
+
+        <div class="container">
+
+            <h2>🏨 Suite & Room Details</h2>
+
+            <table>
+
+                <tr>
+                    <th>Room Type</th>
+                    <th>Facilities</th>
+                    <th>Cost Per Night</th>
+                    <th>Availability</th>
+                </tr>
+
+                <tr>
+                    <td>Single Room</td>
+                    <td>Wi-Fi, TV, Breakfast</td>
+                    <td>₹1500</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Double Room</td>
+                    <td>Wi-Fi, TV, Breakfast</td>
+                    <td>₹2500</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Deluxe Room</td>
+                    <td>AC, Wi-Fi, TV, Breakfast</td>
+                    <td>₹4000</td>
+                    <td class="available">Available</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROOM BOOKING -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🛏️ Room Booking</h2>
+
+            <form onsubmit="bookRoom(); return false;">
+
+                <label>Customer Name</label>
+
+                <input type="text"
+                       placeholder="Enter customer name"
+                       required>
+
+
+                <label>Room Type</label>
+
+                <select>
+
+                    <option>Single Room</option>
+                    <option>Double Room</option>
+                    <option>Deluxe Room</option>
+
+                </select>
+
+
+                <label>Check-in Date</label>
+
+                <input type="date"
+                       required>
+
+
+                <label>Check-out Date</label>
+
+                <input type="date"
+                       required>
+
+
+                <label>Season</label>
+
+                <select>
+
+                    <option>Seasonal</option>
+                    <option>Non-Seasonal</option>
+
+                </select>
+
+
+                <button type="submit">
+                    Book Room
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROOM BOYS -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🧑‍💼 Room Boys Availability</h2>
+
+            <table>
+
+                <tr>
+                    <th>Room Boy</th>
+                    <th>Shift</th>
+                    <th>Availability</th>
+                </tr>
+
+                <tr>
+                    <td>Arun</td>
+                    <td>Morning</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Ravi</td>
+                    <td>Afternoon</td>
+                    <td class="available">Available</td>
+                </tr>
+
+                <tr>
+                    <td>Kumar</td>
+                    <td>Night</td>
+                    <td class="notavailable">Busy</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPECIAL OFFERS -->
+
+    <section id="offers">
+
+        <div class="container">
+
+            <h2>🎁 Special Offers</h2>
+
+            <div class="offer">
+
+                <h3>20% Off on Family Dining</h3>
+
+                <p>
+                    Get 20% discount when booking a table
+                    for more than four people.
+                </p>
+
+            </div>
+
+
+            <div class="offer">
+
+                <h3>Weekend Special</h3>
+
+                <p>
+                    Enjoy special weekend offers at
+                    selected restaurants.
+                </p>
+
+            </div>
+
+
+            <div class="offer">
+
+                <h3>Seasonal Discount</h3>
+
+                <p>
+                    Special discounts are available
+                    during the tourist season.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER DETAILS -->
+
+    <section id="customer">
+
+        <div class="container">
+
+            <h2>👤 Customer Details</h2>
+
+            <form onsubmit="registerUser(); return false;">
+
+                <label>Customer Name</label>
+
+                <input type="text"
+                       placeholder="Enter name"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter email"
+                       required>
+
+
+                <label>Phone Number</label>
+
+                <input type="tel"
+                       placeholder="Enter phone number"
+                       required>
+
+
+                <label>Address</label>
+
+                <textarea placeholder="Enter address">
+                </textarea>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Create password"
+                       required>
+
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADMIN -->
+
+    <section id="admin">
+
+        <div class="container">
+
+            <h2>🔐 Admin Login</h2>
+
+            <form onsubmit="loginAdmin(); return false;">
+
+                <label>Username</label>
+
+                <input type="text"
+                       placeholder="Enter username"
+                       required>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Enter password"
+                       required>
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+
+            <hr>
+
+            <h3>Admin Functions</h3>
+
+            <ul>
+
+                <li>Manage Restaurant Details</li>
+
+                <li>Manage Customer Details</li>
+
+                <li>Manage Room Details</li>
+
+                <li>Manage Room Availability</li>
+
+                <li>Manage Online Bookings</li>
+
+                <li>Manage Seasonal / Non-Seasonal Bookings</li>
+
+                <li>Manage Room Boys</li>
+
+                <li>Manage Special Offers</li>
+
+                <li>View Booking Reports</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2>📞 Contact Us</h2>
+
+            <p>
+                <b>Email:</b> support@kodaikanaleats.com
+            </p>
+
+            <p>
+                <b>Phone:</b> +91 98765 43210
+            </p>
+
+            <p>
+                <b>Location:</b> Kodaikanal, Tamil Nadu
+            </p>
+
+
+            <h3>Send an Enquiry</h3>
+
+            <form onsubmit="contactSubmit(); return false;">
+
+                <label>Name</label>
+
+                <input type="text"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter your email"
+                       required>
+
+
+                <label>Message</label>
+
+                <textarea rows="5"
+                          placeholder="Enter your message">
+                </textarea>
+
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 KodaikanalEats
+        </p>
+
+        <p>
+            Discover • Dine • Enjoy Kodaikanal
+        </p>
+
+    </footer>
+
+</body>
+</html>

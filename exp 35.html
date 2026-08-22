@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Pass Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #1769aa;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #123c5a;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        section {
+            padding: 35px;
+        }
+
+        .home {
+            text-align: center;
+            background-color: #dceeff;
+            padding: 60px 20px;
+        }
+
+        .home h2 {
+            font-size: 35px;
+            color: #1769aa;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #aaa;
+        }
+
+        h2 {
+            color: #1769aa;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d4f80;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 250px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #aaa;
+        }
+
+        .card h3 {
+            color: #1769aa;
+        }
+
+        .pass {
+            background-color: #e9f7ef;
+            border: 2px solid #1769aa;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #123c5a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+
+    <script>
+        function applyPass() {
+            alert("Bus Pass Application Submitted Successfully!");
+        }
+
+        function registerUser() {
+            alert("Registration Successful!");
+        }
+
+        function addMoney() {
+            alert("Money Added to eWallet Successfully!");
+        }
+
+        function buyTicket() {
+            alert("Bus eTicket Purchased Successfully!");
+        }
+
+        function renewPass() {
+            alert("Bus Pass Renewal Request Submitted!");
+        }
+
+        function adminLogin() {
+            alert("Admin Login Successful!");
+        }
+
+        function generateQR() {
+            alert("QR Code Generated Successfully!");
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🚌 Bus Pass Management System</h1>
+        <p>Easy and Secure Online Bus Pass Services</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#register">Register</a>
+        <a href="#pass">Apply Pass</a>
+        <a href="#ticket">eTicket</a>
+        <a href="#route">Routes</a>
+        <a href="#admin">Admin</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+
+    <!-- Home -->
+    <section id="home" class="home">
+
+        <h2>Welcome to Bus Pass Management</h2>
+
+        <p>
+            Apply for a new bus pass, renew your existing pass,
+            buy eTickets and manage your eWallet online.
+        </p>
+
+        <button onclick="location.href='#pass'">
+            Apply for Bus Pass
+        </button>
+
+    </section>
+
+
+    <!-- Services -->
+    <section>
+
+        <h2>Our Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎫 Bus Pass</h3>
+                <p>Apply for a new bus pass easily.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔄 Renewal</h3>
+                <p>Renew your bus pass monthly.</p>
+            </div>
+
+            <div class="card">
+                <h3>💰 eWallet</h3>
+                <p>Add money and manage your wallet.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎟️ eTicket</h3>
+                <p>Buy bus tickets online.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- User Registration -->
+    <section id="register">
+
+        <div class="container">
+
+            <h2>👤 User Registration</h2>
+
+            <form onsubmit="registerUser(); return false;">
+
+                <label>Candidate Name</label>
+                <input type="text" placeholder="Enter your name" required>
+
+                <label>Address</label>
+                <textarea placeholder="Enter your address" required></textarea>
+
+                <label>Date of Birth</label>
+                <input type="date" required>
+
+                <label>Email ID</label>
+                <input type="email" placeholder="Enter email" required>
+
+                <label>Mobile Number</label>
+                <input type="tel" placeholder="Enter mobile number" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="Create password" required>
+
+                <button type="submit">Register</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Bus Pass Application -->
+    <section id="pass">
+
+        <div class="container">
+
+            <h2>🎫 Apply for New Bus Pass</h2>
+
+            <form onsubmit="applyPass(); return false;">
+
+                <label>Candidate Name</label>
+                <input type="text" placeholder="Enter candidate name" required>
+
+                <label>Address</label>
+                <textarea placeholder="Enter address"></textarea>
+
+                <label>Date of Birth</label>
+                <input type="date">
+
+                <label>Email ID</label>
+                <input type="email" placeholder="Enter email">
+
+                <label>School / Organization Name</label>
+                <input type="text" placeholder="Enter school or organization">
+
+                <label>User Type</label>
+                <select>
+                    <option>School Student</option>
+                    <option>College Student</option>
+                    <option>Working Professional</option>
+                    <option>General User</option>
+                </select>
+
+                <label>Bus Pass Type</label>
+                <select>
+                    <option>Student Pass</option>
+                    <option>Route Bus Pass</option>
+                    <option>Monthly Pass</option>
+                </select>
+
+                <label>Validity Period</label>
+                <select>
+                    <option>1 Month</option>
+                    <option>3 Months</option>
+                    <option>6 Months</option>
+                    <option>1 Year</option>
+                </select>
+
+                <label>Amount Paid</label>
+                <input type="number" placeholder="Enter amount">
+
+                <label>Upload Candidate Photo</label>
+                <input type="file" accept="image/*">
+
+                <button type="submit">
+                    Submit Application
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Pass Renewal -->
+    <section id="renew">
+
+        <div class="container">
+
+            <h2>🔄 Bus Pass Renewal</h2>
+
+            <form onsubmit="renewPass(); return false;">
+
+                <label>Pass Number</label>
+                <input type="text" placeholder="Enter pass number" required>
+
+                <label>Renewal Period</label>
+
+                <select>
+                    <option>1 Month</option>
+                    <option>2 Months</option>
+                    <option>3 Months</option>
+                    <option>6 Months</option>
+                </select>
+
+                <label>Renewal Amount</label>
+                <input type="number" placeholder="Amount">
+
+                <button type="submit">
+                    Renew Pass
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- eWallet -->
+    <section id="wallet">
+
+        <div class="container">
+
+            <h2>💰 eWallet</h2>
+
+            <p>
+                Current Wallet Balance:
+                <b>₹500</b>
+            </p>
+
+            <label>Enter Amount</label>
+            <input type="number" placeholder="Enter amount">
+
+            <button onclick="addMoney()">
+                Add Money
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- eTicket -->
+    <section id="ticket">
+
+        <div class="container">
+
+            <h2>🎟️ Buy Bus eTicket</h2>
+
+            <label>From</label>
+            <input type="text" placeholder="Starting location">
+
+            <label>To</label>
+            <input type="text" placeholder="Destination">
+
+            <label>Travel Date</label>
+            <input type="date">
+
+            <label>Number of Tickets</label>
+            <input type="number" min="1" value="1">
+
+            <button onclick="buyTicket()">
+                Buy eTicket
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Route Information -->
+    <section id="route">
+
+        <div class="container">
+
+            <h2>🚌 Route Information</h2>
+
+            <label>From</label>
+            <input type="text" placeholder="Starting point">
+
+            <label>To</label>
+            <input type="text" placeholder="Destination">
+
+            <label>Travel Time</label>
+            <input type="time">
+
+            <label>Route Stopping</label>
+            <textarea
+                placeholder="Example: Stop 1 → Stop 2 → Stop 3 → Stop 4">
+            </textarea>
+
+            <button>
+                Search Route
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- QR Code -->
+    <section>
+
+        <div class="container">
+
+            <h2>📱 Generate QR Code</h2>
+
+            <p>
+                Generate a QR code for your approved bus pass.
+            </p>
+
+            <label>Bus Pass Number</label>
+            <input type="text" placeholder="Enter pass number">
+
+            <button onclick="generateQR()">
+                Generate QR Code
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Admin -->
+    <section id="admin">
+
+        <div class="container">
+
+            <h2>🔐 Admin Login</h2>
+
+            <form onsubmit="adminLogin(); return false;">
+
+                <label>Admin Username</label>
+                <input type="text" placeholder="Enter username" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="Enter password" required>
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <hr>
+
+            <h3>Admin Functions</h3>
+
+            <ul>
+                <li>Manage Student & Route Pass</li>
+                <li>Manage Conductor Login</li>
+                <li>Approve Bus Pass</li>
+                <li>Generate QR Code</li>
+                <li>Create Bus Details</li>
+                <li>Create Route Information</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- Bus Pass Details -->
+    <section>
+
+        <div class="container">
+
+            <h2>📄 Sample Bus Pass</h2>
+
+            <div class="pass">
+
+                <h3>BUS PASS</h3>
+
+                <p><b>Name:</b> Lakshmi Deepthi</p>
+
+                <p><b>Pass Number:</b> BP2026001</p>
+
+                <p><b>User Type:</b> Student</p>
+
+                <p><b>School:</b> ABC College</p>
+
+                <p><b>Route:</b> Chennai → Tambaram</p>
+
+                <p><b>Valid From:</b> 01-08-2026</p>
+
+                <p><b>Valid Until:</b> 31-08-2026</p>
+
+                <p><b>Amount:</b> ₹500</p>
+
+                <button onclick="generateQR()">
+                    Generate QR
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <div class="container">
+
+            <h2>📞 Contact Us</h2>
+
+            <p><b>Email:</b> support@buspass.com</p>
+
+            <p><b>Phone:</b> +91 98765 43210</p>
+
+            <p><b>Address:</b> Chennai, Tamil Nadu</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Bus Pass Management System
+        </p>
+
+        <p>
+            Easy • Fast • Secure
+        </p>
+
+    </footer>
+
+</body>
+</html>
