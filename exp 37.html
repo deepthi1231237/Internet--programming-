@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MyProfessionalShowcase</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* HEADER */
+
+header {
+    background: #182848;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #61dafb;
+}
+
+/* COMMON */
+
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    text-align: center;
+    color: #182848;
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #182848;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: #3b5998;
+}
+
+/* HOME */
+
+#home {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2f7, #ffffff);
+}
+
+.home-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1100px;
+}
+
+.home-text h1 {
+    font-size: 50px;
+    color: #182848;
+    margin-bottom: 10px;
+}
+
+.home-text h2 {
+    color: #3b5998;
+}
+
+.home-text p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    border: 8px solid white;
+    box-shadow: 0 5px 20px #bbb;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px #ddd;
+    font-weight: bold;
+}
+
+/* ABOUT */
+
+.about-box {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px #ddd;
+    line-height: 1.8;
+}
+
+/* PROJECTS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+.project img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project h3 {
+    color: #182848;
+}
+
+.project p {
+    line-height: 1.6;
+}
+
+/* RESUME */
+
+.resume-box {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+.resume-row {
+    border-left: 4px solid #182848;
+    padding: 15px 20px;
+    margin: 20px 0;
+}
+
+/* TIMELINE */
+
+.timeline {
+    max-width: 800px;
+    margin: auto;
+}
+
+.timeline-item {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 5px solid #182848;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.timeline-item h3 {
+    color: #182848;
+}
+
+/* BLOG */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.blog {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+.blog h3 {
+    color: #182848;
+}
+
+/* TESTIMONIAL */
+
+.testimonial {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+.stars {
+    color: #f5a623;
+    font-size: 25px;
+}
+
+/* CONTACT */
+
+.contact-container {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-info {
+    background: #182848;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 120px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #182848;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.social a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .home-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .home-text h1 {
+        font-size: 38px;
+    }
+
+    .project-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+MyProfessionalShowcase
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#resume">Resume</a>
+<a href="#blog">Blog</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="home-content">
+
+<div class="home-text">
+
+<h1>Hello, I'm Alex</h1>
+
+<h2>Computer Science Professional</h2>
+
+<p>
+I am a passionate software developer specializing
+in web development, artificial intelligence,
+data science and modern software solutions.
+</p>
+
+<p>
+I create innovative projects that solve real-world
+problems and deliver meaningful digital experiences.
+</p>
+
+<a href="#portfolio" class="btn">
+View My Work
+</a>
+
+<a href="#contact" class="btn">
+Hire Me
+</a>
+
+</div>
+
+
+<div>
+
+<img
+class="profile-img"
+src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+alt="Professional Profile">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section>
+
+<h2 class="section-title">
+My Key Skills
+</h2>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Python</div>
+<div class="skill">Java</div>
+<div class="skill">C++</div>
+<div class="skill">Data Science</div>
+<div class="skill">Artificial Intelligence</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">MySQL</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">
+About Me
+</h2>
+
+<div class="about-box">
+
+<h3>Professional Background</h3>
+
+<p>
+I am a dedicated technology professional with a
+strong interest in software development and
+emerging technologies.
+</p>
+
+<p>
+My professional journey focuses on developing
+efficient, scalable and user-friendly applications.
+I enjoy learning new technologies and applying them
+to real-world problems.
+</p>
+
+<h3>Education</h3>
+
+<p>
+Bachelor's Degree in Computer Science and Engineering
+</p>
+
+<p>
+My academic experience has helped me build strong
+foundations in programming, databases, algorithms,
+web development and artificial intelligence.
+</p>
+
+<h3>Career Objective</h3>
+
+<p>
+My goal is to work on innovative software solutions
+and continuously improve my technical and
+problem-solving skills.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+
+<h2 class="section-title">
+My Projects
+</h2>
+
+<div class="project-grid">
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d">
+
+<div class="project-content">
+
+<h3>E-Commerce Website</h3>
+
+<p>
+A responsive online shopping platform with
+product catalog, shopping cart and checkout.
+</p>
+
+<p>
+<b>Technologies:</b>
+HTML, CSS, JavaScript
+</p>
+
+<a href="#" class="btn"
+onclick="demo('E-Commerce Website')">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+
+<div class="project-content">
+
+<h3>Data Analytics Dashboard</h3>
+
+<p>
+Interactive dashboard for analyzing business
+data and generating meaningful insights.
+</p>
+
+<p>
+<b>Technologies:</b>
+Python, Data Science, Charts
+</p>
+
+<a href="#" class="btn"
+onclick="demo('Data Analytics Dashboard')">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb">
+
+<div class="project-content">
+
+<h3>AI Prediction System</h3>
+
+<p>
+Machine learning application designed to predict
+outcomes using historical datasets.
+</p>
+
+<p>
+<b>Technologies:</b>
+Python, Machine Learning
+</p>
+
+<a href="#" class="btn"
+onclick="demo('AI Prediction System')">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4">
+
+<div class="project-content">
+
+<h3>Student Management System</h3>
+
+<p>
+Web-based application for managing student
+records, attendance and academic information.
+</p>
+
+<p>
+<b>Technologies:</b>
+Java, MySQL
+</p>
+
+<a href="#" class="btn"
+onclick="demo('Student Management System')">
+Case Study
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1558655146-d09347e92766">
+
+<div class="project-content">
+
+<h3>Smart Event Management</h3>
+
+<p>
+Application for event registration, attendance
+tracking and certificate generation.
+</p>
+
+<p>
+<b>Technologies:</b>
+Java, HTML, CSS
+</p>
+
+<a href="#" class="btn"
+onclick="demo('Smart Event Management')">
+Live Demo
+</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img
+src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+
+<div class="project-content">
+
+<h3>Secure Web Application</h3>
+
+<p>
+Secure web platform implementing authentication,
+authorization and protected user information.
+</p>
+
+<p>
+<b>Technologies:</b>
+JavaScript, MySQL, Security
+</p>
+
+<a href="#" class="btn"
+onclick="demo('Secure Web Application')">
+View Project
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- RESUME -->
+
+<section id="resume">
+
+<h2 class="section-title">
+My Resume
+</h2>
+
+<div class="resume-box">
+
+<h3>Education</h3>
+
+<div class="resume-row">
+
+<h4>Bachelor of Computer Science</h4>
+
+<p>
+Computer Science and Engineering
+</p>
+
+<p>
+2024 - Present
+</p>
+
+</div>
+
+
+<h3>Experience</h3>
+
+<div class="resume-row">
+
+<h4>Software Development Intern</h4>
+
+<p>
+Worked on web applications and software
+development projects.
+</p>
+
+</div>
+
+
+<h3>Technical Skills</h3>
+
+<div class="resume-row">
+
+<p>
+HTML • CSS • JavaScript • Python • Java • C++ •
+SQL • Machine Learning • Data Science
+</p>
+
+</div>
+
+
+<h3>Achievements</h3>
+
+<div class="resume-row">
+
+<p>
+• Participated in technical hackathons
+</p>
+
+<p>
+• Developed multiple academic projects
+</p>
+
+<p>
+• Completed professional technology certifications
+</p>
+
+</div>
+
+
+<button class="btn"
+onclick="downloadResume()">
+
+Download Resume
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CAREER TIMELINE -->
+
+<section>
+
+<h2 class="section-title">
+Career Timeline
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>2021 - Started Programming</h3>
+
+<p>
+Started learning programming fundamentals
+and problem solving.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h3>2023 - Academic Projects</h3>
+
+<p>
+Developed web applications and database
+management projects.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h3>2024 - Software Development</h3>
+
+<p>
+Expanded skills in full-stack development,
+Python and artificial intelligence.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h3>2025 - Professional Growth</h3>
+
+<p>
+Worked on advanced projects and participated
+in technical events and hackathons.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h3>2026 - Future Goals</h3>
+
+<p>
+Looking forward to building innovative
+technology solutions and starting a professional
+software development career.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TESTIMONIALS -->
+
+<section>
+
+<h2 class="section-title">
+Testimonials
+</h2>
+
+<div class="testimonial">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+"An excellent professional with strong technical
+skills and a great ability to solve complex problems."
+</p>
+
+<b>- Client A</b>
+
+</div>
+
+
+<div class="testimonial">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+"Creative, hardworking and highly dedicated.
+A pleasure to work with."
+</p>
+
+<b>- Project Colleague</b>
+
+</div>
+
+</section>
+
+
+<!-- BLOG -->
+
+<section id="blog">
+
+<h2 class="section-title">
+My Blog
+</h2>
+
+<div class="blog-grid">
+
+
+<div class="blog">
+
+<h3>🚀 Learning Web Development</h3>
+
+<p>
+My experience learning HTML, CSS and JavaScript
+and building responsive websites.
+</p>
+
+<button class="btn"
+onclick="readBlog('Web Development')">
+Read More
+</button>
+
+</div>
+
+
+<div class="blog">
+
+<h3>🤖 Introduction to AI</h3>
+
+<p>
+Understanding artificial intelligence and
+machine learning concepts for beginners.
+</p>
+
+<button class="btn"
+onclick="readBlog('Artificial Intelligence')">
+Read More
+</button>
+
+</div>
+
+
+<div class="blog">
+
+<h3>📊 Data Science Journey</h3>
+
+<p>
+How data analysis and visualization can help
+organizations make better decisions.
+</p>
+
+<button class="btn"
+onclick="readBlog('Data Science')">
+Read More
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="section-title">
+Contact Me
+</h2>
+
+<div class="contact-container">
+
+
+<div class="contact-info">
+
+<h2>Let's Work Together</h2>
+
+<p>
+Have a project idea or job opportunity?
+Feel free to contact me.
+</p>
+
+<p>
+📧 Email:
+alex@example.com
+</p>
+
+<p>
+📱 Phone:
++91 98765 43210
+</p>
+
+<p>
+📍 Location:
+Chennai, India
+</p>
+
+<div class="social">
+
+<a href="#">LinkedIn</a>
+
+<a href="#">GitHub</a>
+
+<a href="#">Instagram</a>
+
+</div>
+
+</div>
+
+
+<div class="contact-form">
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input
+type="text"
+id="contactName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+type="email"
+id="contactEmail"
+placeholder="Enter your email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Subject</label>
+
+<input
+type="text"
+id="contactSubject"
+placeholder="Enter subject">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Message</label>
+
+<textarea
+id="contactMessage"
+placeholder="Write your message">
+</textarea>
+
+</div>
+
+
+<button class="btn"
+onclick="sendMessage()">
+
+Send Message
+
+</button>
+
+<div id="messageStatus"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>MyProfessionalShowcase</h2>
+
+<p>
+Professional Portfolio | Skills | Projects | Resume
+</p>
+
+<p>
+© 2026 MyProfessionalShowcase
+</p>
+
+</footer>
+
+
+<script>
+
+/* PROJECT DEMO */
+
+function demo(projectName) {
+
+    alert(
+        projectName +
+        " demo will open here."
+    );
+
+}
+
+
+/* BLOG */
+
+function readBlog(topic) {
+
+    alert(
+        "Opening blog article: " +
+        topic
+    );
+
+}
+
+
+/* CONTACT FORM */
+
+function sendMessage() {
+
+    let name =
+    document.getElementById("contactName").value;
+
+    let email =
+    document.getElementById("contactEmail").value;
+
+    let subject =
+    document.getElementById("contactSubject").value;
+
+    let message =
+    document.getElementById("contactMessage").value;
+
+
+    if(
+        name === "" ||
+        email === "" ||
+        subject === "" ||
+        message === ""
+    ) {
+
+        alert(
+            "Please fill in all fields."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "messageStatus"
+    ).innerHTML =
+
+    "<p style='color:green;font-weight:bold'>" +
+
+    "Message sent successfully! ✅" +
+
+    "</p>";
+
+
+    document.getElementById(
+        "contactName"
+    ).value = "";
+
+    document.getElementById(
+        "contactEmail"
+    ).value = "";
+
+    document.getElementById(
+        "contactSubject"
+    ).value = "";
+
+    document.getElementById(
+        "contactMessage"
+    ).value = "";
+
+}
+
+
+/* RESUME DOWNLOAD */
+
+function downloadResume() {
+
+    let resumeText =
+
+    "MY PROFESSIONAL SHOWCASE\n\n" +
+
+    "Name: Alex\n" +
+
+    "Profession: Computer Science Professional\n\n" +
+
+    "SKILLS\n" +
+
+    "HTML, CSS, JavaScript, Python, Java, C++, " +
+    "Data Science, AI, Machine Learning, MySQL\n\n" +
+
+    "EDUCATION\n" +
+
+    "Bachelor of Computer Science and Engineering\n\n" +
+
+    "EXPERIENCE\n" +
+
+    "Software Development Intern\n\n" +
+
+    "ACHIEVEMENTS\n" +
+
+    "Technical Hackathons and Academic Projects";
+
+
+    let blob =
+    new Blob(
+        [resumeText],
+        {type: "text/plain"}
+    );
+
+
+    let link =
+    document.createElement("a");
+
+    link.href =
+    URL.createObjectURL(blob);
+
+    link.download =
+    "My_Resume.txt";
+
+    link.click();
+
+}
+
+</script>
+
+
+</body>
+</html>
