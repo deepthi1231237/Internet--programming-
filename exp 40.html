@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WanderWorld - Travel Blog</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f5f9fc;
+    color: #333;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(120deg, #0077b6, #00b4d8);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #023e8a;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+h2 {
+    color: #0077b6;
+}
+
+/* HERO */
+
+.hero {
+    height: 420px;
+    background-image:
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+    border-radius: 12px;
+}
+
+.hero-content {
+    background: rgba(0,0,0,0.55);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    color: white;
+    font-size: 38px;
+}
+
+/* BLOG GRID */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 18px;
+}
+
+.blog-content h3 {
+    color: #0077b6;
+}
+
+button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.green {
+    background: #198754;
+}
+
+.red {
+    background: #dc3545;
+}
+
+.orange {
+    background: #f39c12;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ARTICLE */
+
+.article img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.article p {
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* DESTINATIONS */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.destination {
+    padding: 25px;
+    background: #eaf8ff;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.destination:hover {
+    background: #d5f1ff;
+}
+
+/* MAP */
+
+.map {
+    height: 350px;
+    background:
+    url("https://images.unsplash.com/photo-1524666041070-9f8764fd4b5c");
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* RESOURCES */
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.resource {
+    background: #eef9ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* COMMENT */
+
+textarea,
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+textarea {
+    height: 120px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* ABOUT */
+
+.about {
+    text-align: center;
+    padding: 30px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #023e8a;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+    .blog-grid,
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+
+@media(max-width:500px) {
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🌍 WanderWorld</h1>
+
+<p>Explore • Discover • Share Your Journey</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showSection('home')">
+Home
+</button>
+
+<button onclick="showSection('articles')">
+Blog Articles
+</button>
+
+<button onclick="showSection('destinations')">
+Destinations
+</button>
+
+<button onclick="showSection('guides')">
+Travel Guides
+</button>
+
+<button onclick="showSection('resources')">
+Resources
+</button>
+
+<button onclick="showSection('about')">
+About
+</button>
+
+<button onclick="showSection('comments')">
+Comments
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h2>Discover the World</h2>
+
+<p>
+Travel stories, beautiful destinations,
+food experiences and useful travel tips.
+</p>
+
+<button onclick="showSection('articles')">
+Explore Articles
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>✨ Featured Travel Stories</h2>
+
+<div class="blog-grid">
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+
+<div class="blog-content">
+
+<h3>Exploring Paris</h3>
+
+<p>
+Discover the beautiful streets,
+landmarks and culture of Paris.
+</p>
+
+<button onclick="openArticle('paris')">
+Read More
+</button>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4">
+
+<div class="blog-content">
+
+<h3>Bali Adventure</h3>
+
+<p>
+Explore beaches, temples and
+beautiful landscapes in Bali.
+</p>
+
+<button onclick="openArticle('bali')">
+Read More
+</button>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e">
+
+<div class="blog-content">
+
+<h3>Japan Journey</h3>
+
+<p>
+Experience Japanese culture,
+food and unforgettable places.
+</p>
+
+<button onclick="openArticle('japan')">
+Read More
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BLOG ARTICLES -->
+
+<section id="articles" class="hidden">
+
+<div class="card">
+
+<h2>📝 Travel Blog Articles</h2>
+
+<div class="blog-grid">
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+
+<div class="blog-content">
+
+<h3>Paris Travel Guide</h3>
+
+<p>
+Paris is known for its architecture,
+art, food and romantic atmosphere.
+</p>
+
+<p>📍 Europe</p>
+
+<button onclick="openArticle('paris')">
+Read Article
+</button>
+
+<button class="orange"
+        onclick="sharePost('Paris Travel Guide')">
+
+Share
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4">
+
+<div class="blog-content">
+
+<h3>Bali Travel Guide</h3>
+
+<p>
+Bali offers beautiful beaches,
+temples and exciting adventures.
+</p>
+
+<p>📍 Indonesia</p>
+
+<button onclick="openArticle('bali')">
+Read Article
+</button>
+
+<button class="orange"
+        onclick="sharePost('Bali Travel Guide')">
+
+Share
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e">
+
+<div class="blog-content">
+
+<h3>Japan Travel Guide</h3>
+
+<p>
+Discover ancient temples,
+modern cities and delicious food.
+</p>
+
+<p>📍 Asia</p>
+
+<button onclick="openArticle('japan')">
+Read Article
+</button>
+
+<button class="orange"
+        onclick="sharePost('Japan Travel Guide')">
+
+Share
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ARTICLE DETAILS -->
+
+<section id="article" class="hidden">
+
+<div class="card article">
+
+<button onclick="showSection('articles')">
+← Back
+</button>
+
+<h2 id="articleTitle">
+Paris Travel Guide
+</h2>
+
+<img id="articleImage"
+src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+
+
+<h3>🌎 Travel Story</h3>
+
+<p id="articleText">
+
+Paris is one of the most beautiful cities
+in the world. Visitors can explore the
+Eiffel Tower, Louvre Museum and many
+historic streets.
+
+The city is famous for its architecture,
+cafes, fashion and delicious food.
+
+Walking around the city is one of the
+best ways to experience its culture.
+
+</p>
+
+
+<h3>💡 Travel Tips</h3>
+
+<ul id="travelTips">
+
+<li>Carry comfortable walking shoes.</li>
+
+<li>Keep important documents safe.</li>
+
+<li>Try local food.</li>
+
+<li>Plan popular attractions in advance.</li>
+
+</ul>
+
+
+<button class="orange"
+        onclick="sharePost('Travel Article')">
+
+📤 Share Post
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- DESTINATIONS -->
+
+<section id="destinations" class="hidden">
+
+<div class="card">
+
+<h2>📍 Travel Destinations</h2>
+
+<div class="destination-grid">
+
+<div class="destination"
+     onclick="destinationInfo('Paris')">
+
+<h3>🇫🇷 Paris</h3>
+
+<p>France</p>
+
+</div>
+
+
+<div class="destination"
+     onclick="destinationInfo('Bali')">
+
+<h3>🏝️ Bali</h3>
+
+<p>Indonesia</p>
+
+</div>
+
+
+<div class="destination"
+     onclick="destinationInfo('Tokyo')">
+
+<h3>🇯🇵 Tokyo</h3>
+
+<p>Japan</p>
+
+</div>
+
+
+<div class="destination"
+     onclick="destinationInfo('New York')">
+
+<h3>🗽 New York</h3>
+
+<p>USA</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🗺️ Visited Destinations Map</h2>
+
+<div class="map">
+
+<div class="map-box">
+
+<h3>📍 My Travel Map</h3>
+
+<p>
+Paris • Bali • Tokyo • New York
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TRAVEL GUIDES -->
+
+<section id="guides" class="hidden">
+
+<div class="card">
+
+<h2>📖 Travel Guides</h2>
+
+<div class="resource-grid">
+
+
+<div class="resource">
+
+<h3>🎒 Packing Guide</h3>
+
+<ul>
+
+<li>Passport</li>
+<li>Clothes</li>
+<li>Travel documents</li>
+<li>First aid kit</li>
+<li>Charger</li>
+
+</ul>
+
+</div>
+
+
+<div class="resource">
+
+<h3>💰 Budget Travel</h3>
+
+<ul>
+
+<li>Compare hotels</li>
+<li>Use public transport</li>
+<li>Plan meals</li>
+<li>Book flights early</li>
+
+</ul>
+
+</div>
+
+
+<div class="resource">
+
+<h3>🛡️ Travel Safety</h3>
+
+<ul>
+
+<li>Keep documents secure</li>
+<li>Save emergency numbers</li>
+<li>Avoid unsafe areas</li>
+<li>Keep valuables safe</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESOURCES -->
+
+<section id="resources" class="hidden">
+
+<div class="card">
+
+<h2>🧰 Travel Resources</h2>
+
+<div class="resource-grid">
+
+
+<div class="resource">
+
+<h3>✈️ Flight Booking</h3>
+
+<p>
+Compare flight prices and choose
+the best travel schedule.
+</p>
+
+<button onclick="resourceMessage('Flight booking')">
+Explore
+</button>
+
+</div>
+
+
+<div class="resource">
+
+<h3>🏨 Hotel Booking</h3>
+
+<p>
+Find suitable hotels based on
+your destination and budget.
+</p>
+
+<button onclick="resourceMessage('Hotel booking')">
+Explore
+</button>
+
+</div>
+
+
+<div class="resource">
+
+<h3>🎒 Packing List</h3>
+
+<p>
+Use our checklist to prepare
+everything needed for your journey.
+</p>
+
+<button onclick="resourceMessage('Packing list')">
+View List
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="hidden">
+
+<div class="card about">
+
+<h2>👋 About WanderWorld</h2>
+
+<p>
+
+WanderWorld is a travel blog created
+to share exciting journeys, travel stories,
+destination guides and useful tips with
+travel enthusiasts around the world.
+
+</p>
+
+<p>
+
+Our goal is to inspire people to explore
+new places, experience different cultures
+and create unforgettable memories.
+
+</p>
+
+<h3>❤️ Travel • Explore • Experience</h3>
+
+</div>
+
+</section>
+
+
+<!-- COMMENTS -->
+
+<section id="comments" class="hidden">
+
+<div class="card">
+
+<h2>💬 Reader Comments</h2>
+
+<label>Your Name</label>
+
+<input type="text"
+       id="commentName"
+       placeholder="Enter your name">
+
+
+<label>Your Comment</label>
+
+<textarea id="commentText"
+          placeholder="Share your travel thoughts..."></textarea>
+
+
+<button onclick="submitComment()">
+Submit Comment
+</button>
+
+
+<div id="commentMessage"></div>
+
+
+<h3>Recent Comments</h3>
+
+<div id="commentList">
+
+<p>
+<b>Arun:</b>
+Amazing travel blog! Very useful information.
+</p>
+
+<p>
+<b>Priya:</b>
+I loved the Bali travel guide.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>🌍 WanderWorld</h3>
+
+<p>
+Travel • Explore • Discover
+</p>
+
+<p>
+Follow us:
+📘 Facebook | 📸 Instagram | 🐦 Twitter
+</p>
+
+<p>
+© 2026 WanderWorld Travel Blog
+</p>
+
+</footer>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+    let sections = [
+        "home",
+        "articles",
+        "article",
+        "destinations",
+        "guides",
+        "resources",
+        "about",
+        "comments"
+    ];
+
+    sections.forEach(function(id) {
+
+        document.getElementById(id)
+            .classList.add("hidden");
+
+    });
+
+
+    document.getElementById(section)
+        .classList.remove("hidden");
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* OPEN ARTICLE */
+
+function openArticle(type) {
+
+    showSection("article");
+
+
+    let title =
+        document.getElementById("articleTitle");
+
+    let image =
+        document.getElementById("articleImage");
+
+    let text =
+        document.getElementById("articleText");
+
+    let tips =
+        document.getElementById("travelTips");
+
+
+    if(type === "paris") {
+
+        title.innerText =
+            "Paris Travel Guide 🇫🇷";
+
+        image.src =
+            "https://images.unsplash.com/photo-1502602898657-3e91760cbb34";
+
+        text.innerText =
+            "Paris is a beautiful destination famous for the Eiffel Tower, Louvre Museum, historic streets, cafes and world-famous cuisine. Visitors can enjoy walking through the city and discovering its culture.";
+
+        tips.innerHTML =
+            "<li>Visit the Eiffel Tower.</li>" +
+            "<li>Explore the Louvre Museum.</li>" +
+            "<li>Try authentic French cuisine.</li>" +
+            "<li>Use public transportation.</li>";
+
+    }
+
+
+    if(type === "bali") {
+
+        title.innerText =
+            "Bali Travel Guide 🏝️";
+
+        image.src =
+            "https://images.unsplash.com/photo-1537996194471-e657df975ab4";
+
+        text.innerText =
+            "Bali is a tropical destination famous for beautiful beaches, temples, rice terraces and adventure activities. It is a perfect destination for nature and culture lovers.";
+
+        tips.innerHTML =
+            "<li>Visit Bali temples.</li>" +
+            "<li>Explore the rice terraces.</li>" +
+            "<li>Enjoy the beaches.</li>" +
+            "<li>Try local Indonesian food.</li>";
+
+    }
+
+
+    if(type === "japan") {
+
+        title.innerText =
+            "Japan Travel Guide 🇯🇵";
+
+        image.src =
+            "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e";
+
+        text.innerText =
+            "Japan combines ancient traditions with modern technology. Visitors can explore temples, gardens, modern cities and enjoy delicious Japanese cuisine.";
+
+        tips.innerHTML =
+            "<li>Visit traditional temples.</li>" +
+            "<li>Try Japanese food.</li>" +
+            "<li>Use the railway system.</li>" +
+            "<li>Respect local customs.</li>";
+
+    }
+
+}
+
+
+/* DESTINATION */
+
+function destinationInfo(place) {
+
+    alert(
+        "You selected " +
+        place +
+        ". Explore our travel articles and guides for more information."
+    );
+
+}
+
+
+/* COMMENTS */
+
+function submitComment() {
+
+    let name =
+        document.getElementById("commentName")
+        .value;
+
+    let comment =
+        document.getElementById("commentText")
+        .value;
+
+
+    if(name.trim() === "" ||
+       comment.trim() === "") {
+
+        alert("Please enter your name and comment.");
+
+        return;
+
+    }
+
+
+    let paragraph =
+        document.createElement("p");
+
+
+    paragraph.innerHTML =
+        "<b>" +
+        name +
+        ":</b> " +
+        comment;
+
+
+    document.getElementById("commentList")
+        .appendChild(paragraph);
+
+
+    document.getElementById("commentName")
+        .value = "";
+
+    document.getElementById("commentText")
+        .value = "";
+
+
+    document.getElementById("commentMessage")
+        .innerHTML =
+
+        "<p style='color:green'>" +
+        "Comment submitted successfully!" +
+        "</p>";
+
+}
+
+
+/* SOCIAL MEDIA SHARE */
+
+function sharePost(title) {
+
+    if(navigator.share) {
+
+        navigator.share({
+
+            title: title,
+
+            text:
+            "Check out this travel article on WanderWorld!"
+
+        });
+
+    }
+
+    else {
+
+        alert(
+            title +
+            " shared successfully! 📤"
+        );
+
+    }
+
+}
+
+
+/* RESOURCES */
+
+function resourceMessage(resource) {
+
+    alert(
+        resource +
+        " section opened successfully!"
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
