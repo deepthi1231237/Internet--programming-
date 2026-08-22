@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LearnWell Tuition Centre</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        header {
+            background-color: #283593;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        nav {
+            background-color: #1a237e;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        section {
+            padding: 35px;
+        }
+
+        .home {
+            background-color: #e8eaf6;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .home h2 {
+            color: #283593;
+            font-size: 35px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #bbb;
+        }
+
+        h2 {
+            text-align: center;
+            color: #283593;
+        }
+
+        h3 {
+            color: #3949ab;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 250px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #bbb;
+        }
+
+        .card h3 {
+            color: #283593;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #283593;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a237e;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #283593;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f3f9;
+        }
+
+        .announcement {
+            background-color: #fff8e1;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .online {
+            background-color: #e8f5e9;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        .offline {
+            background-color: #ffebee;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+
+    <script>
+
+        function registerStudent() {
+            alert("Student Registration Successful!");
+        }
+
+        function registerTeacher() {
+            alert("Teacher Registration Successful!");
+        }
+
+        function submitRequest() {
+            alert("Maintenance Request Submitted Successfully!");
+        }
+
+        function adminLogin() {
+            alert("Admin Login Successful!");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <h1>📚 LearnWell Tuition Centre</h1>
+
+        <p>
+            Learn Today • Succeed Tomorrow
+        </p>
+
+    </header>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#announcements">Announcements</a>
+
+        <a href="#courses">Courses</a>
+
+        <a href="#registration">Registration</a>
+
+        <a href="#students">Students</a>
+
+        <a href="#teachers">Teachers</a>
+
+        <a href="#about">About Us</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <!-- Home -->
+
+    <section id="home" class="home">
+
+        <h2>Welcome to LearnWell</h2>
+
+        <p>
+            A trusted tuition centre providing quality education
+            through online and offline classes.
+        </p>
+
+        <button onclick="location.href='#registration'">
+            Register Now
+        </button>
+
+    </section>
+
+
+    <!-- Announcements -->
+
+    <section id="announcements">
+
+        <div class="container">
+
+            <h2>📢 Announcements</h2>
+
+            <div class="announcement">
+
+                <h3>Class Schedule</h3>
+
+                <p>
+                    New class schedules for the upcoming month
+                    have been published.
+                </p>
+
+            </div>
+
+            <div class="announcement">
+
+                <h3>Special Event</h3>
+
+                <p>
+                    LearnWell is conducting a special
+                    doubt-clearing session this weekend.
+                </p>
+
+            </div>
+
+            <div class="announcement">
+
+                <h3>Important Notice</h3>
+
+                <p>
+                    Students are requested to pay their fees
+                    before the due date.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Courses -->
+
+    <section id="courses">
+
+        <div class="container">
+
+            <h2>📖 Course Offerings</h2>
+
+            <table>
+
+                <tr>
+                    <th>Subject</th>
+                    <th>Duration</th>
+                    <th>Mode</th>
+                    <th>Fees</th>
+                </tr>
+
+                <tr>
+                    <td>Mathematics</td>
+                    <td>6 Months</td>
+                    <td>Online / Offline</td>
+                    <td>₹6000</td>
+                </tr>
+
+                <tr>
+                    <td>Physics</td>
+                    <td>6 Months</td>
+                    <td>Online / Offline</td>
+                    <td>₹7000</td>
+                </tr>
+
+                <tr>
+                    <td>Chemistry</td>
+                    <td>6 Months</td>
+                    <td>Online / Offline</td>
+                    <td>₹7000</td>
+                </tr>
+
+                <tr>
+                    <td>Computer Science</td>
+                    <td>4 Months</td>
+                    <td>Online / Offline</td>
+                    <td>₹5000</td>
+                </tr>
+
+                <tr>
+                    <td>English</td>
+                    <td>3 Months</td>
+                    <td>Online / Offline</td>
+                    <td>₹4000</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Online / Offline -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>💻 Tuition Availability</h2>
+
+            <div class="cards">
+
+                <div class="online">
+
+                    <h3>💻 Online Tuition</h3>
+
+                    <p>
+                        Attend classes from anywhere using
+                        online learning facilities.
+                    </p>
+
+                    <b>Available: Monday - Saturday</b>
+
+                </div>
+
+                <div class="offline">
+
+                    <h3>🏫 Offline Tuition</h3>
+
+                    <p>
+                        Attend classes directly at
+                        LearnWell Tuition Centre.
+                    </p>
+
+                    <b>Available: Monday - Saturday</b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Registration -->
+
+    <section id="registration">
+
+        <div class="container">
+
+            <h2>📝 Online Student Registration</h2>
+
+            <form onsubmit="registerStudent(); return false;">
+
+                <label>Student Name</label>
+
+                <input type="text"
+                       placeholder="Enter student name"
+                       required>
+
+
+                <label>Date of Birth</label>
+
+                <input type="date"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter email"
+                       required>
+
+
+                <label>Phone Number</label>
+
+                <input type="tel"
+                       placeholder="Enter phone number"
+                       required>
+
+
+                <label>Class</label>
+
+                <select>
+
+                    <option>Class 8</option>
+                    <option>Class 9</option>
+                    <option>Class 10</option>
+                    <option>Class 11</option>
+                    <option>Class 12</option>
+
+                </select>
+
+
+                <label>Subject</label>
+
+                <select>
+
+                    <option>Mathematics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Computer Science</option>
+                    <option>English</option>
+
+                </select>
+
+
+                <label>Tuition Mode</label>
+
+                <select>
+
+                    <option>Online</option>
+                    <option>Offline</option>
+
+                </select>
+
+
+                <button type="submit">
+                    Register Student
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Teacher Registration -->
+
+    <section id="teachers">
+
+        <div class="container">
+
+            <h2>👨‍🏫 Teacher Registration</h2>
+
+            <form onsubmit="registerTeacher(); return false;">
+
+                <label>Teacher Name</label>
+
+                <input type="text"
+                       placeholder="Enter teacher name"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter email"
+                       required>
+
+
+                <label>Phone Number</label>
+
+                <input type="tel"
+                       placeholder="Enter phone number"
+                       required>
+
+
+                <label>Subject</label>
+
+                <select>
+
+                    <option>Mathematics</option>
+                    <option>Physics</option>
+                    <option>Chemistry</option>
+                    <option>Computer Science</option>
+                    <option>English</option>
+
+                </select>
+
+
+                <label>Experience</label>
+
+                <input type="text"
+                       placeholder="Example: 5 years">
+
+
+                <button type="submit">
+                    Register Teacher
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Student Details -->
+
+    <section id="students">
+
+        <div class="container">
+
+            <h2>👨‍🎓 Student Details</h2>
+
+            <table>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Fees Paid</th>
+                    <th>Attendance</th>
+                </tr>
+
+                <tr>
+                    <td>Rahul</td>
+                    <td>Mathematics</td>
+                    <td>₹6000</td>
+                    <td>95%</td>
+                </tr>
+
+                <tr>
+                    <td>Anjali</td>
+                    <td>Physics</td>
+                    <td>₹7000</td>
+                    <td>90%</td>
+                </tr>
+
+                <tr>
+                    <td>Arun</td>
+                    <td>Chemistry</td>
+                    <td>₹7000</td>
+                    <td>92%</td>
+                </tr>
+
+            </table>
+
+            <h3>Monthly Report</h3>
+
+            <p>
+                Monthly student performance and fee reports
+                can be maintained by the administrator.
+            </p>
+
+            <h3>Yearly Report</h3>
+
+            <p>
+                Yearly academic and payment reports can be
+                generated for students.
+            </p>
+
+            <h3>Feedback Report</h3>
+
+            <p>
+                Students and parents can provide feedback
+                about classes and teachers.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Maintenance Requests -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🔧 Maintenance Request</h2>
+
+            <p>
+                Students and parents can report issues
+                or request assistance.
+            </p>
+
+            <form onsubmit="submitRequest(); return false;">
+
+                <label>Name</label>
+
+                <input type="text"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <label>Request Type</label>
+
+                <select>
+
+                    <option>Technical Issue</option>
+                    <option>Fee Issue</option>
+                    <option>Class Issue</option>
+                    <option>Teacher Issue</option>
+                    <option>Other</option>
+
+                </select>
+
+
+                <label>Description</label>
+
+                <textarea rows="5"
+                          placeholder="Describe your issue">
+                </textarea>
+
+
+                <button type="submit">
+                    Submit Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Admin -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🔐 Admin Login</h2>
+
+            <form onsubmit="adminLogin(); return false;">
+
+                <label>Username</label>
+
+                <input type="text"
+                       placeholder="Enter username"
+                       required>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Enter password"
+                       required>
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <hr>
+
+            <h3>Admin Functions</h3>
+
+            <ul>
+
+                <li>Manage Student Details</li>
+
+                <li>Manage Teacher Details</li>
+
+                <li>Manage Course Offerings</li>
+
+                <li>Manage Fees</li>
+
+                <li>View Monthly Reports</li>
+
+                <li>View Yearly Reports</li>
+
+                <li>View Feedback Reports</li>
+
+                <li>Manage Announcements</li>
+
+                <li>Manage Maintenance Requests</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Us -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2>🏫 About LearnWell</h2>
+
+            <p>
+                LearnWell Tuition Centre is dedicated to providing
+                quality education to students through experienced
+                teachers and effective learning methods.
+            </p>
+
+            <h3>Our Mission</h3>
+
+            <p>
+                Our mission is to help students understand concepts,
+                improve their academic performance and achieve their
+                educational goals.
+            </p>
+
+            <h3>Our Teaching Staff</h3>
+
+            <p>
+                Our teaching team consists of experienced and
+                dedicated teachers who support students throughout
+                their learning journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2>📞 Contact Us</h2>
+
+            <p>
+                <b>Email:</b> support@learnwell.com
+            </p>
+
+            <p>
+                <b>Phone:</b> +91 98765 43210
+            </p>
+
+            <p>
+                <b>Address:</b> Chennai, Tamil Nadu, India
+            </p>
+
+            <h3>Send an Enquiry</h3>
+
+            <form>
+
+                <label>Name</label>
+
+                <input type="text"
+                       placeholder="Enter your name">
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter your email">
+
+
+                <label>Message</label>
+
+                <textarea rows="5"
+                          placeholder="Enter your enquiry">
+                </textarea>
+
+
+                <button type="submit">
+                    Send Enquiry
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 LearnWell Tuition Centre
+        </p>
+
+        <p>
+            Quality Education • Better Future
+        </p>
+
+    </footer>
+
+</body>
+</html>

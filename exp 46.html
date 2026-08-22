@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Phone Bill Payment</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        header {
+            background-color: #1565c0;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #0d47a1;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        section {
+            padding: 35px;
+        }
+
+        .home {
+            text-align: center;
+            background-color: #e3f2fd;
+            padding: 60px 20px;
+        }
+
+        .home h2 {
+            color: #1565c0;
+            font-size: 35px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #aaa;
+        }
+
+        h2 {
+            color: #1565c0;
+            text-align: center;
+        }
+
+        h3 {
+            color: #1976d2;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 220px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #aaa;
+        }
+
+        .card h3 {
+            color: #1565c0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #aaa;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1565c0;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f7ff;
+        }
+
+        .bill {
+            background-color: #e3f2fd;
+            border-left: 5px solid #1565c0;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            border: 2px solid green;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 5px solid orange;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+
+    <script>
+
+        function registerCustomer() {
+            alert("Customer Registration Successful!");
+        }
+
+        function customerLogin() {
+            alert("Customer Login Successful!");
+        }
+
+        function adminLogin() {
+            alert("Admin Login Successful!");
+        }
+
+        function calculateFine() {
+
+            var amount = 1000;
+            var fine = 10;
+
+            var lastDate = new Date("2026-08-10");
+            var today = new Date();
+
+            if (today > lastDate) {
+                document.getElementById("fine").innerHTML =
+                    "Fine Amount: ₹" + fine;
+            } else {
+                document.getElementById("fine").innerHTML =
+                    "Fine Amount: ₹0";
+            }
+        }
+
+        function makePayment() {
+
+            var amount =
+                document.getElementById("paymentAmount").value;
+
+            var method =
+                document.getElementById("paymentMethod").value;
+
+            if (amount == "") {
+                alert("Please enter payment amount.");
+                return;
+            }
+
+            document.getElementById("successMessage").style.display =
+                "block";
+
+            document.getElementById("receiptAmount").innerHTML =
+                "Amount Paid: ₹" + amount;
+
+            document.getElementById("receiptMethod").innerHTML =
+                "Payment Method: " + method;
+
+            alert("Payment Successful! Receipt has been generated.");
+        }
+
+        function showPaymentDetails() {
+
+            var method =
+                document.getElementById("paymentMethod").value;
+
+            document.getElementById("cardDetails").style.display =
+                "none";
+
+            document.getElementById("bankDetails").style.display =
+                "none";
+
+            document.getElementById("walletDetails").style.display =
+                "none";
+
+            if (method == "Credit/Debit Card") {
+                document.getElementById("cardDetails").style.display =
+                    "block";
+            }
+
+            if (method == "Net Banking") {
+                document.getElementById("bankDetails").style.display =
+                    "block";
+            }
+
+            if (method == "Mobile Wallet") {
+                document.getElementById("walletDetails").style.display =
+                    "block";
+            }
+        }
+
+        function recurringPayment() {
+            alert("Recurring Payment Enabled Successfully!");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>📱 Online Phone Bill Payment</h1>
+
+        <p>
+            Fast • Secure • Easy Bill Payments
+        </p>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#home">Home</a>
+        <a href="#register">Register</a>
+        <a href="#login">Login</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#payment">Pay Bill</a>
+        <a href="#history">History</a>
+        <a href="#admin">Admin</a>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section id="home" class="home">
+
+        <h2>Welcome to Online Phone Bill Payment</h2>
+
+        <p>
+            Manage your monthly phone bills,
+            make secure payments and view your payment history.
+        </p>
+
+        <button onclick="location.href='#payment'">
+            Pay Your Bill
+        </button>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section>
+
+        <h2>Our Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>📄 Bill Details</h3>
+
+                <p>
+                    View current bill,
+                    due date and outstanding amount.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>💳 Online Payment</h3>
+
+                <p>
+                    Pay using card,
+                    net banking or wallet.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🔄 Recurring Payment</h3>
+
+                <p>
+                    Automatically pay your
+                    monthly phone bill.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🔔 Notifications</h3>
+
+                <p>
+                    Receive reminders about
+                    upcoming due dates.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER REGISTRATION -->
+
+    <section id="register">
+
+        <div class="container">
+
+            <h2>👤 Customer Registration</h2>
+
+            <form onsubmit="registerCustomer(); return false;">
+
+                <label>Customer Name</label>
+
+                <input type="text"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <label>Mobile Number</label>
+
+                <input type="tel"
+                       placeholder="Enter mobile number"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       placeholder="Enter email"
+                       required>
+
+
+                <label>Address</label>
+
+                <textarea
+                    placeholder="Enter your address">
+                </textarea>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Create password"
+                       required>
+
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER LOGIN -->
+
+    <section id="login">
+
+        <div class="container">
+
+            <h2>🔐 Customer Login</h2>
+
+            <form onsubmit="customerLogin(); return false;">
+
+                <label>Mobile Number / Email</label>
+
+                <input type="text"
+                       placeholder="Enter mobile or email"
+                       required>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Enter password"
+                       required>
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER DASHBOARD -->
+
+    <section id="dashboard">
+
+        <div class="container">
+
+            <h2>📊 Customer Dashboard</h2>
+
+            <div class="bill">
+
+                <h3>Current Phone Bill</h3>
+
+                <p>
+                    <b>Customer Name:</b>
+                    Lakshmi Deepthi
+                </p>
+
+                <p>
+                    <b>Mobile Number:</b>
+                    9876543210
+                </p>
+
+                <p>
+                    <b>Bill Month:</b>
+                    August 2026
+                </p>
+
+                <p>
+                    <b>Bill Amount:</b>
+                    ₹1000
+                </p>
+
+                <p>
+                    <b>Due Date:</b>
+                    10-08-2026
+                </p>
+
+                <p>
+                    <b>Outstanding Amount:</b>
+                    ₹1000
+                </p>
+
+            </div>
+
+
+            <div class="warning">
+
+                <h3>🔔 Payment Reminder</h3>
+
+                <p>
+                    Please pay your bill before the due date
+                    to avoid additional charges.
+                </p>
+
+            </div>
+
+            <button onclick="location.href='#payment'">
+                Pay Bill
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINE CALCULATION -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>💰 Fine Calculation</h2>
+
+            <p>
+                Last Date of Payment:
+                <b>10-08-2026</b>
+            </p>
+
+            <p>
+                Fine is ₹10 for each date after the
+                last payment date.
+            </p>
+
+            <button onclick="calculateFine()">
+                Calculate Fine
+            </button>
+
+            <h3 id="fine"></h3>
+
+        </div>
+
+    </section>
+
+
+    <!-- BILL PAYMENT -->
+
+    <section id="payment">
+
+        <div class="container">
+
+            <h2>💳 Pay Phone Bill</h2>
+
+            <label>Payment Amount</label>
+
+            <input type="number"
+                   id="paymentAmount"
+                   placeholder="Enter amount"
+                   value="1000">
+
+
+            <label>Payment Method</label>
+
+            <select id="paymentMethod"
+                    onchange="showPaymentDetails()">
+
+                <option>Credit/Debit Card</option>
+
+                <option>Net Banking</option>
+
+                <option>Mobile Wallet</option>
+
+            </select>
+
+
+            <!-- CARD -->
+
+            <div id="cardDetails">
+
+                <h3>Credit / Debit Card Details</h3>
+
+                <label>Card Number</label>
+
+                <input type="text"
+                       placeholder="XXXX XXXX XXXX XXXX">
+
+
+                <label>Card Holder Name</label>
+
+                <input type="text"
+                       placeholder="Enter card holder name">
+
+
+                <label>Expiry Date</label>
+
+                <input type="month">
+
+
+                <label>CVV</label>
+
+                <input type="password"
+                       placeholder="CVV">
+
+            </div>
+
+
+            <!-- NET BANKING -->
+
+            <div id="bankDetails"
+                 style="display:none;">
+
+                <h3>Net Banking Details</h3>
+
+                <label>Select Bank</label>
+
+                <select>
+
+                    <option>State Bank of India</option>
+                    <option>HDFC Bank</option>
+                    <option>ICICI Bank</option>
+                    <option>Axis Bank</option>
+
+                </select>
+
+
+                <label>Username</label>
+
+                <input type="text"
+                       placeholder="Bank username">
+
+            </div>
+
+
+            <!-- MOBILE WALLET -->
+
+            <div id="walletDetails"
+                 style="display:none;">
+
+                <h3>Mobile Wallet</h3>
+
+                <label>Wallet</label>
+
+                <select>
+
+                    <option>Google Pay</option>
+                    <option>PhonePe</option>
+                    <option>Paytm</option>
+
+                </select>
+
+
+                <label>Mobile Number</label>
+
+                <input type="tel"
+                       placeholder="Enter wallet number">
+
+            </div>
+
+
+            <button onclick="makePayment()">
+                Confirm & Pay
+            </button>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div id="successMessage"
+                 class="success">
+
+                <h2>✅ Payment Successful!</h2>
+
+                <p>
+                    Your phone bill payment has been
+                    completed successfully.
+                </p>
+
+                <p id="receiptAmount"></p>
+
+                <p id="receiptMethod"></p>
+
+                <p>
+                    Receipt has been emailed to
+                    your registered email address.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECURRING PAYMENT -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🔄 Recurring Payment</h2>
+
+            <p>
+                Enable recurring payments to automatically
+                pay your monthly phone bill.
+            </p>
+
+            <label>Enable Automatic Payment</label>
+
+            <select>
+
+                <option>Yes</option>
+                <option>No</option>
+
+            </select>
+
+            <label>Preferred Payment Method</label>
+
+            <select>
+
+                <option>Credit/Debit Card</option>
+                <option>Net Banking</option>
+                <option>Mobile Wallet</option>
+
+            </select>
+
+            <button onclick="recurringPayment()">
+                Enable Recurring Payment
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- BILLING HISTORY -->
+
+    <section id="history">
+
+        <div class="container">
+
+            <h2>📜 Billing History</h2>
+
+            <table>
+
+                <tr>
+                    <th>Month</th>
+                    <th>Bill Amount</th>
+                    <th>Payment Date</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>July 2026</td>
+                    <td>₹950</td>
+                    <td>05-07-2026</td>
+                    <td>Paid</td>
+                </tr>
+
+                <tr>
+                    <td>June 2026</td>
+                    <td>₹1100</td>
+                    <td>08-06-2026</td>
+                    <td>Paid</td>
+                </tr>
+
+                <tr>
+                    <td>May 2026</td>
+                    <td>₹900</td>
+                    <td>07-05-2026</td>
+                    <td>Paid</td>
+                </tr>
+
+                <tr>
+                    <td>August 2026</td>
+                    <td>₹1000</td>
+                    <td>-</td>
+                    <td>Pending</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADMIN -->
+
+    <section id="admin">
+
+        <div class="container">
+
+            <h2>👨‍💼 Admin Login</h2>
+
+            <form onsubmit="adminLogin(); return false;">
+
+                <label>Admin Username</label>
+
+                <input type="text"
+                       placeholder="Enter username"
+                       required>
+
+
+                <label>Password</label>
+
+                <input type="password"
+                       placeholder="Enter password"
+                       required>
+
+
+                <button type="submit">
+                    Admin Login
+                </button>
+
+            </form>
+
+
+            <hr>
+
+            <h3>Admin Functions</h3>
+
+            <ul>
+
+                <li>Login Page</li>
+
+                <li>
+                    Update Monthly Bill Duration
+                </li>
+
+                <li>
+                    Set Start Date and End Date
+                </li>
+
+                <li>
+                    Set Last Date of Payment
+                </li>
+
+                <li>
+                    Calculate Late Payment Fine
+                </li>
+
+                <li>
+                    Manage Customer Accounts
+                </li>
+
+                <li>
+                    View Payment Details
+                </li>
+
+                <li>
+                    View Billing Reports
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>🔔 Notifications</h2>
+
+            <div class="warning">
+
+                <h3>Upcoming Due Date</h3>
+
+                <p>
+                    Your next phone bill payment is due
+                    on 10-09-2026.
+                </p>
+
+            </div>
+
+            <div class="warning">
+
+                <h3>Payment Reminder</h3>
+
+                <p>
+                    Remember to pay your bill before
+                    the due date to avoid fines.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section>
+
+        <div class="container">
+
+            <h2>📞 Contact Us</h2>
+
+            <p>
+                <b>Email:</b>
+                support@phonebill.com
+            </p>
+
+            <p>
+                <b>Phone:</b>
+                +91 98765 43210
+            </p>
+
+            <p>
+                <b>Customer Support:</b>
+                Monday - Saturday
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Online Phone Bill Payment System
+        </p>
+
+        <p>
+            Secure • Fast • Reliable
+        </p>
+
+    </footer>
+
+</body>
+</html>
