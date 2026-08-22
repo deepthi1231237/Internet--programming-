@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Tax Calculation System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f5f9;
+            margin: 0;
+        }
+
+        header {
+            background: #173f73;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #ccc;
+        }
+
+        h2 {
+            color: #173f73;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            background: #173f73;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .red {
+            background: #d9534f;
+        }
+
+        .gray {
+            background: gray;
+        }
+
+        .login {
+            max-width: 450px;
+            margin: 50px auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .result {
+            background: #eef4fb;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .result h3 {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .result p {
+            font-size: 22px;
+            font-weight: bold;
+            color: #173f73;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+        }
+
+        th {
+            background: #173f73;
+            color: white;
+        }
+
+        .tip {
+            background: #fff4c2;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid orange;
+        }
+
+        @media(max-width:700px) {
+            .grid,
+            .results {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Income Tax Calculation System</h1>
+    <p>Employee Tax Calculation and Reporting Portal</p>
+</header>
+
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage" class="container">
+
+    <div class="box login">
+
+        <h2>Employee Login</h2>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter Gmail">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button onclick="login()" style="width:100%;">
+            Login
+        </button>
+
+        <p style="text-align:center;">OR</p>
+
+        <button onclick="googleLogin()" style="width:100%; background:#db4437;">
+            Login with Google / Gmail
+        </button>
+
+        <hr>
+
+        <h3>Admin Login</h3>
+
+        <label>Admin Username</label>
+        <input type="text" id="adminUser" placeholder="admin">
+
+        <label>Admin Password</label>
+        <input type="password" id="adminPass" placeholder="admin123">
+
+        <button onclick="adminLogin()" style="width:100%;">
+            Admin Login
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- EMPLOYEE PAGE -->
+
+<div id="employeePage" class="hidden">
+
+    <div class="container">
+
+        <div class="box">
+
+            <button class="red" onclick="logout()">
+                Logout
+            </button>
+
+            <h2>Employee Financial Details</h2>
+
+            <div class="grid">
+
+                <div>
+                    <label>Employee Name</label>
+                    <input type="text" id="name">
+                </div>
+
+                <div>
+                    <label>Employee ID</label>
+                    <input type="text" id="empId">
+                </div>
+
+                <div>
+                    <label>Monthly Gross Salary (₹)</label>
+                    <input type="number" id="salary">
+                </div>
+
+                <div>
+                    <label>Monthly Bonus / Taxable Income (₹)</label>
+                    <input type="number" id="bonus">
+                </div>
+
+                <div>
+                    <label>Monthly House Rent Allowance (₹)</label>
+                    <input type="number" id="hra">
+                </div>
+
+                <div>
+                    <label>Monthly Pension Contribution (₹)</label>
+                    <input type="number" id="pension">
+                </div>
+
+                <div>
+                    <label>Monthly Health Insurance (₹)</label>
+                    <input type="number" id="health">
+                </div>
+
+            </div>
+
+            <button onclick="calculateTax()">
+                Calculate Tax
+            </button>
+
+            <button class="gray" onclick="clearData()">
+                Clear
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="result" class="box hidden">
+
+            <h2>Tax Calculation Result</h2>
+
+            <div class="results">
+
+                <div class="result">
+                    <h3>Annual Gross Income</h3>
+                    <p id="grossResult">₹0</p>
+                </div>
+
+                <div class="result">
+                    <h3>Total Deductions</h3>
+                    <p id="deductionResult">₹0</p>
+                </div>
+
+                <div class="result">
+                    <h3>Net Taxable Income</h3>
+                    <p id="taxableResult">₹0</p>
+                </div>
+
+                <div class="result">
+                    <h3>Total Tax</h3>
+                    <p id="taxResult">₹0</p>
+                </div>
+
+                <div class="result">
+                    <h3>Income After Tax</h3>
+                    <p id="netResult">₹0</p>
+                </div>
+
+                <div class="result">
+                    <h3>Tax Rate</h3>
+                    <p id="rateResult">0%</p>
+                </div>
+
+            </div>
+
+
+            <h2>Detailed Tax Breakdown</h2>
+
+            <table>
+
+                <tr>
+                    <th>Particular</th>
+                    <th>Amount</th>
+                </tr>
+
+                <tr>
+                    <td>Annual Gross Pay</td>
+                    <td id="bGross">₹0</td>
+                </tr>
+
+                <tr>
+                    <td>Annual HRA Deduction</td>
+                    <td id="bHra">₹0</td>
+                </tr>
+
+                <tr>
+                    <td>Standard Deduction</td>
+                    <td id="bStandard">₹50,000</td>
+                </tr>
+
+                <tr>
+                    <td>Pension Deduction</td>
+                    <td id="bPension">₹0</td>
+                </tr>
+
+                <tr>
+                    <td>Health Insurance Deduction</td>
+                    <td id="bHealth">₹0</td>
+                </tr>
+
+                <tr>
+                    <td><b>Net Taxable Income</b></td>
+                    <td><b id="bTaxable">₹0</b></td>
+                </tr>
+
+                <tr>
+                    <td><b>Total Tax Liability</b></td>
+                    <td><b id="bTax">₹0</b></td>
+                </tr>
+
+            </table>
+
+
+            <div class="tip">
+
+                <h3>Tax Saving Tips</h3>
+
+                <ul>
+                    <li>Use eligible pension contributions.</li>
+                    <li>Maintain valid health insurance documents.</li>
+                    <li>Keep salary and investment records.</li>
+                    <li>Check eligible deductions before filing tax returns.</li>
+                    <li>Review your tax calculation carefully.</li>
+                </ul>
+
+            </div>
+
+            <button class="green" onclick="window.print()">
+                Download / Print Report
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ADMIN PAGE -->
+
+<div id="adminPage" class="hidden">
+
+    <div class="container">
+
+        <div class="box">
+
+            <button class="red" onclick="logout()">
+                Logout
+            </button>
+
+            <h2>Admin Dashboard</h2>
+
+            <p>
+                Admin can modify the values used by the tax calculation system.
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <h2>Tax Deduction Settings</h2>
+
+            <label>Standard Deduction</label>
+            <input type="number" id="standard" value="50000">
+
+            <label>Maximum Pension Deduction</label>
+            <input type="number" id="maxPension" value="150000">
+
+            <label>Maximum Health Insurance Deduction</label>
+            <input type="number" id="maxHealth" value="50000">
+
+            <button class="green" onclick="saveSettings()">
+                Save Settings
+            </button>
+
+        </div>
+
+
+        <div class="box">
+
+            <h2>Tax Slabs</h2>
+
+            <table>
+
+                <tr>
+                    <th>Taxable Income</th>
+                    <th>Tax</th>
+                </tr>
+
+                <tr>
+                    <td>₹0 – ₹2,50,000</td>
+                    <td>Nil</td>
+                </tr>
+
+                <tr>
+                    <td>₹2,50,001 – ₹5,00,000</td>
+                    <td>5% of amount above ₹2,50,000</td>
+                </tr>
+
+                <tr>
+                    <td>₹5,00,001 – ₹10,00,000</td>
+                    <td>₹12,500 + 20% above ₹5,00,000</td>
+                </tr>
+
+                <tr>
+                    <td>Above ₹10,00,000</td>
+                    <td>₹1,12,500 + 30% above ₹10,00,000</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // Default values
+
+    let standardDeduction = 50000;
+    let maxPension = 150000;
+    let maxHealth = 50000;
+
+
+    // Employee login
+
+    function login() {
+
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        if (email === "" || password === "") {
+
+            alert("Please enter email and password.");
+
+            return;
+        }
+
+        document.getElementById("loginPage")
+            .classList.add("hidden");
+
+        document.getElementById("employeePage")
+            .classList.remove("hidden");
+    }
+
+
+    // Gmail demo login
+
+    function googleLogin() {
+
+        alert("Google/Gmail authentication successful (Demo).");
+
+        document.getElementById("loginPage")
+            .classList.add("hidden");
+
+        document.getElementById("employeePage")
+            .classList.remove("hidden");
+    }
+
+
+    // Admin login
+
+    function adminLogin() {
+
+        let username =
+            document.getElementById("adminUser").value;
+
+        let password =
+            document.getElementById("adminPass").value;
+
+        if (username === "admin" &&
+            password === "admin123") {
+
+            document.getElementById("loginPage")
+                .classList.add("hidden");
+
+            document.getElementById("adminPage")
+                .classList.remove("hidden");
+
+        } else {
+
+            alert("Invalid admin username or password.");
+
+        }
+    }
+
+
+    // Tax calculation
+
+    function calculateTax() {
+
+        let salary =
+            Number(document.getElementById("salary").value) || 0;
+
+        let bonus =
+            Number(document.getElementById("bonus").value) || 0;
+
+        let hra =
+            Number(document.getElementById("hra").value) || 0;
+
+        let pension =
+            Number(document.getElementById("pension").value) || 0;
+
+        let health =
+            Number(document.getElementById("health").value) || 0;
+
+
+        if (salary <= 0) {
+
+            alert("Please enter monthly gross salary.");
+
+            return;
+        }
+
+
+        // Annual income
+
+        let annualSalary = salary * 12;
+
+        let annualBonus = bonus * 12;
+
+        let annualGross =
+            annualSalary + annualBonus;
+
+
+        // Annual deductions
+
+        let annualHra = hra * 12;
+
+        let annualPension =
+            Math.min(pension * 12, maxPension);
+
+        let annualHealth =
+            Math.min(health * 12, maxHealth);
+
+
+        // Formula from question
+
+        let taxableIncome =
+            annualGross
+            - annualHra
+            - standardDeduction
+            - annualPension
+            - annualHealth;
+
+
+        if (taxableIncome < 0) {
+
+            taxableIncome = 0;
+
+        }
+
+
+        // Tax calculation
+
+        let tax = 0;
+
+
+        if (taxableIncome <= 250000) {
+
+            tax = 0;
+
+        }
+
+        else if (taxableIncome <= 500000) {
+
+            tax =
+                0.05 *
+                (taxableIncome - 250000);
+
+        }
+
+        else if (taxableIncome <= 1000000) {
+
+            tax =
+                12500 +
+                0.20 *
+                (taxableIncome - 500000);
+
+        }
+
+        else {
+
+            tax =
+                112500 +
+                0.30 *
+                (taxableIncome - 1000000);
+
+        }
+
+
+        let totalDeductions =
+            annualHra +
+            standardDeduction +
+            annualPension +
+            annualHealth;
+
+
+        let netIncome =
+            annualGross - tax;
+
+
+        let taxRate =
+            (tax / annualGross) * 100;
+
+
+        // Display result
+
+        document.getElementById("result")
+            .classList.remove("hidden");
+
+
+        document.getElementById("grossResult")
+            .innerHTML = money(annualGross);
+
+        document.getElementById("deductionResult")
+            .innerHTML = money(totalDeductions);
+
+        document.getElementById("taxableResult")
+            .innerHTML = money(taxableIncome);
+
+        document.getElementById("taxResult")
+            .innerHTML = money(tax);
+
+        document.getElementById("netResult")
+            .innerHTML = money(netIncome);
+
+        document.getElementById("rateResult")
+            .innerHTML = taxRate.toFixed(2) + "%";
+
+
+        // Detailed breakdown
+
+        document.getElementById("bGross")
+            .innerHTML = money(annualGross);
+
+        document.getElementById("bHra")
+            .innerHTML = money(annualHra);
+
+        document.getElementById("bStandard")
+            .innerHTML = money(standardDeduction);
+
+        document.getElementById("bPension")
+            .innerHTML = money(annualPension);
+
+        document.getElementById("bHealth")
+            .innerHTML = money(annualHealth);
+
+        document.getElementById("bTaxable")
+            .innerHTML = money(taxableIncome);
+
+        document.getElementById("bTax")
+            .innerHTML = money(tax);
+
+
+        document.getElementById("result")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    // Currency format
+
+    function money(value) {
+
+        return "₹" +
+            value.toLocaleString("en-IN", {
+                maximumFractionDigits: 2
+            });
+
+    }
+
+
+    // Save admin settings
+
+    function saveSettings() {
+
+        standardDeduction =
+            Number(document.getElementById("standard").value);
+
+        maxPension =
+            Number(document.getElementById("maxPension").value);
+
+        maxHealth =
+            Number(document.getElementById("maxHealth").value);
+
+        alert("Tax settings updated successfully.");
+
+    }
+
+
+    // Clear employee data
+
+    function clearData() {
+
+        document.getElementById("name").value = "";
+        document.getElementById("empId").value = "";
+        document.getElementById("salary").value = "";
+        document.getElementById("bonus").value = "";
+        document.getElementById("hra").value = "";
+        document.getElementById("pension").value = "";
+        document.getElementById("health").value = "";
+
+        document.getElementById("result")
+            .classList.add("hidden");
+
+    }
+
+
+    // Logout
+
+    function logout() {
+
+        document.getElementById("employeePage")
+            .classList.add("hidden");
+
+        document.getElementById("adminPage")
+            .classList.add("hidden");
+
+        document.getElementById("loginPage")
+            .classList.remove("hidden");
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Recipe Book</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #fff8f0;
+    color: #333;
+}
+
+/* HEADER */
+
+header {
+    background: #d35400;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px #ccc;
+}
+
+nav button {
+    background: #d35400;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #a04000;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+h2 {
+    color: #d35400;
+}
+
+/* SEARCH */
+
+.search-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* RECIPE CARDS */
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 18px;
+}
+
+.recipe-content h3 {
+    color: #d35400;
+}
+
+button {
+    background: #d35400;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.green {
+    background: #198754;
+}
+
+.blue {
+    background: #0d6efd;
+}
+
+.red {
+    background: #dc3545;
+}
+
+.orange {
+    background: #f39c12;
+}
+
+.hidden {
+    display: none;
+}
+
+/* RECIPE DETAILS */
+
+.recipe-detail img {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.ingredient {
+    padding: 8px;
+    background: #fff3e6;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+/* RATING */
+
+.stars {
+    font-size: 28px;
+    color: #f39c12;
+}
+
+/* MEAL PLANNER */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+th {
+    background: #d35400;
+    color: white;
+}
+
+/* SHOPPING LIST */
+
+.shopping-item {
+    background: #fff3e6;
+    padding: 12px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* FORM */
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* LOGIN */
+
+.login-box {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🍳 Digital Recipe Book</h1>
+
+<p>Explore • Cook • Share • Enjoy</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showSection('home')">
+Home
+</button>
+
+<button onclick="showSection('recipes')">
+Recipes
+</button>
+
+<button onclick="showSection('favorites')">
+Favorites
+</button>
+
+<button onclick="showSection('planner')">
+Meal Planner
+</button>
+
+<button onclick="showSection('shopping')">
+Shopping List
+</button>
+
+<button onclick="showSection('upload')">
+Upload Recipe
+</button>
+
+<button onclick="showSection('login')">
+Login
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="card">
+
+<h2>Welcome to Digital Recipe Book 👨‍🍳</h2>
+
+<p>
+Discover delicious recipes from different cuisines,
+save your favorite recipes, plan your meals and create
+your own shopping list.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Popular Recipes</h2>
+
+<div class="recipe-grid">
+
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+
+<div class="recipe-content">
+
+<h3>Masala Dosa</h3>
+
+<p>South Indian crispy dosa with potato masala.</p>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('dosa')">
+View Recipe
+</button>
+
+<button class="orange"
+        onclick="addFavorite('Masala Dosa')">
+
+♡ Favorite
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1563379091339-03246963d96c">
+
+<div class="recipe-content">
+
+<h3>Chicken Biryani</h3>
+
+<p>Delicious aromatic Indian rice dish.</p>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('biryani')">
+View Recipe
+</button>
+
+<button class="orange"
+        onclick="addFavorite('Chicken Biryani')">
+
+♡ Favorite
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="recipe-card">
+
+<img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601">
+
+<div class="recipe-content">
+
+<h3>Italian Pasta</h3>
+
+<p>Creamy and delicious Italian pasta.</p>
+
+<div class="stars">
+⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('pasta')">
+View Recipe
+</button>
+
+<button class="orange"
+        onclick="addFavorite('Italian Pasta')">
+
+♡ Favorite
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RECIPES -->
+
+<section id="recipes" class="hidden">
+
+<div class="card">
+
+<h2>Search & Filter Recipes</h2>
+
+<div class="search-box">
+
+<input type="text"
+       id="searchInput"
+       placeholder="Search recipe..."
+       onkeyup="searchRecipes()">
+
+
+<select id="cuisineFilter"
+        onchange="searchRecipes()">
+
+<option value="all">All Cuisines</option>
+<option value="indian">Indian</option>
+<option value="italian">Italian</option>
+<option value="chinese">Chinese</option>
+
+</select>
+
+
+<select id="dietFilter"
+        onchange="searchRecipes()">
+
+<option value="all">All Diets</option>
+<option value="vegetarian">Vegetarian</option>
+<option value="nonveg">Non-Vegetarian</option>
+
+</select>
+
+
+<select id="difficultyFilter"
+        onchange="searchRecipes()">
+
+<option value="all">All Difficulty</option>
+<option value="easy">Easy</option>
+<option value="medium">Medium</option>
+<option value="hard">Hard</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="recipe-grid"
+     id="recipeList">
+
+
+<div class="recipe-card"
+     data-name="masala dosa"
+     data-cuisine="indian"
+     data-diet="vegetarian"
+     data-difficulty="medium">
+
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+
+<div class="recipe-content">
+
+<h3>Masala Dosa</h3>
+
+<p>Indian | Vegetarian | Medium</p>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('dosa')">
+View Recipe
+</button>
+
+</div>
+
+</div>
+
+
+<div class="recipe-card"
+     data-name="chicken biryani"
+     data-cuisine="indian"
+     data-diet="nonveg"
+     data-difficulty="hard">
+
+<img src="https://images.unsplash.com/photo-1563379091339-03246963d96c">
+
+<div class="recipe-content">
+
+<h3>Chicken Biryani</h3>
+
+<p>Indian | Non-Vegetarian | Hard</p>
+
+<div class="stars">
+⭐⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('biryani')">
+View Recipe
+</button>
+
+</div>
+
+</div>
+
+
+<div class="recipe-card"
+     data-name="italian pasta"
+     data-cuisine="italian"
+     data-diet="vegetarian"
+     data-difficulty="easy">
+
+<img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601">
+
+<div class="recipe-content">
+
+<h3>Italian Pasta</h3>
+
+<p>Italian | Vegetarian | Easy</p>
+
+<div class="stars">
+⭐⭐⭐⭐
+</div>
+
+<button onclick="viewRecipe('pasta')">
+View Recipe
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- RECIPE DETAILS -->
+
+<section id="details" class="hidden">
+
+<div class="card recipe-detail">
+
+<button onclick="showSection('recipes')">
+← Back to Recipes
+</button>
+
+<h2 id="recipeTitle">
+Masala Dosa
+</h2>
+
+<img id="recipeImage"
+     src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+
+
+<h3>🍽️ Ingredients</h3>
+
+<div id="ingredients">
+
+<div class="ingredient">
+2 cups rice
+</div>
+
+<div class="ingredient">
+1 cup urad dal
+</div>
+
+<div class="ingredient">
+3 potatoes
+</div>
+
+<div class="ingredient">
+Onion and spices
+</div>
+
+</div>
+
+
+<h3>👨‍🍳 Step-by-Step Instructions</h3>
+
+<ol id="instructions">
+
+<li>Soak rice and urad dal.</li>
+
+<li>Grind them into a smooth batter.</li>
+
+<li>Ferment the batter overnight.</li>
+
+<li>Prepare potato masala.</li>
+
+<li>Spread batter on a hot pan.</li>
+
+<li>Add potato masala and serve hot.</li>
+
+</ol>
+
+
+<h3>Serving Size</h3>
+
+<select id="servings"
+        onchange="changeServing()">
+
+<option value="2">2 People</option>
+<option value="4">4 People</option>
+<option value="6">6 People</option>
+
+</select>
+
+<p id="servingMessage">
+Ingredients shown for 2 people.
+</p>
+
+
+<h3>⭐ Rate this Recipe</h3>
+
+<select id="rating">
+
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
+
+</select>
+
+<br>
+
+<textarea id="comment"
+          placeholder="Write your comment..."></textarea>
+
+<button onclick="submitComment()">
+Submit Review
+</button>
+
+<div id="commentMessage"></div>
+
+
+<h3>💬 Customer Reviews</h3>
+
+<div id="comments">
+
+<p>
+<b>Priya:</b> Very tasty and easy to prepare!
+</p>
+
+<p>
+<b>Rahul:</b> Excellent recipe. Loved it!
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAVORITES -->
+
+<section id="favorites" class="hidden">
+
+<div class="card">
+
+<h2>❤️ My Favorite Recipes</h2>
+
+<div id="favoriteList">
+
+<p>No favorite recipes yet.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- UPLOAD RECIPE -->
+
+<section id="upload" class="hidden">
+
+<div class="card">
+
+<h2>📤 Upload Your Recipe</h2>
+
+<label>Recipe Name</label>
+
+<input type="text"
+       id="uploadName"
+       placeholder="Enter recipe name">
+
+<label>Cuisine</label>
+
+<select id="uploadCuisine">
+
+<option>Indian</option>
+<option>Italian</option>
+<option>Chinese</option>
+<option>Mexican</option>
+
+</select>
+
+<label>Diet</label>
+
+<select id="uploadDiet">
+
+<option>Vegetarian</option>
+<option>Non-Vegetarian</option>
+
+</select>
+
+<label>Ingredients</label>
+
+<textarea id="uploadIngredients"
+          placeholder="Enter ingredients"></textarea>
+
+<label>Cooking Instructions</label>
+
+<textarea id="uploadInstructions"
+          placeholder="Enter step-by-step instructions"></textarea>
+
+<button onclick="uploadRecipe()">
+Upload Recipe
+</button>
+
+<div id="uploadMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- MEAL PLANNER -->
+
+<section id="planner" class="hidden">
+
+<div class="card">
+
+<h2>📅 Weekly Meal Planner</h2>
+
+<table>
+
+<tr>
+
+<th>Day</th>
+<th>Breakfast</th>
+<th>Lunch</th>
+<th>Dinner</th>
+
+</tr>
+
+<tr>
+
+<td>Monday</td>
+
+<td>
+<input value="Idli">
+</td>
+
+<td>
+<input value="Rice & Sambar">
+</td>
+
+<td>
+<input value="Chapati">
+</td>
+
+</tr>
+
+<tr>
+
+<td>Tuesday</td>
+
+<td>
+<input value="Dosa">
+</td>
+
+<td>
+<input value="Biryani">
+</td>
+
+<td>
+<input value="Salad">
+</td>
+
+</tr>
+
+<tr>
+
+<td>Wednesday</td>
+
+<td>
+<input value="Upma">
+</td>
+
+<td>
+<input value="Curd Rice">
+</td>
+
+<td>
+<input value="Pasta">
+</td>
+
+</tr>
+
+<tr>
+
+<td>Thursday</td>
+
+<td>
+<input value="Pongal">
+</td>
+
+<td>
+<input value="Vegetable Rice">
+</td>
+
+<td>
+<input value="Chapati">
+</td>
+
+</tr>
+
+<tr>
+
+<td>Friday</td>
+
+<td>
+<input value="Bread">
+</td>
+
+<td>
+<input value="Lemon Rice">
+</td>
+
+<td>
+<input value="Dosa">
+</td>
+
+</tr>
+
+</table>
+
+<button class="green"
+        onclick="savePlanner()">
+
+Save Meal Plan
+
+</button>
+
+<div id="plannerMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- SHOPPING LIST -->
+
+<section id="shopping" class="hidden">
+
+<div class="card">
+
+<h2>🛒 Shopping List</h2>
+
+<input type="text"
+       id="shoppingInput"
+       placeholder="Enter ingredient">
+
+<button onclick="addShoppingItem()">
+Add Item
+</button>
+
+
+<div id="shoppingList">
+
+<div class="shopping-item">
+Rice
+</div>
+
+<div class="shopping-item">
+Tomato
+</div>
+
+<div class="shopping-item">
+Onion
+</div>
+
+<div class="shopping-item">
+Milk
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section id="login" class="hidden">
+
+<div class="card login-box">
+
+<h2>👤 User Login</h2>
+
+<label>Email</label>
+
+<input type="email"
+       id="loginEmail"
+       placeholder="Enter email">
+
+<label>Password</label>
+
+<input type="password"
+       id="loginPassword"
+       placeholder="Enter password">
+
+<button onclick="loginUser()">
+Login
+</button>
+
+<button class="blue"
+        onclick="googleLogin()">
+
+Login with Google
+
+</button>
+
+<div id="loginMessage"></div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* SHOW SECTION */
+
+function showSection(section) {
+
+    let sections = [
+        "home",
+        "recipes",
+        "details",
+        "favorites",
+        "upload",
+        "planner",
+        "shopping",
+        "login"
+    ];
+
+    sections.forEach(function(id) {
+
+        document.getElementById(id)
+            .classList.add("hidden");
+
+    });
+
+
+    document.getElementById(section)
+        .classList.remove("hidden");
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* VIEW RECIPE */
+
+function viewRecipe(type) {
+
+    showSection("details");
+
+
+    let title =
+        document.getElementById("recipeTitle");
+
+    let image =
+        document.getElementById("recipeImage");
+
+    let ingredients =
+        document.getElementById("ingredients");
+
+    let instructions =
+        document.getElementById("instructions");
+
+
+    if(type === "dosa") {
+
+        title.innerText = "Masala Dosa";
+
+        image.src =
+        "https://images.unsplash.com/photo-1601050690597-df0568f70950";
+
+        ingredients.innerHTML =
+
+        "<div class='ingredient'>2 cups rice</div>" +
+        "<div class='ingredient'>1 cup urad dal</div>" +
+        "<div class='ingredient'>3 potatoes</div>" +
+        "<div class='ingredient'>Onion and spices</div>";
+
+        instructions.innerHTML =
+
+        "<li>Soak rice and urad dal.</li>" +
+        "<li>Grind into smooth batter.</li>" +
+        "<li>Ferment overnight.</li>" +
+        "<li>Prepare potato masala.</li>" +
+        "<li>Spread batter on a hot pan.</li>" +
+        "<li>Add masala and serve.</li>";
+
+    }
+
+
+    if(type === "biryani") {
+
+        title.innerText = "Chicken Biryani";
+
+        image.src =
+        "https://images.unsplash.com/photo-1563379091339-03246963d96c";
+
+        ingredients.innerHTML =
+
+        "<div class='ingredient'>2 cups basmati rice</div>" +
+        "<div class='ingredient'>500g chicken</div>" +
+        "<div class='ingredient'>Onion</div>" +
+        "<div class='ingredient'>Tomato</div>" +
+        "<div class='ingredient'>Biryani spices</div>";
+
+        instructions.innerHTML =
+
+        "<li>Wash and soak rice.</li>" +
+        "<li>Marinate chicken with spices.</li>" +
+        "<li>Cook onions and tomatoes.</li>" +
+        "<li>Add chicken and cook.</li>" +
+        "<li>Add rice and water.</li>" +
+        "<li>Cook until rice is soft.</li>";
+
+    }
+
+
+    if(type === "pasta") {
+
+        title.innerText = "Italian Pasta";
+
+        image.src =
+        "https://images.unsplash.com/photo-1473093295043-cdd812d0e601";
+
+        ingredients.innerHTML =
+
+        "<div class='ingredient'>200g pasta</div>" +
+        "<div class='ingredient'>Tomato sauce</div>" +
+        "<div class='ingredient'>Cheese</div>" +
+        "<div class='ingredient'>Garlic</div>" +
+        "<div class='ingredient'>Italian herbs</div>";
+
+        instructions.innerHTML =
+
+        "<li>Boil pasta.</li>" +
+        "<li>Prepare tomato sauce.</li>" +
+        "<li>Add garlic and herbs.</li>" +
+        "<li>Mix pasta with sauce.</li>" +
+        "<li>Add cheese.</li>" +
+        "<li>Serve hot.</li>";
+
+    }
+
+}
+
+
+/* SEARCH RECIPES */
+
+function searchRecipes() {
+
+    let search =
+        document.getElementById("searchInput")
+        .value.toLowerCase();
+
+    let cuisine =
+        document.getElementById("cuisineFilter")
+        .value;
+
+    let diet =
+        document.getElementById("dietFilter")
+        .value;
+
+    let difficulty =
+        document.getElementById("difficultyFilter")
+        .value;
+
+
+    let cards =
+        document.querySelectorAll(".recipe-card");
+
+
+    cards.forEach(function(card) {
+
+        let name =
+            card.dataset.name;
+
+        let cardCuisine =
+            card.dataset.cuisine;
+
+        let cardDiet =
+            card.dataset.diet;
+
+        let cardDifficulty =
+            card.dataset.difficulty;
+
+
+        let matchSearch =
+            name.includes(search);
+
+        let matchCuisine =
+            cuisine === "all" ||
+            cardCuisine === cuisine;
+
+        let matchDiet =
+            diet === "all" ||
+            cardDiet === diet;
+
+        let matchDifficulty =
+            difficulty === "all" ||
+            cardDifficulty === difficulty;
+
+
+        if(matchSearch &&
+           matchCuisine &&
+           matchDiet &&
+           matchDifficulty) {
+
+            card.style.display = "block";
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* FAVORITES */
+
+let favorites = [];
+
+
+function addFavorite(name) {
+
+    if(!favorites.includes(name)) {
+
+        favorites.push(name);
+
+    }
+
+
+    updateFavorites();
+
+    alert(name + " added to favorites!");
+
+}
+
+
+function updateFavorites() {
+
+    let list =
+        document.getElementById("favoriteList");
+
+
+    if(favorites.length === 0) {
+
+        list.innerHTML =
+        "<p>No favorite recipes yet.</p>";
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    favorites.forEach(function(item) {
+
+        let div =
+            document.createElement("div");
+
+        div.className =
+            "shopping-item";
+
+        div.innerHTML =
+            "❤️ " + item;
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* SERVING SIZE */
+
+function changeServing() {
+
+    let serving =
+        document.getElementById("servings")
+        .value;
+
+
+    document.getElementById("servingMessage")
+        .innerText =
+
+        "Ingredients adjusted for " +
+        serving +
+        " people.";
+
+}
+
+
+/* COMMENT */
+
+function submitComment() {
+
+    let comment =
+        document.getElementById("comment")
+        .value;
+
+    let rating =
+        document.getElementById("rating")
+        .value;
+
+
+    if(comment.trim() === "") {
+
+        alert("Please enter a comment.");
+
+        return;
+
+    }
+
+
+    let div =
+        document.createElement("p");
+
+
+    let stars = "";
+
+    for(let i = 0; i < rating; i++) {
+
+        stars += "⭐";
+
+    }
+
+
+    div.innerHTML =
+        "<b>You:</b> " +
+        stars +
+        "<br>" +
+        comment;
+
+
+    document.getElementById("comments")
+        .appendChild(div);
+
+
+    document.getElementById("comment")
+        .value = "";
+
+
+    document.getElementById("commentMessage")
+        .innerHTML =
+
+        "<p style='color:green'>" +
+        "Review submitted successfully!" +
+        "</p>";
+
+}
+
+
+/* UPLOAD RECIPE */
+
+function uploadRecipe() {
+
+    let name =
+        document.getElementById("uploadName")
+        .value;
+
+
+    if(name.trim() === "") {
+
+        alert("Please enter recipe name.");
+
+        return;
+
+    }
+
+
+    document.getElementById("uploadMessage")
+        .innerHTML =
+
+        "<p style='color:green'>" +
+        "Recipe uploaded successfully!" +
+        "</p>";
+
+
+    document.getElementById("uploadName")
+        .value = "";
+
+}
+
+
+/* MEAL PLANNER */
+
+function savePlanner() {
+
+    document.getElementById("plannerMessage")
+        .innerHTML =
+
+        "<p style='color:green'>" +
+        "Weekly meal plan saved successfully!" +
+        "</p>";
+
+}
+
+
+/* SHOPPING LIST */
+
+function addShoppingItem() {
+
+    let item =
+        document.getElementById("shoppingInput")
+        .value;
+
+
+    if(item.trim() === "") {
+
+        alert("Enter an ingredient.");
+
+        return;
+
+    }
+
+
+    let div =
+        document.createElement("div");
+
+    div.className =
+        "shopping-item";
+
+    div.innerText =
+        "🛒 " + item;
+
+
+    document.getElementById("shoppingList")
+        .appendChild(div);
+
+
+    document.getElementById("shoppingInput")
+        .value = "";
+
+}
+
+
+/* LOGIN */
+
+function loginUser() {
+
+    let email =
+        document.getElementById("loginEmail")
+        .value;
+
+    let password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    if(email === "" || password === "") {
+
+        alert("Please enter email and password.");
+
+        return;
+
+    }
+
+
+    document.getElementById("loginMessage")
+        .innerHTML =
+
+        "<p style='color:green'>" +
+        "Login successful! Welcome to Digital Recipe Book." +
+        "</p>";
+
+}
+
+
+/* GOOGLE LOGIN */
+
+function googleLogin() {
+
+    alert(
+        "Google login successful! (Demo)"
+    );
+
+}
+
+</script>
+
+</body>
+</html>

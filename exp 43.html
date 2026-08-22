@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Placement Examination System</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f3f6fa;
+    color: #222;
+}
+
+header {
+    background: #173f73;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.navbar {
+    background: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px #ccc;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+.login-box {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+h2 {
+    color: #173f73;
+}
+
+h3 {
+    color: #173f73;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    background: #173f73;
+    margin-top: 15px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.green {
+    background: #198754;
+}
+
+.red {
+    background: #dc3545;
+}
+
+.orange {
+    background: #f39c12;
+}
+
+.gray {
+    background: #6c757d;
+}
+
+.blue {
+    background: #0d6efd;
+}
+
+.hidden {
+    display: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat {
+    background: #eef3fa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.stat h3 {
+    font-size: 15px;
+}
+
+.stat p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #173f73;
+}
+
+.question {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.option {
+    display: block;
+    margin: 12px 0;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.option:hover {
+    background: #eef3fa;
+}
+
+.timer {
+    background: #dc3545;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.pass {
+    color: green;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.fail {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background: #173f73;
+    color: white;
+}
+
+.feedback {
+    background: #fff7d6;
+    border-left: 5px solid orange;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+@media(max-width:700px) {
+
+    .grid,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+
+<h1>Online Placement Examination System</h1>
+
+<p>Secure Online Examination & Result Management</p>
+
+</header>
+
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage" class="container">
+
+<div class="card login-box">
+
+<h2>Login Portal</h2>
+
+<label>Login As</label>
+
+<select id="loginType" onchange="changeLogin()">
+
+<option value="candidate">Candidate</option>
+<option value="admin">Admin</option>
+
+</select>
+
+
+<!-- CANDIDATE LOGIN -->
+
+<div id="candidateLogin">
+
+<h3>Candidate Login</h3>
+
+<label>Candidate ID</label>
+
+<input type="text"
+       id="candidateId"
+       placeholder="Enter Candidate ID">
+
+<label>Password</label>
+
+<input type="password"
+       id="candidatePassword"
+       placeholder="Enter Password">
+
+<button onclick="candidateLogin()">
+Candidate Login
+</button>
+
+</div>
+
+
+<!-- ADMIN LOGIN -->
+
+<div id="adminLogin" class="hidden">
+
+<h3>Admin Login</h3>
+
+<label>Username</label>
+
+<input type="text"
+       id="adminUsername"
+       placeholder="admin">
+
+<label>Password</label>
+
+<input type="password"
+       id="adminPassword"
+       placeholder="admin123">
+
+<button onclick="adminLogin()">
+Admin Login
+</button>
+
+<p>
+Demo Admin:<br>
+Username: <b>admin</b><br>
+Password: <b>admin123</b>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CANDIDATE DASHBOARD -->
+
+<div id="candidatePage" class="hidden">
+
+<div class="navbar">
+
+<b>Candidate Dashboard</b>
+
+<button class="red"
+        onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- CANDIDATE DETAILS -->
+
+<div class="card">
+
+<h2>Welcome Candidate</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>Exam</h3>
+
+<p>Placement Test</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Duration</h3>
+
+<p>10 Min</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Total Questions</h3>
+
+<p>5</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Pass Mark</h3>
+
+<p>50%</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SCHEDULE -->
+
+<div class="card">
+
+<h2>Available Exam Schedule</h2>
+
+<table>
+
+<tr>
+
+<th>Exam</th>
+<th>Date</th>
+<th>Time</th>
+<th>Action</th>
+
+</tr>
+
+<tr>
+
+<td>Placement Aptitude Test</td>
+
+<td>22-Aug-2026</td>
+
+<td>10:00 AM</td>
+
+<td>
+
+<button class="green"
+        onclick="startExam()">
+
+Start Exam
+
+</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- EXAM -->
+
+<div id="examSection" class="hidden">
+
+<div class="card">
+
+<div class="timer">
+
+Time Remaining:
+<span id="timer">10:00</span>
+
+</div>
+
+<h2>Placement Examination</h2>
+
+
+<!-- QUESTION 1 -->
+
+<div class="question">
+
+<h3>
+1. Which language is mainly used for web page structure?
+</h3>
+
+<label class="option">
+
+<input type="radio"
+       name="q1"
+       value="A">
+
+A. Python
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q1"
+       value="B">
+
+B. HTML
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q1"
+       value="C">
+
+C. Java
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q1"
+       value="D">
+
+D. C++
+
+</label>
+
+</div>
+
+
+<!-- QUESTION 2 -->
+
+<div class="question">
+
+<h3>
+2. Which data structure follows FIFO?
+</h3>
+
+<label class="option">
+
+<input type="radio"
+       name="q2"
+       value="A">
+
+A. Stack
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q2"
+       value="B">
+
+B. Tree
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q2"
+       value="C">
+
+C. Queue
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q2"
+       value="D">
+
+D. Graph
+
+</label>
+
+</div>
+
+
+<!-- QUESTION 3 -->
+
+<div class="question">
+
+<h3>
+3. Which SQL command is used to retrieve data?
+</h3>
+
+<label class="option">
+
+<input type="radio"
+       name="q3"
+       value="A">
+
+A. SELECT
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q3"
+       value="B">
+
+B. DELETE
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q3"
+       value="C">
+
+C. UPDATE
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q3"
+       value="D">
+
+D. DROP
+
+</label>
+
+</div>
+
+
+<!-- QUESTION 4 -->
+
+<div class="question">
+
+<h3>
+4. What does CPU stand for?
+</h3>
+
+<label class="option">
+
+<input type="radio"
+       name="q4"
+       value="A">
+
+A. Central Processing Unit
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q4"
+       value="B">
+
+B. Computer Processing User
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q4"
+       value="C">
+
+C. Central Program Utility
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q4"
+       value="D">
+
+D. Computer Program Unit
+
+</label>
+
+</div>
+
+
+<!-- QUESTION 5 -->
+
+<div class="question">
+
+<h3>
+5. Which protocol is used for secure web communication?
+</h3>
+
+<label class="option">
+
+<input type="radio"
+       name="q5"
+       value="A">
+
+A. HTTP
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q5"
+       value="B">
+
+B. FTP
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q5"
+       value="C">
+
+C. HTTPS
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+       name="q5"
+       value="D">
+
+D. SMTP
+
+</label>
+
+</div>
+
+
+<button class="green"
+        onclick="submitExam()">
+
+Submit Examination
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div id="resultSection" class="hidden">
+
+<div class="card">
+
+<h2>Examination Result</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>Candidate</h3>
+
+<p id="resultCandidate">
+Candidate
+</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Score</h3>
+
+<p id="resultScore">
+0 / 5
+</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Percentage</h3>
+
+<p id="resultPercentage">
+0%
+</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Rank</h3>
+
+<p id="resultRank">
+1
+</p>
+
+</div>
+
+</div>
+
+
+<h2 id="resultStatus"></h2>
+
+
+<div class="feedback">
+
+<h3>Performance Feedback</h3>
+
+<p id="feedbackText"></p>
+
+</div>
+
+
+<button class="blue"
+        onclick="downloadScorecard()">
+
+Download Scorecard
+
+</button>
+
+
+<button class="orange"
+        onclick="requestReevaluation()">
+
+Apply for Re-Evaluation
+
+</button>
+
+<div id="reevaluationMessage"></div>
+
+</div>
+
+</div>
+
+
+<!-- RANKING -->
+
+<div class="card">
+
+<h2>Passed Candidates Ranking</h2>
+
+<table>
+
+<tr>
+
+<th>Rank</th>
+<th>Candidate</th>
+<th>Score</th>
+<th>Percentage</th>
+
+</tr>
+
+<tr>
+
+<td>1</td>
+<td>Rahul</td>
+<td>5 / 5</td>
+<td>100%</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+<td>Priya</td>
+<td>4 / 5</td>
+<td>80%</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+<td>Arun</td>
+<td>3 / 5</td>
+<td>60%</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ADMIN PAGE -->
+
+<div id="adminPage" class="hidden">
+
+<div class="navbar">
+
+<b>Admin Dashboard</b>
+
+<button class="red"
+        onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- ADMIN STATISTICS -->
+
+<div class="card">
+
+<h2>Admin Dashboard</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>Total Candidates</h3>
+
+<p>120</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Exam Scheduled</h3>
+
+<p>3</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Questions</h3>
+
+<p>50</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Results Published</h3>
+
+<p>100</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SCHEDULE EXAM -->
+
+<div class="card">
+
+<h2>Schedule Examination</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Exam Name</label>
+
+<input type="text"
+       id="examName"
+       value="Placement Aptitude Test">
+
+</div>
+
+<div>
+
+<label>Exam Date</label>
+
+<input type="date"
+       id="examDate">
+
+</div>
+
+<div>
+
+<label>Exam Time</label>
+
+<input type="time"
+       id="examTime">
+
+</div>
+
+<div>
+
+<label>Duration (Minutes)</label>
+
+<input type="number"
+       id="examDuration"
+       value="10">
+
+</div>
+
+</div>
+
+<button onclick="scheduleExam()">
+
+Schedule Exam
+
+</button>
+
+<div id="scheduleMessage"></div>
+
+</div>
+
+
+<!-- CANDIDATE LOGIN RIGHTS -->
+
+<div class="card">
+
+<h2>Candidate Login Rights</h2>
+
+<table>
+
+<tr>
+
+<th>Candidate ID</th>
+<th>Name</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+<tr>
+
+<td>C001</td>
+<td>Rahul</td>
+<td>Enabled</td>
+
+<td>
+
+<button class="red"
+        onclick="disableCandidate(this)">
+
+Disable
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>C002</td>
+<td>Priya</td>
+<td>Enabled</td>
+
+<td>
+
+<button class="red"
+        onclick="disableCandidate(this)">
+
+Disable
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>C003</td>
+<td>Arun</td>
+<td>Enabled</td>
+
+<td>
+
+<button class="red"
+        onclick="disableCandidate(this)">
+
+Disable
+
+</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- QUESTION MANAGEMENT -->
+
+<div class="card">
+
+<h2>Question Management</h2>
+
+<label>Question</label>
+
+<textarea id="newQuestion"
+          placeholder="Enter examination question"></textarea>
+
+<label>Option A</label>
+
+<input type="text" id="optionA">
+
+<label>Option B</label>
+
+<input type="text" id="optionB">
+
+<label>Option C</label>
+
+<input type="text" id="optionC">
+
+<label>Option D</label>
+
+<input type="text" id="optionD">
+
+<label>Correct Answer</label>
+
+<select id="correctAnswer">
+
+<option>A</option>
+<option>B</option>
+<option>C</option>
+<option>D</option>
+
+</select>
+
+<button onclick="addQuestion()">
+
+Add Question
+
+</button>
+
+<div id="questionMessage"></div>
+
+</div>
+
+
+<!-- RESULT PUBLISHING -->
+
+<div class="card">
+
+<h2>Publish Examination Result</h2>
+
+<table>
+
+<tr>
+
+<th>Candidate</th>
+<th>Score</th>
+<th>Percentage</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+<tr>
+
+<td>Rahul</td>
+<td>5 / 5</td>
+<td>100%</td>
+<td class="pass">PASS</td>
+
+<td>
+
+<button class="green"
+        onclick="publishResult()">
+
+Publish
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Priya</td>
+<td>4 / 5</td>
+<td>80%</td>
+<td class="pass">PASS</td>
+
+<td>
+
+<button class="green"
+        onclick="publishResult()">
+
+Publish
+
+</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- RE-EVALUATION -->
+
+<div class="card">
+
+<h2>Re-Evaluation Requests</h2>
+
+<table>
+
+<tr>
+
+<th>Candidate</th>
+<th>Reason</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+<tr>
+
+<td>Candidate C004</td>
+
+<td>Request for answer verification</td>
+
+<td>Pending</td>
+
+<td>
+
+<button class="green"
+        onclick="approveReevaluation(this)">
+
+Approve
+
+</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* LOGIN TYPE */
+
+function changeLogin() {
+
+    let type =
+        document.getElementById("loginType").value;
+
+    document.getElementById("candidateLogin")
+        .classList.add("hidden");
+
+    document.getElementById("adminLogin")
+        .classList.add("hidden");
+
+
+    if(type === "candidate") {
+
+        document.getElementById("candidateLogin")
+            .classList.remove("hidden");
+
+    }
+
+    else {
+
+        document.getElementById("adminLogin")
+            .classList.remove("hidden");
+
+    }
+
+}
+
+
+/* CANDIDATE LOGIN */
+
+function candidateLogin() {
+
+    let id =
+        document.getElementById("candidateId").value;
+
+    let password =
+        document.getElementById("candidatePassword").value;
+
+
+    if(id === "" || password === "") {
+
+        alert("Please enter candidate credentials.");
+
+        return;
+
+    }
+
+
+    document.getElementById("loginPage")
+        .classList.add("hidden");
+
+    document.getElementById("candidatePage")
+        .classList.remove("hidden");
+
+}
+
+
+/* ADMIN LOGIN */
+
+function adminLogin() {
+
+    let username =
+        document.getElementById("adminUsername").value;
+
+    let password =
+        document.getElementById("adminPassword").value;
+
+
+    if(username === "admin" &&
+       password === "admin123") {
+
+        document.getElementById("loginPage")
+            .classList.add("hidden");
+
+        document.getElementById("adminPage")
+            .classList.remove("hidden");
+
+    }
+
+    else {
+
+        alert("Invalid admin credentials.");
+
+    }
+
+}
+
+
+/* START EXAM */
+
+let time = 600;
+let timerInterval;
+
+
+function startExam() {
+
+    document.getElementById("examSection")
+        .classList.remove("hidden");
+
+    document.getElementById("examSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    time = 600;
+
+    clearInterval(timerInterval);
+
+    timerInterval =
+        setInterval(updateTimer, 1000);
+
+}
+
+
+function updateTimer() {
+
+    let minutes =
+        Math.floor(time / 60);
+
+    let seconds =
+        time % 60;
+
+
+    document.getElementById("timer")
+        .innerText =
+        String(minutes).padStart(2, "0")
+        + ":" +
+        String(seconds).padStart(2, "0");
+
+
+    if(time <= 0) {
+
+        clearInterval(timerInterval);
+
+        alert("Time is over. Your exam will be submitted.");
+
+        submitExam();
+
+    }
+
+
+    time--;
+
+}
+
+
+/* SUBMIT EXAM */
+
+function submitExam() {
+
+    clearInterval(timerInterval);
+
+
+    let answers = {
+
+        q1: "B",
+        q2: "C",
+        q3: "A",
+        q4: "A",
+        q5: "C"
+
+    };
+
+
+    let score = 0;
+
+
+    for(let question in answers) {
+
+        let selected =
+            document.querySelector(
+                'input[name="' +
+                question +
+                '"]:checked'
+            );
+
+
+        if(selected &&
+           selected.value === answers[question]) {
+
+            score++;
+
+        }
+
+    }
+
+
+    let percentage =
+        (score / 5) * 100;
+
+
+    document.getElementById("resultScore")
+        .innerText =
+        score + " / 5";
+
+
+    document.getElementById("resultPercentage")
+        .innerText =
+        percentage + "%";
+
+
+    document.getElementById("resultCandidate")
+        .innerText =
+        document.getElementById("candidateId").value;
+
+
+    if(percentage >= 50) {
+
+        document.getElementById("resultStatus")
+            .innerHTML =
+            "<span class='pass'>PASS</span>";
+
+        document.getElementById("feedbackText")
+            .innerText =
+            "Excellent! You have successfully passed the placement examination. Keep improving your technical and aptitude skills.";
+
+    }
+
+    else {
+
+        document.getElementById("resultStatus")
+            .innerHTML =
+            "<span class='fail'>FAIL</span>";
+
+        document.getElementById("feedbackText")
+            .innerText =
+            "You did not reach the required pass mark. Review the incorrect answers and improve your preparation.";
+
+    }
+
+
+    document.getElementById("resultSection")
+        .classList.remove("hidden");
+
+
+    document.getElementById("resultSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* DOWNLOAD SCORECARD */
+
+function downloadScorecard() {
+
+    let candidate =
+        document.getElementById("resultCandidate")
+        .innerText;
+
+    let score =
+        document.getElementById("resultScore")
+        .innerText;
+
+    let percentage =
+        document.getElementById("resultPercentage")
+        .innerText;
+
+    let status =
+        document.getElementById("resultStatus")
+        .innerText;
+
+
+    let content =
+
+        "ONLINE PLACEMENT EXAMINATION SCORECARD\n\n" +
+
+        "Candidate ID: " + candidate + "\n" +
+
+        "Score: " + score + "\n" +
+
+        "Percentage: " + percentage + "\n" +
+
+        "Result: " + status + "\n\n" +
+
+        "Thank you for attending the examination.";
+
+
+    let file =
+        new Blob(
+            [content],
+            {type: "text/plain"}
+        );
+
+
+    let link =
+        document.createElement("a");
+
+    link.href =
+        URL.createObjectURL(file);
+
+    link.download =
+        "placement_scorecard.txt";
+
+    link.click();
+
+}
+
+
+/* RE-EVALUATION */
+
+function requestReevaluation() {
+
+    document.getElementById("reevaluationMessage")
+        .innerHTML =
+
+        "<p style='color:green;'>" +
+        "Re-evaluation request submitted successfully." +
+        "</p>";
+
+}
+
+
+/* ADMIN SCHEDULE */
+
+function scheduleExam() {
+
+    let name =
+        document.getElementById("examName").value;
+
+    let date =
+        document.getElementById("examDate").value;
+
+    let time =
+        document.getElementById("examTime").value;
+
+
+    if(name === "" ||
+       date === "" ||
+       time === "") {
+
+        alert("Please enter exam schedule details.");
+
+        return;
+
+    }
+
+
+    document.getElementById("scheduleMessage")
+        .innerHTML =
+
+        "<p style='color:green;'>" +
+        "Exam scheduled successfully!" +
+        "</p>";
+
+}
+
+
+/* DISABLE CANDIDATE */
+
+function disableCandidate(button) {
+
+    button.innerText = "Disabled";
+
+    button.disabled = true;
+
+    button.style.background = "gray";
+
+    alert("Candidate login rights disabled.");
+
+}
+
+
+/* ADD QUESTION */
+
+function addQuestion() {
+
+    let question =
+        document.getElementById("newQuestion").value;
+
+
+    if(question === "") {
+
+        alert("Please enter a question.");
+
+        return;
+
+    }
+
+
+    document.getElementById("questionMessage")
+        .innerHTML =
+
+        "<p style='color:green;'>" +
+        "Question added successfully!" +
+        "</p>";
+
+}
+
+
+/* PUBLISH RESULT */
+
+function publishResult() {
+
+    alert(
+        "Examination result published successfully."
+    );
+
+}
+
+
+/* APPROVE RE-EVALUATION */
+
+function approveReevaluation(button) {
+
+    button.parentElement
+        .previousElementSibling
+        .innerText = "Approved";
+
+    button.innerText = "Approved";
+
+    button.disabled = true;
+
+}
+
+
+/* LOGOUT */
+
+function logout() {
+
+    clearInterval(timerInterval);
+
+    document.getElementById("candidatePage")
+        .classList.add("hidden");
+
+    document.getElementById("adminPage")
+        .classList.add("hidden");
+
+    document.getElementById("loginPage")
+        .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>

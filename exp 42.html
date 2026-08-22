@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Electricity Bill Payment</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f2f5f9;
+    color: #222;
+}
+
+header {
+    background: #176b87;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #ccc;
+}
+
+.login-box {
+    max-width: 450px;
+    margin: 50px auto;
+}
+
+h2 {
+    color: #176b87;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    background: #176b87;
+    margin-top: 15px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.green {
+    background: #198754;
+}
+
+.red {
+    background: #dc3545;
+}
+
+.orange {
+    background: #f39c12;
+}
+
+.blue {
+    background: #0d6efd;
+}
+
+.gray {
+    background: #6c757d;
+}
+
+.hidden {
+    display: none;
+}
+
+.navbar {
+    background: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px #ccc;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat {
+    background: #eef7fa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.stat h3 {
+    color: #176b87;
+    margin: 5px;
+}
+
+.stat p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.bill {
+    background: #eef7fa;
+    padding: 20px;
+    border-left: 5px solid #176b87;
+    margin-top: 20px;
+}
+
+.success {
+    background: #e8f8ee;
+    color: green;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #176b87;
+    color: white;
+}
+
+@media(max-width:700px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+
+<h1>⚡ Online Electricity Bill Payment</h1>
+
+<p>Electricity Bill Management & Payment System</p>
+
+</header>
+
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage" class="container">
+
+<div class="card login-box">
+
+<h2>Login</h2>
+
+<label>Login As</label>
+
+<select id="loginType" onchange="changeLogin()">
+
+<option value="customer">Customer</option>
+<option value="admin">Admin</option>
+
+</select>
+
+
+<!-- CUSTOMER LOGIN -->
+
+<div id="customerLogin">
+
+<h3>Customer Login</h3>
+
+<label>Customer ID</label>
+
+<input type="text"
+       id="customerId"
+       placeholder="Enter Customer ID">
+
+<label>Password</label>
+
+<input type="password"
+       id="customerPassword"
+       placeholder="Enter Password">
+
+<button onclick="customerLogin()">
+Customer Login
+</button>
+
+</div>
+
+
+<!-- ADMIN LOGIN -->
+
+<div id="adminLogin" class="hidden">
+
+<h3>Admin Login</h3>
+
+<label>Username</label>
+
+<input type="text"
+       id="adminUsername"
+       placeholder="admin">
+
+<label>Password</label>
+
+<input type="password"
+       id="adminPassword"
+       placeholder="admin123">
+
+<button onclick="adminLogin()">
+Admin Login
+</button>
+
+<p>
+Demo Admin Login:<br>
+Username: <b>admin</b><br>
+Password: <b>admin123</b>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CUSTOMER DASHBOARD -->
+
+<div id="customerPage" class="hidden">
+
+<div class="navbar">
+
+<b>Customer Dashboard</b>
+
+<button class="red" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- BILL SUMMARY -->
+
+<div class="card">
+
+<h2>Electricity Bill Dashboard</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>Customer ID</h3>
+
+<p id="displayCustomer">
+C001
+</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Bill Amount</h3>
+
+<p id="dashboardBill">
+₹350
+</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Due Date</h3>
+
+<p>30-Aug-2026</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Status</h3>
+
+<p>Unpaid</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BILL CALCULATOR -->
+
+<div class="card">
+
+<h2>Calculate Electricity Bill</h2>
+
+<label>Connection Type</label>
+
+<select id="connectionType">
+
+<option value="domestic">
+Domestic
+</option>
+
+<option value="commercial">
+Commercial
+</option>
+
+</select>
+
+
+<label>Electricity Units Consumed</label>
+
+<input type="number"
+       id="units"
+       placeholder="Enter units consumed"
+       min="0">
+
+
+<button onclick="calculateBill()">
+
+Calculate Bill
+
+</button>
+
+
+<div id="billResult"></div>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="card">
+
+<h2>Make Payment</h2>
+
+<label>Amount to Pay</label>
+
+<input type="number"
+       id="paymentAmount"
+       placeholder="Enter amount">
+
+<label>Payment Method</label>
+
+<select id="paymentMethod">
+
+<option value="Credit Card">
+Credit Card
+</option>
+
+<option value="Debit Card">
+Debit Card
+</option>
+
+<option value="Net Banking">
+Net Banking
+</option>
+
+<option value="Digital Wallet">
+Digital Wallet
+</option>
+
+</select>
+
+<button class="green"
+        onclick="makePayment()">
+
+Pay Bill
+
+</button>
+
+<div id="paymentMessage"></div>
+
+</div>
+
+
+<!-- PAYMENT HISTORY -->
+
+<div class="card">
+
+<h2>Payment History</h2>
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Bill Amount</th>
+<th>Payment Method</th>
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>15-Jul-2026</td>
+<td>₹420</td>
+<td>Debit Card</td>
+<td>Paid</td>
+
+</tr>
+
+<tr>
+
+<td>15-Jun-2026</td>
+<td>₹350</td>
+<td>Net Banking</td>
+<td>Paid</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- AUTOMATIC PAYMENT -->
+
+<div class="card">
+
+<h2>Automatic Payment</h2>
+
+<p>
+Enable automatic payment to pay your electricity bill automatically before the due date.
+</p>
+
+<label>
+
+<input type="checkbox"
+       id="autoPayment">
+
+Enable Automatic Payment
+
+</label>
+
+<br>
+
+<button class="orange"
+        onclick="saveAutoPayment()">
+
+Save Auto Payment Setting
+
+</button>
+
+<div id="autoMessage"></div>
+
+</div>
+
+
+<!-- REMINDERS -->
+
+<div class="card">
+
+<h2>Bill Reminders</h2>
+
+<label>Reminder Method</label>
+
+<select id="reminderMethod">
+
+<option>SMS</option>
+<option>Email</option>
+<option>SMS and Email</option>
+
+</select>
+
+<button class="blue"
+        onclick="saveReminder()">
+
+Enable Reminder
+
+</button>
+
+<div id="reminderMessage"></div>
+
+</div>
+
+
+<!-- RECEIPT -->
+
+<div id="receiptSection"
+     class="card hidden">
+
+<h2>Payment Receipt</h2>
+
+<div id="receipt"></div>
+
+<button class="blue"
+        onclick="downloadReceipt()">
+
+Download Receipt
+
+</button>
+
+<button class="green"
+        onclick="emailReceipt()">
+
+Email Receipt
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ADMIN PAGE -->
+
+<div id="adminPage" class="hidden">
+
+<div class="navbar">
+
+<b>Admin Dashboard</b>
+
+<button class="red"
+        onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- ADMIN STATISTICS -->
+
+<div class="card">
+
+<h2>Admin Dashboard</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>Total Customers</h3>
+
+<p>250</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Domestic</h3>
+
+<p>200</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Commercial</h3>
+
+<p>50</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Paid Bills</h3>
+
+<p>185</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BILL FORMULA -->
+
+<div class="card">
+
+<h2>Update Electricity Bill Formula</h2>
+
+<p>
+Admin can update the electricity bill calculation rules.
+</p>
+
+<table>
+
+<tr>
+
+<th>Connection</th>
+<th>Units</th>
+<th>Rate</th>
+
+</tr>
+
+<tr>
+
+<td rowspan="4">Domestic</td>
+
+<td>First 100 units</td>
+
+<td>₹1 / unit</td>
+
+</tr>
+
+<tr>
+
+<td>101 - 200 units</td>
+
+<td>₹2.50 / unit</td>
+
+</tr>
+
+<tr>
+
+<td>201 - 500 units</td>
+
+<td>₹4 / unit</td>
+
+</tr>
+
+<tr>
+
+<td>Above 500 units</td>
+
+<td>₹6 / unit</td>
+
+</tr>
+
+
+<tr>
+
+<td rowspan="3">Commercial</td>
+
+<td>First 100 units</td>
+
+<td>₹2 / unit</td>
+
+</tr>
+
+<tr>
+
+<td>101 - 200 units</td>
+
+<td>₹4.50 / unit</td>
+
+</tr>
+
+<tr>
+
+<td>201 - 500 units</td>
+
+<td>₹6 / unit</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- ADMIN UPDATE RATES -->
+
+<div class="card">
+
+<h2>Modify Bill Rates</h2>
+
+<label>Domestic - First 100 Units</label>
+
+<input type="number"
+       id="domesticRate1"
+       value="1">
+
+<label>Domestic - 101 to 200 Units</label>
+
+<input type="number"
+       id="domesticRate2"
+       value="2.5">
+
+<label>Domestic - 201 to 500 Units</label>
+
+<input type="number"
+       id="domesticRate3"
+       value="4">
+
+<label>Domestic - Above 500 Units</label>
+
+<input type="number"
+       id="domesticRate4"
+       value="6">
+
+<label>Commercial - First 100 Units</label>
+
+<input type="number"
+       id="commercialRate1"
+       value="2">
+
+<label>Commercial - 101 to 200 Units</label>
+
+<input type="number"
+       id="commercialRate2"
+       value="4.5">
+
+<label>Commercial - 201 to 500 Units</label>
+
+<input type="number"
+       id="commercialRate3"
+       value="6">
+
+<button onclick="updateRates()">
+
+Update Formula
+
+</button>
+
+<div id="rateMessage"></div>
+
+</div>
+
+
+<!-- CUSTOMER DETAILS -->
+
+<div class="card">
+
+<h2>Customer Bill Records</h2>
+
+<table>
+
+<tr>
+
+<th>Customer ID</th>
+<th>Name</th>
+<th>Connection</th>
+<th>Units</th>
+<th>Amount</th>
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>C001</td>
+<td>Rahul</td>
+<td>Domestic</td>
+<td>150</td>
+<td>₹225</td>
+<td>Paid</td>
+
+</tr>
+
+<tr>
+
+<td>C002</td>
+<td>Priya</td>
+<td>Domestic</td>
+<td>250</td>
+<td>₹550</td>
+<td>Unpaid</td>
+
+</tr>
+
+<tr>
+
+<td>C003</td>
+<td>Arun</td>
+<td>Commercial</td>
+<td>180</td>
+<td>₹560</td>
+<td>Paid</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* LOGIN TYPE */
+
+function changeLogin() {
+
+    let type =
+        document.getElementById("loginType").value;
+
+
+    document.getElementById("customerLogin")
+        .classList.add("hidden");
+
+    document.getElementById("adminLogin")
+        .classList.add("hidden");
+
+
+    if(type === "customer") {
+
+        document.getElementById("customerLogin")
+            .classList.remove("hidden");
+
+    }
+
+    else {
+
+        document.getElementById("adminLogin")
+            .classList.remove("hidden");
+
+    }
+
+}
+
+
+/* CUSTOMER LOGIN */
+
+function customerLogin() {
+
+    let id =
+        document.getElementById("customerId").value;
+
+    let password =
+        document.getElementById("customerPassword").value;
+
+
+    if(id === "" || password === "") {
+
+        alert("Please enter Customer ID and Password.");
+
+        return;
+
+    }
+
+
+    document.getElementById("loginPage")
+        .classList.add("hidden");
+
+    document.getElementById("customerPage")
+        .classList.remove("hidden");
+
+
+    document.getElementById("displayCustomer")
+        .innerText = id;
+
+}
+
+
+/* ADMIN LOGIN */
+
+function adminLogin() {
+
+    let username =
+        document.getElementById("adminUsername").value;
+
+    let password =
+        document.getElementById("adminPassword").value;
+
+
+    if(username === "admin" &&
+       password === "admin123") {
+
+        document.getElementById("loginPage")
+            .classList.add("hidden");
+
+        document.getElementById("adminPage")
+            .classList.remove("hidden");
+
+    }
+
+    else {
+
+        alert("Invalid Admin Login.");
+
+    }
+
+}
+
+
+/* BILL CALCULATION */
+
+let lastBill = 0;
+
+
+function calculateBill() {
+
+    let units =
+        Number(document.getElementById("units").value);
+
+    let type =
+        document.getElementById("connectionType").value;
+
+
+    if(units <= 0) {
+
+        alert("Please enter valid electricity units.");
+
+        return;
+
+    }
+
+
+    let bill = 0;
+
+
+    if(type === "domestic") {
+
+
+        if(units <= 100) {
+
+            bill = units * 1;
+
+        }
+
+        else if(units <= 200) {
+
+            bill =
+                (100 * 1) +
+                ((units - 100) * 2.5);
+
+        }
+
+        else if(units <= 500) {
+
+            bill =
+                (100 * 1) +
+                (100 * 2.5) +
+                ((units - 200) * 4);
+
+        }
+
+        else {
+
+            bill =
+                (100 * 1) +
+                (100 * 2.5) +
+                (300 * 4) +
+                ((units - 500) * 6);
+
+        }
+
+    }
+
+
+    else if(type === "commercial") {
+
+
+        if(units <= 100) {
+
+            bill = units * 2;
+
+        }
+
+        else if(units <= 200) {
+
+            bill =
+                (100 * 2) +
+                ((units - 100) * 4.5);
+
+        }
+
+        else if(units <= 500) {
+
+            bill =
+                (100 * 2) +
+                (100 * 4.5) +
+                ((units - 200) * 6);
+
+        }
+
+        else {
+
+            bill =
+                (100 * 2) +
+                (100 * 4.5) +
+                (300 * 6) +
+                ((units - 500) * 6);
+
+        }
+
+    }
+
+
+    lastBill = bill;
+
+
+    document.getElementById("paymentAmount")
+        .value = bill.toFixed(2);
+
+
+    document.getElementById("dashboardBill")
+        .innerText =
+        "₹" + bill.toFixed(2);
+
+
+    document.getElementById("billResult").innerHTML =
+
+        "<div class='bill'>" +
+
+        "<h3>Electricity Bill</h3>" +
+
+        "<p><b>Connection Type:</b> " +
+        type.toUpperCase() +
+        "</p>" +
+
+        "<p><b>Units Consumed:</b> " +
+        units +
+        "</p>" +
+
+        "<h2>Total Amount: ₹" +
+        bill.toFixed(2) +
+        "</h2>" +
+
+        "</div>";
+
+}
+
+
+/* PAYMENT */
+
+function makePayment() {
+
+    let amount =
+        Number(
+            document.getElementById("paymentAmount").value
+        );
+
+    let method =
+        document.getElementById("paymentMethod").value;
+
+
+    if(amount <= 0) {
+
+        alert("Please calculate or enter a valid bill amount.");
+
+        return;
+
+    }
+
+
+    let customer =
+        document.getElementById("displayCustomer")
+        .innerText;
+
+
+    let today =
+        new Date().toLocaleDateString();
+
+
+    document.getElementById("receiptSection")
+        .classList.remove("hidden");
+
+
+    document.getElementById("receipt").innerHTML =
+
+        "<div class='bill'>" +
+
+        "<h3>⚡ Electricity Payment Receipt</h3>" +
+
+        "<p><b>Customer ID:</b> " +
+        customer +
+        "</p>" +
+
+        "<p><b>Date:</b> " +
+        today +
+        "</p>" +
+
+        "<p><b>Payment Method:</b> " +
+        method +
+        "</p>" +
+
+        "<p><b>Transaction Status:</b> " +
+        "<span style='color:green'>SUCCESSFUL</span>" +
+        "</p>" +
+
+        "<h2>Amount Paid: ₹" +
+        amount.toFixed(2) +
+        "</h2>" +
+
+        "<p>Thank you for your payment.</p>" +
+
+        "</div>";
+
+
+    document.getElementById("paymentMessage")
+        .innerHTML =
+
+        "<div class='success'>" +
+        "Payment successful! Receipt generated." +
+        "</div>";
+
+
+    document.getElementById("receiptSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* DOWNLOAD RECEIPT */
+
+function downloadReceipt() {
+
+    let customer =
+        document.getElementById("displayCustomer")
+        .innerText;
+
+    let amount =
+        document.getElementById("paymentAmount")
+        .value;
+
+    let method =
+        document.getElementById("paymentMethod")
+        .value;
+
+
+    let content =
+
+        "ELECTRICITY BILL PAYMENT RECEIPT\n\n" +
+
+        "Customer ID: " +
+        customer +
+        "\n\n" +
+
+        "Amount Paid: ₹" +
+        amount +
+        "\n\n" +
+
+        "Payment Method: " +
+        method +
+        "\n\n" +
+
+        "Status: PAYMENT SUCCESSFUL\n\n" +
+
+        "Thank you for using Online Electricity Bill Payment System.";
+
+
+    let blob =
+        new Blob(
+            [content],
+            {type: "text/plain"}
+        );
+
+
+    let link =
+        document.createElement("a");
+
+    link.href =
+        URL.createObjectURL(blob);
+
+    link.download =
+        "electricity_payment_receipt.txt";
+
+    link.click();
+
+}
+
+
+/* EMAIL RECEIPT */
+
+function emailReceipt() {
+
+    let customer =
+        document.getElementById("displayCustomer")
+        .innerText;
+
+
+    alert(
+        "Receipt has been sent to the registered email of Customer " +
+        customer +
+        "."
+    );
+
+}
+
+
+/* AUTOMATIC PAYMENT */
+
+function saveAutoPayment() {
+
+    let enabled =
+        document.getElementById("autoPayment").checked;
+
+
+    if(enabled) {
+
+        document.getElementById("autoMessage")
+            .innerHTML =
+
+            "<div class='success'>" +
+            "Automatic payment enabled successfully." +
+            "</div>";
+
+    }
+
+    else {
+
+        document.getElementById("autoMessage")
+            .innerHTML =
+
+            "<div class='success'>" +
+            "Automatic payment disabled." +
+            "</div>";
+
+    }
+
+}
+
+
+/* REMINDER */
+
+function saveReminder() {
+
+    let method =
+        document.getElementById("reminderMethod").value;
+
+
+    document.getElementById("reminderMessage")
+        .innerHTML =
+
+        "<div class='success'>" +
+
+        method +
+        " bill reminder enabled successfully." +
+
+        "</div>";
+
+}
+
+
+/* ADMIN UPDATE RATES */
+
+function updateRates() {
+
+    document.getElementById("rateMessage")
+        .innerHTML =
+
+        "<div class='success'>" +
+
+        "Electricity bill calculation formula updated successfully." +
+
+        "</div>";
+
+}
+
+
+/* LOGOUT */
+
+function logout() {
+
+    document.getElementById("customerPage")
+        .classList.add("hidden");
+
+    document.getElementById("adminPage")
+        .classList.add("hidden");
+
+    document.getElementById("loginPage")
+        .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
