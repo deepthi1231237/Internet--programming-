@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartShop - Online Store</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* HEADER */
+
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #555;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+h2 {
+    color: #222;
+}
+
+/* HERO */
+
+.hero {
+    background: #e8e8e8;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 35px;
+}
+
+.hero button {
+    padding: 12px 25px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* SEARCH */
+
+.search-area {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* PRODUCTS */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-content {
+    padding: 15px;
+}
+
+.product h3 {
+    margin-top: 0;
+}
+
+.price {
+    color: #e65100;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.available {
+    color: green;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #222;
+    color: white;
+    margin-top: 8px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.orange {
+    background: #ff6600;
+}
+
+.green {
+    background: #198754;
+}
+
+.red {
+    background: #dc3545;
+}
+
+.blue {
+    background: #0d6efd;
+}
+
+/* CART */
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.quantity button {
+    padding: 5px 10px;
+    margin: 3px;
+}
+
+.total {
+    text-align: right;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* CHECKOUT */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+}
+
+/* ORDER */
+
+.order-box {
+    background: #eef8ee;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-area {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🛍️ SmartShop</h1>
+
+<p>Your Simple Online Shopping Store</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showSection('home')">
+Home
+</button>
+
+<button onclick="showSection('products')">
+Products
+</button>
+
+<button onclick="showSection('cart')">
+🛒 Cart (<span id="cartCount">0</span>)
+</button>
+
+<button onclick="showSection('orders')">
+My Orders
+</button>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<h2>Welcome to SmartShop</h2>
+
+<p>
+Find electronics, clothing and accessories
+at great prices.
+</p>
+
+<button onclick="showSection('products')">
+Shop Now
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>⭐ Featured Products</h2>
+
+<div class="product-grid">
+
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
+<div class="product-content">
+
+<h3>Running Shoes</h3>
+
+<p>Comfortable sports shoes for everyday use.</p>
+
+<p class="price">₹2,499</p>
+
+<button class="orange"
+onclick="addToCart('Running Shoes',2499)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+
+<div class="product-content">
+
+<h3>Laptop</h3>
+
+<p>Powerful laptop for work and study.</p>
+
+<p class="price">₹55,000</p>
+
+<button class="orange"
+onclick="addToCart('Laptop',55000)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+
+<div class="product-content">
+
+<h3>Smart Watch</h3>
+
+<p>Modern smartwatch with fitness tracking.</p>
+
+<p class="price">₹3,999</p>
+
+<button class="orange"
+onclick="addToCart('Smart Watch',3999)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section id="products" class="hidden">
+
+<div class="card">
+
+<h2>🛒 Product Catalog</h2>
+
+<div class="search-area">
+
+<input type="text"
+id="search"
+placeholder="Search products..."
+onkeyup="filterProducts()">
+
+
+<select id="category"
+onchange="filterProducts()">
+
+<option value="all">
+All Categories
+</option>
+
+<option value="electronics">
+Electronics
+</option>
+
+<option value="clothing">
+Clothing
+</option>
+
+<option value="accessories">
+Accessories
+</option>
+
+</select>
+
+
+<select id="sort"
+onchange="sortProducts()">
+
+<option value="default">
+Sort By
+</option>
+
+<option value="low">
+Price: Low to High
+</option>
+
+<option value="high">
+Price: High to Low
+</option>
+
+</select>
+
+</div>
+
+
+<div class="product-grid"
+id="productList">
+
+
+<!-- PRODUCT 1 -->
+
+<div class="product"
+data-name="laptop"
+data-category="electronics"
+data-price="55000">
+
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+
+<div class="product-content">
+
+<h3>Laptop</h3>
+
+<p>High-performance laptop.</p>
+
+<p class="price">₹55,000</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('Laptop',55000)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('Laptop','₹55,000','High-performance laptop for students and professionals.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product"
+data-name="smartphone"
+data-category="electronics"
+data-price="25000">
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+
+<div class="product-content">
+
+<h3>Smartphone</h3>
+
+<p>Latest smartphone with excellent camera.</p>
+
+<p class="price">₹25,000</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('Smartphone',25000)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('Smartphone','₹25,000','Latest smartphone with excellent camera and performance.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product"
+data-name="headphones"
+data-category="electronics"
+data-price="1999">
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+
+<div class="product-content">
+
+<h3>Headphones</h3>
+
+<p>Wireless headphones with clear sound.</p>
+
+<p class="price">₹1,999</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('Headphones',1999)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('Headphones','₹1,999','Wireless headphones with high-quality sound.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product"
+data-name="tshirt"
+data-category="clothing"
+data-price="799">
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+
+<div class="product-content">
+
+<h3>T-Shirt</h3>
+
+<p>Comfortable cotton T-shirt.</p>
+
+<p class="price">₹799</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('T-Shirt',799)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('T-Shirt','₹799','Comfortable cotton T-shirt available in multiple sizes.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product"
+data-name="backpack"
+data-category="accessories"
+data-price="1499">
+
+<img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62">
+
+<div class="product-content">
+
+<h3>Backpack</h3>
+
+<p>Durable backpack for travel and college.</p>
+
+<p class="price">₹1,499</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('Backpack',1499)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('Backpack','₹1,499','Durable backpack suitable for college and travel.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product"
+data-name="watch"
+data-category="accessories"
+data-price="2999">
+
+<img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d">
+
+<div class="product-content">
+
+<h3>Classic Watch</h3>
+
+<p>Elegant watch for everyday wear.</p>
+
+<p class="price">₹2,999</p>
+
+<p class="available">
+✓ In Stock
+</p>
+
+<button onclick="addToCart('Classic Watch',2999)">
+Add to Cart
+</button>
+
+<button class="blue"
+onclick="viewProduct('Classic Watch','₹2,999','Elegant classic watch for everyday use.')">
+View Details
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCT DETAILS -->
+
+<section id="details" class="hidden">
+
+<div class="card">
+
+<button onclick="showSection('products')">
+← Back to Products
+</button>
+
+<h2 id="detailName">
+Product Name
+</h2>
+
+<p id="detailPrice">
+Price
+</p>
+
+<p id="detailDescription">
+Description
+</p>
+
+<h3>Available Options</h3>
+
+<label>Size</label>
+
+<select>
+
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
+<option>XL</option>
+
+</select>
+
+<label>Color</label>
+
+<select>
+
+<option>Black</option>
+<option>White</option>
+<option>Blue</option>
+<option>Red</option>
+
+</select>
+
+<br>
+
+<button class="orange"
+onclick="alert('Product added to cart!')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CART -->
+
+<section id="cart" class="hidden">
+
+<div class="card">
+
+<h2>🛒 Shopping Cart</h2>
+
+<div id="cartItems">
+
+<p>Your cart is empty.</p>
+
+</div>
+
+<div class="total">
+
+Total: ₹<span id="cartTotal">0</span>
+
+</div>
+
+<button class="red"
+onclick="clearCart()">
+
+Clear Cart
+
+</button>
+
+<button class="green"
+onclick="checkout()">
+
+Proceed to Checkout
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CHECKOUT -->
+
+<section id="checkout" class="hidden">
+
+<div class="card">
+
+<h2>🔐 Secure Checkout</h2>
+
+<h3>Shipping Details</h3>
+
+<div class="form-group">
+
+<label>Full Name</label>
+
+<input type="text"
+id="customerName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input type="email"
+id="customerEmail"
+placeholder="Enter email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Address</label>
+
+<input type="text"
+id="address"
+placeholder="Enter delivery address">
+
+</div>
+
+
+<div class="form-group">
+
+<label>City</label>
+
+<input type="text"
+id="city"
+placeholder="Enter city">
+
+</div>
+
+
+<h3>💳 Payment Method</h3>
+
+<select id="payment">
+
+<option>
+Credit Card
+</option>
+
+<option>
+Debit Card
+</option>
+
+<option>
+Net Banking
+</option>
+
+<option>
+UPI
+</option>
+
+<option>
+Cash on Delivery
+</option>
+
+</select>
+
+<br>
+
+<button class="green"
+onclick="placeOrder()">
+
+Place Order
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ORDERS -->
+
+<section id="orders" class="hidden">
+
+<div class="card">
+
+<h2>📦 My Orders</h2>
+
+<div id="orderList">
+
+<p>
+No orders placed yet.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 SmartShop | Online Shopping Website
+</p>
+
+</footer>
+
+
+<script>
+
+/* CART */
+
+let cart = [];
+
+
+/* SECTION NAVIGATION */
+
+function showSection(section) {
+
+    let sections = [
+        "home",
+        "products",
+        "details",
+        "cart",
+        "checkout",
+        "orders"
+    ];
+
+    sections.forEach(function(id) {
+
+        document.getElementById(id)
+        .classList.add("hidden");
+
+    });
+
+    document.getElementById(section)
+    .classList.remove("hidden");
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ADD TO CART */
+
+function addToCart(name, price) {
+
+    let existing =
+        cart.find(item => item.name === name);
+
+    if(existing) {
+
+        existing.quantity++;
+
+    }
+
+    else {
+
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+
+    }
+
+    updateCart();
+
+    alert(name + " added to cart!");
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart() {
+
+    let cartItems =
+        document.getElementById("cartItems");
+
+    let cartCount =
+        document.getElementById("cartCount");
+
+    let cartTotal =
+        document.getElementById("cartTotal");
+
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    let count = 0;
+
+
+    if(cart.length === 0) {
+
+        cartItems.innerHTML =
+        "<p>Your cart is empty.</p>";
+
+    }
+
+
+    cart.forEach(function(item,index) {
+
+        total +=
+        item.price * item.quantity;
+
+        count += item.quantity;
+
+
+        let div =
+        document.createElement("div");
+
+        div.className =
+        "cart-item";
+
+
+        div.innerHTML =
+
+        "<div>" +
+
+        "<b>" +
+        item.name +
+        "</b>" +
+
+        "<br>₹" +
+        item.price +
+
+        "</div>" +
+
+        "<div class='quantity'>" +
+
+        "<button onclick='decreaseQuantity(" +
+        index + ")'>−</button>" +
+
+        item.quantity +
+
+        "<button onclick='increaseQuantity(" +
+        index + ")'>+</button>" +
+
+        "<button class='red' onclick='removeItem(" +
+        index + ")'>Remove</button>" +
+
+        "</div>";
+
+
+        cartItems.appendChild(div);
+
+    });
+
+
+    cartCount.innerText = count;
+
+    cartTotal.innerText =
+    total.toLocaleString("en-IN");
+
+}
+
+
+/* INCREASE */
+
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+
+/* DECREASE */
+
+function decreaseQuantity(index) {
+
+    if(cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+    }
+
+    else {
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index) {
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+/* CLEAR CART */
+
+function clearCart() {
+
+    cart = [];
+
+    updateCart();
+
+}
+
+
+/* CHECKOUT */
+
+function checkout() {
+
+    if(cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+    showSection("checkout");
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder() {
+
+    let name =
+    document.getElementById("customerName")
+    .value;
+
+    let email =
+    document.getElementById("customerEmail")
+    .value;
+
+    let address =
+    document.getElementById("address")
+    .value;
+
+    let city =
+    document.getElementById("city")
+    .value;
+
+
+    if(
+        name === "" ||
+        email === "" ||
+        address === "" ||
+        city === ""
+    ) {
+
+        alert(
+        "Please fill all shipping details."
+        );
+
+        return;
+
+    }
+
+
+    let orderNumber =
+    "ORD" +
+    Math.floor(Math.random()*100000);
+
+
+    let total =
+    document.getElementById("cartTotal")
+    .innerText;
+
+
+    document.getElementById("orderList")
+    .innerHTML =
+
+    "<div class='order-box'>" +
+
+    "<h3>✅ Order Confirmed</h3>" +
+
+    "<p><b>Order ID:</b> " +
+    orderNumber +
+    "</p>" +
+
+    "<p><b>Customer:</b> " +
+    name +
+    "</p>" +
+
+    "<p><b>Total:</b> ₹" +
+    total +
+    "</p>" +
+
+    "<p><b>Status:</b> " +
+    "<span style='color:green'>Order Placed</span>" +
+    "</p>" +
+
+    "<p>🚚 Your order will be shipped soon.</p>" +
+
+    "</div>";
+
+
+    cart = [];
+
+    updateCart();
+
+    showSection("orders");
+
+}
+
+
+/* SEARCH */
+
+function filterProducts() {
+
+    let search =
+    document.getElementById("search")
+    .value.toLowerCase();
+
+    let category =
+    document.getElementById("category")
+    .value;
+
+
+    let products =
+    document.querySelectorAll(".product");
+
+
+    products.forEach(function(product) {
+
+        let name =
+        product.dataset.name;
+
+        let productCategory =
+        product.dataset.category;
+
+
+        let searchMatch =
+        name.includes(search);
+
+        let categoryMatch =
+        category === "all" ||
+        productCategory === category;
+
+
+        if(
+            searchMatch &&
+            categoryMatch
+        ) {
+
+            product.style.display =
+            "block";
+
+        }
+
+        else {
+
+            product.style.display =
+            "none";
+
+        }
+
+    });
+
+}
+
+
+/* SORT */
+
+function sortProducts() {
+
+    let sort =
+    document.getElementById("sort")
+    .value;
+
+    let list =
+    document.getElementById("productList");
+
+    let products =
+    Array.from(
+        list.querySelectorAll(".product")
+    );
+
+
+    if(sort === "low") {
+
+        products.sort(
+            (a,b) =>
+            a.dataset.price -
+            b.dataset.price
+        );
+
+    }
+
+
+    if(sort === "high") {
+
+        products.sort(
+            (a,b) =>
+            b.dataset.price -
+            a.dataset.price
+        );
+
+    }
+
+
+    products.forEach(function(product) {
+
+        list.appendChild(product);
+
+    });
+
+}
+
+
+/* PRODUCT DETAILS */
+
+function viewProduct(name,price,description) {
+
+    document.getElementById("detailName")
+    .innerText = name;
+
+    document.getElementById("detailPrice")
+    .innerText = "Price: " + price;
+
+    document.getElementById("detailDescription")
+    .innerText = description;
+
+    showSection("details");
+
+}
+
+</script>
+
+</body>
+</html>
